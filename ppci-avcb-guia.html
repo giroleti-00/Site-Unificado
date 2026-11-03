@@ -1,0 +1,189 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>PPCI e AVCB: guia para síndicos | CondoFluxo</title><meta name="description" content="Guia para síndicos sobre PPCI, APPCI e AVCB: o que significa cada documento, o que acompanhar e como organizar a renovação da licença de incêndio."><meta name="theme-color" content="#065f46"><meta property="og:type" content="website"><meta property="og:locale" content="pt_BR"><meta property="og:site_name" content="CondoFluxo"><meta property="og:title" content="PPCI e AVCB: guia para síndicos | CondoFluxo"><meta property="og:description" content="Guia para síndicos sobre PPCI, APPCI e AVCB: o que significa cada documento, o que acompanhar e como organizar a renovação da licença de incêndio."><meta property="og:url" content="https://www.condofluxo.com.br/ppci-avcb-guia.html"><meta property="og:image" content="https://www.condofluxo.com.br/assets/fachada-verde.jpg"><meta name="twitter:card" content="summary_large_image"><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "PPCI, APPCI e AVCB são a mesma coisa?", "acceptedAnswer": {"@type": "Answer", "text": "Não. PPCI é o plano com as medidas de segurança contra incêndio da edificação. APPCI é o alvará emitido no Rio Grande do Sul a partir desse plano. AVCB é o nome da licença em estados como São Paulo. O nome do documento, o prazo e as exigências mudam de estado para estado."}}, {"@type": "Question", "name": "Quem responde pela licença de incêndio no condomínio?", "acceptedAnswer": {"@type": "Answer", "text": "A gestão do condomínio organiza a regularização e a renovação, e a execução técnica fica com profissionais habilitados. Em caso de dúvida sobre responsabilidades, consulte um advogado."}}, {"@type": "Question", "name": "Quando devo renovar a licença?", "acceptedAnswer": {"@type": "Answer", "text": "Antes do fim da validade indicada no documento. O prazo de validade e a antecedência para pedir a renovação variam por estado e por tipo de edificação, então confirme com o Corpo de Bombeiros do seu estado."}}, {"@type": "Question", "name": "O que fazer se a licença venceu?", "acceptedAnswer": {"@type": "Answer", "text": "Procure o Corpo de Bombeiros do seu estado para saber como regularizar e, se necessário, um profissional habilitado. Consulte um advogado sobre as consequências para o condomínio."}}]}]}</script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet"><script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','ui-sans-serif','system-ui','sans-serif'],serif:['Playfair Display','ui-serif','Georgia','serif']}}}}</script>
+<script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script><link rel="icon" type="image/png" href="assets/icone.png"><style>
+:root{--bg:#fafaf9;--ink:#111827;--glass:rgba(255,255,255,.95);color-scheme:light}
+html{background:var(--bg)}
+body{margin:0;font-family:'Inter',system-ui,sans-serif;background:linear-gradient(135deg,#fafaf9,#fff 50%,rgba(236,253,245,.4));color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+.glass-effect{backdrop-filter:blur(20px);background:var(--glass);border:1px solid rgba(255,255,255,.2)}
+.gradient-border{background:linear-gradient(white,white) padding-box,linear-gradient(135deg,#10b981,#059669) border-box;border:2px solid transparent}
+.js .rv{opacity:0;transform:translateY(24px);transition:opacity .8s ease-out,transform .8s ease-out}
+.js .rv.in{opacity:1;transform:none}
+.d2{transition-delay:.15s!important}.d3{transition-delay:.3s!important}.d4{transition-delay:.45s!important}
+.js .rv.in.done{transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s ease,border-color .35s ease,background-color .35s ease,opacity .35s ease}
+.lift:hover,.lift-s:hover{border-color:#a7f3d0}
+@media (hover:hover){
+.js .rv.in.done.lift:hover{transform:translateY(-6px);box-shadow:0 22px 40px -14px rgba(6,95,70,.28)}
+.js .rv.in.done.lift-t:hover{transform:translateY(-6px)}
+.js .rv.in.done.lift-s:hover{box-shadow:0 12px 26px -12px rgba(6,95,70,.25)}
+}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid #047857;outline-offset:3px}
+.sem-dot{width:14px;height:14px;border-radius:9999px;display:block}
+.fld{width:100%;border:1px solid #d6d3d1;border-radius:.9rem;background:#fff;padding:.75rem 1rem;font:500 .95rem Inter,sans-serif;color:#111827}
+.lbl{font-size:.8rem;font-weight:600;color:#44403c;margin-bottom:.35rem;display:block}
+@view-transition{navigation:auto}
+nav.glass-effect{view-transition-name:site-nav}
+@keyframes pageIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes fadeOnly{from{opacity:0}to{opacity:1}}
+main{animation:pageIn .65s cubic-bezier(.22,1,.36,1) backwards}
+footer{animation:fadeOnly .7s .2s ease-out backwards}
+main,footer{transition:opacity .22s ease,transform .22s ease}
+body.leaving main,body.leaving footer{opacity:0;transform:translateY(-10px)}
+.card-link{transition:transform .3s ease}
+.plan{position:relative;overflow:hidden;isolation:isolate;cursor:default}
+.plan::before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(135deg,#065f46,#064e3b);opacity:0;transition:opacity .4s ease}
+.plan .pt,.plan .pn,.plan .ps{transition:color .4s ease}
+.plan:hover::before,.plan:active::before{opacity:1}
+.plan:hover .pt,.plan:hover .pn,.plan:active .pt,.plan:active .pn{color:#fff}
+.plan:hover .ps,.plan:active .ps{color:#a7f3d0}
+[hidden]{display:none!important}
+.wa-fab{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:60;width:56px;height:56px;border-radius:9999px;background:#16a34a;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 25px rgba(0,0,0,.25);transition:transform .25s ease,background-color .25s ease}
+.wa-fab:hover{transform:scale(1.08);background:#15803d}
+.wa-fab svg{width:30px;height:30px}
+details>summary{list-style:none}details>summary::-webkit-details-marker{display:none}
+details>summary::after{content:'+';float:right;font-weight:500;color:#047857;margin-left:1rem}
+details[open]>summary::after{content:'\2212'}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}.lift:hover,.lift-t:hover{transform:none!important}.js .rv{opacity:1;transform:none}main,footer{animation:none}body.leaving main,body.leaving footer{opacity:1;transform:none}}
+</style><script>document.documentElement.classList.add("js")</script></head><body><div id="top" style="position:absolute;top:0;left:0;width:1px;height:1px" aria-hidden="true"></div><nav class="fixed top-0 w-full z-50 glass-effect" style="padding-top:env(safe-area-inset-top,0px)">
+ <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex items-center justify-between h-16">
+  <a href="index.html" class="flex items-center gap-2"><img src="assets/logo-condofluxo.png" alt="CondoFluxo" class="h-9 w-auto" width="140" height="37"></a>
+  <div class="hidden md:flex items-center gap-8 text-sm font-medium"><a href="gestao.html" class="text-gray-600 hover:text-emerald-600 transition-colors">Convivus</a><a href="comunicacao.html" class="text-gray-600 hover:text-emerald-600 transition-colors">Comunicação</a><a href="sobre.html" class="text-gray-600 hover:text-emerald-600 transition-colors">Sobre</a><a href="contato.html" class="text-gray-600 hover:text-emerald-600 transition-colors">Contato</a><a href="contato.html" class="bg-emerald-600 text-white px-4 py-2 rounded-full hover:bg-emerald-700 transition-colors">Falar conosco</a></div>
+  <button id="mbtn" class="md:hidden text-sm font-semibold border border-gray-300 rounded-full px-4 py-2" aria-expanded="false" aria-controls="mpanel" type="button">Menu</button>
+ </div>
+ <div id="mpanel" class="md:hidden pb-4 flex flex-col text-sm font-medium" hidden><a href="gestao.html" class="py-2 text-gray-700">Convivus</a><a href="comunicacao.html" class="py-2 text-gray-700">Comunicação</a><a href="sobre.html" class="py-2 text-gray-700">Sobre</a><a href="contato.html" class="py-2 text-gray-700">Contato</a><a href="contato.html" class="mt-2 bg-emerald-600 text-white px-4 py-3 rounded-full text-center">Falar conosco</a></div></div></nav>
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20 lg:pt-32"><div class="max-w-4xl mb-14 rv"><div class="inline-flex items-center gap-2 bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full text-sm font-medium mb-6"><i data-lucide="flame" class="w-4 h-4"></i>Guia para síndicos</div><h1 class="text-3xl sm:text-4xl lg:text-5xl leading-[1.08] font-medium tracking-tight font-serif">PPCI e AVCB:<br><span class="font-light italic text-emerald-700">o que o síndico precisa acompanhar</span></h1><p class="text-lg text-gray-600 mt-6 leading-relaxed max-w-3xl">A licença de incêndio do condomínio tem nome e regras que mudam de estado para estado. Este guia mostra o que acompanhar e como organizar a renovação para o prazo não vencer sem ninguém perceber.</p></div>
+
+<section><div class="max-w-3xl mb-8 rv"><h2 class="font-serif text-3xl lg:text-4xl font-medium">Os três <span class="italic font-light text-emerald-700">nomes</span></h2></div>
+<div class="grid gap-4 md:grid-cols-3">
+<div class="rounded-3xl bg-white border border-gray-100 p-6 flex flex-col gap-4 shadow-lg hover:shadow-xl transition-shadow duration-300 group lift rv"><div class="w-10 h-10 bg-emerald-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300"><i data-lucide="file-text" class="w-5 h-5 text-emerald-600"></i></div><h3 class="font-serif text-xl font-medium leading-tight"> <span class="italic font-light text-emerald-700">PPCI</span></h3><p class="text-sm text-gray-600 leading-relaxed">Plano de Prevenção e Proteção Contra Incêndio. Reúne as medidas de segurança da edificação, como extintores, hidrantes, alarme, iluminação de emergência e saídas sinalizadas.</p></div>
+<div class="rounded-3xl bg-white border border-gray-100 p-6 flex flex-col gap-4 shadow-lg hover:shadow-xl transition-shadow duration-300 group lift rv"><div class="w-10 h-10 bg-amber-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300"><i data-lucide="badge-check" class="w-5 h-5 text-amber-600"></i></div><h3 class="font-serif text-xl font-medium leading-tight"> <span class="italic font-light text-emerald-700">APPCI</span></h3><p class="text-sm text-gray-600 leading-relaxed">Alvará de PPCI, a licença emitida no Rio Grande do Sul pelo Corpo de Bombeiros (CBMRS) para a edificação regularizada. Tem validade e precisa ser renovado.</p></div>
+<div class="rounded-3xl bg-white border border-gray-100 p-6 flex flex-col gap-4 shadow-lg hover:shadow-xl transition-shadow duration-300 group lift rv"><div class="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300"><i data-lucide="stamp" class="w-5 h-5 text-blue-600"></i></div><h3 class="font-serif text-xl font-medium leading-tight"> <span class="italic font-light text-emerald-700">AVCB</span></h3><p class="text-sm text-gray-600 leading-relaxed">Auto de Vistoria do Corpo de Bombeiros, nome da licença em estados como São Paulo. Em cada estado, o documento, o prazo e as exigências têm regras próprias.</p></div>
+</div></section>
+
+<section class="mt-24"><div class="max-w-3xl mb-8 rv"><h2 class="font-serif text-3xl lg:text-4xl font-medium">O que <span class="italic font-light text-emerald-700">acompanhar</span></h2><p class="text-gray-600 mt-3">Os sistemas exigidos dependem do projeto aprovado para o seu prédio. Esta lista mostra o que costuma entrar no controle.</p></div>
+<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+<div class="rounded-3xl bg-white border border-gray-100 p-6 flex flex-col gap-4 shadow-lg hover:shadow-xl transition-shadow duration-300 group lift rv"><div class="w-10 h-10 bg-rose-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300"><i data-lucide="calendar-clock" class="w-5 h-5 text-rose-600"></i></div><h3 class="font-serif text-xl font-medium leading-tight">Validade da <span class="italic font-light text-emerald-700">licença</span></h3><p class="text-sm text-gray-600 leading-relaxed">Confira a data no documento e programe a renovação com antecedência.</p></div>
+<div class="rounded-3xl bg-white border border-gray-100 p-6 flex flex-col gap-4 shadow-lg hover:shadow-xl transition-shadow duration-300 group lift rv"><div class="w-10 h-10 bg-amber-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300"><i data-lucide="flame-kindling" class="w-5 h-5 text-amber-600"></i></div><h3 class="font-serif text-xl font-medium leading-tight"> <span class="italic font-light text-emerald-700">Extintores</span></h3><p class="text-sm text-gray-600 leading-relaxed">Mantenha os equipamentos dentro do prazo e nos locais indicados no projeto.</p></div>
+<div class="rounded-3xl bg-white border border-gray-100 p-6 flex flex-col gap-4 shadow-lg hover:shadow-xl transition-shadow duration-300 group lift rv"><div class="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300"><i data-lucide="droplets" class="w-5 h-5 text-blue-600"></i></div><h3 class="font-serif text-xl font-medium leading-tight">Hidrantes e <span class="italic font-light text-emerald-700">mangueiras</span></h3><p class="text-sm text-gray-600 leading-relaxed">Verifique o estado dos equipamentos e o acesso a eles.</p></div>
+<div class="rounded-3xl bg-white border border-gray-100 p-6 flex flex-col gap-4 shadow-lg hover:shadow-xl transition-shadow duration-300 group lift rv"><div class="w-10 h-10 bg-violet-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300"><i data-lucide="bell-ring" class="w-5 h-5 text-violet-600"></i></div><h3 class="font-serif text-xl font-medium leading-tight">Alarme e <span class="italic font-light text-emerald-700">detecção</span></h3><p class="text-sm text-gray-600 leading-relaxed">Acompanhe o funcionamento e os registros de manutenção do sistema.</p></div>
+<div class="rounded-3xl bg-white border border-gray-100 p-6 flex flex-col gap-4 shadow-lg hover:shadow-xl transition-shadow duration-300 group lift rv"><div class="w-10 h-10 bg-yellow-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300"><i data-lucide="lightbulb" class="w-5 h-5 text-yellow-600"></i></div><h3 class="font-serif text-xl font-medium leading-tight">Iluminação de <span class="italic font-light text-emerald-700">emergência</span></h3><p class="text-sm text-gray-600 leading-relaxed">Teste e mantenha os pontos de luz previstos no projeto.</p></div>
+<div class="rounded-3xl bg-white border border-gray-100 p-6 flex flex-col gap-4 shadow-lg hover:shadow-xl transition-shadow duration-300 group lift rv"><div class="w-10 h-10 bg-teal-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300"><i data-lucide="door-open" class="w-5 h-5 text-teal-600"></i></div><h3 class="font-serif text-xl font-medium leading-tight">Saídas e <span class="italic font-light text-emerald-700">sinalização</span></h3><p class="text-sm text-gray-600 leading-relaxed">Rotas desobstruídas, portas e sinalização de saída conforme o projeto aprovado.</p></div>
+</div></section>
+
+<section class="mt-24"><div class="max-w-3xl mb-8 rv"><h2 class="font-serif text-3xl lg:text-4xl font-medium">Como organizar <span class="italic font-light text-emerald-700">em 4 passos</span></h2></div>
+<ol class="grid gap-4 md:grid-cols-2">
+<li class="rounded-3xl bg-white border border-gray-100 shadow-lg p-6 flex gap-4 lift rv"><span class="font-serif text-3xl text-emerald-600 leading-none">1</span><div><h3 class="font-semibold mb-1">Localizar a licença atual</h3><p class="text-sm text-gray-600 leading-relaxed">Encontre o documento vigente e anote a data de validade. Se ninguém sabe onde está, esse é o primeiro problema a resolver.</p></div></li>
+<li class="rounded-3xl bg-white border border-gray-100 shadow-lg p-6 flex gap-4 lift rv d2"><span class="font-serif text-3xl text-emerald-600 leading-none">2</span><div><h3 class="font-semibold mb-1">Conferir o projeto aprovado</h3><p class="text-sm text-gray-600 leading-relaxed">Veja quais sistemas o prédio precisa manter. É o projeto aprovado que define a lista, e não um modelo genérico.</p></div></li>
+<li class="rounded-3xl bg-white border border-gray-100 shadow-lg p-6 flex gap-4 lift rv"><span class="font-serif text-3xl text-emerald-600 leading-none">3</span><div><h3 class="font-semibold mb-1">Programar manutenção e laudos</h3><p class="text-sm text-gray-600 leading-relaxed">Para cada sistema, defina responsável, periodicidade e data da próxima execução, com a evidência guardada.</p></div></li>
+<li class="rounded-3xl bg-white border border-gray-100 shadow-lg p-6 flex gap-4 lift rv d2"><span class="font-serif text-3xl text-emerald-600 leading-none">4</span><div><h3 class="font-semibold mb-1">Antecipar a renovação</h3><p class="text-sm text-gray-600 leading-relaxed">Confirme com o Corpo de Bombeiros do seu estado o prazo e os documentos exigidos, e comece antes do vencimento.</p></div></li>
+</ol></section>
+
+<section class="mt-24"><div class="max-w-3xl mb-8 rv"><h2 class="font-serif text-3xl lg:text-4xl font-medium">Perguntas <span class="italic font-light text-emerald-700">frequentes</span></h2></div>
+<div class="grid gap-3 max-w-3xl"><details class="lift-s rounded-2xl bg-white border border-gray-100 shadow-sm p-5 rv"><summary class="font-semibold cursor-pointer">PPCI, APPCI e AVCB são a mesma coisa?</summary><p class="mt-3 text-gray-600 leading-relaxed">Não. PPCI é o plano com as medidas de segurança contra incêndio da edificação. APPCI é o alvará emitido no Rio Grande do Sul a partir desse plano. AVCB é o nome da licença em estados como São Paulo. O nome do documento, o prazo e as exigências mudam de estado para estado.</p></details><details class="lift-s rounded-2xl bg-white border border-gray-100 shadow-sm p-5 rv"><summary class="font-semibold cursor-pointer">Quem responde pela licença de incêndio no condomínio?</summary><p class="mt-3 text-gray-600 leading-relaxed">A gestão do condomínio organiza a regularização e a renovação, e a execução técnica fica com profissionais habilitados. Em caso de dúvida sobre responsabilidades, consulte um advogado.</p></details><details class="lift-s rounded-2xl bg-white border border-gray-100 shadow-sm p-5 rv"><summary class="font-semibold cursor-pointer">Quando devo renovar a licença?</summary><p class="mt-3 text-gray-600 leading-relaxed">Antes do fim da validade indicada no documento. O prazo de validade e a antecedência para pedir a renovação variam por estado e por tipo de edificação, então confirme com o Corpo de Bombeiros do seu estado.</p></details><details class="lift-s rounded-2xl bg-white border border-gray-100 shadow-sm p-5 rv"><summary class="font-semibold cursor-pointer">O que fazer se a licença venceu?</summary><p class="mt-3 text-gray-600 leading-relaxed">Procure o Corpo de Bombeiros do seu estado para saber como regularizar e, se necessário, um profissional habilitado. Consulte um advogado sobre as consequências para o condomínio.</p></details></div></section>
+
+<section class="mt-24 rounded-3xl bg-gradient-to-br from-emerald-900 to-teal-800 text-white p-8 lg:p-12 shadow-2xl rv grid gap-6 lg:grid-cols-2 items-center">
+<div><img src="assets/logo-convivus.png" alt="Convivus" class="h-10 w-auto bg-white rounded-xl p-2 mb-5"><h2 class="font-serif text-2xl lg:text-3xl font-medium leading-tight">Licença de incêndio <span class="italic font-light text-emerald-200">com aviso antes de vencer</span></h2></div>
+<div class="grid gap-5"><p class="text-emerald-50/90 leading-relaxed">O Convivus controla APPCI e AVCB por estado, com aviso antes da renovação. Já vem preenchido para o Rio Grande do Sul.</p><div class="flex flex-wrap gap-3"><a href="gestao.html" class="bg-white text-emerald-800 px-6 py-3 rounded-full font-semibold hover:bg-emerald-50 transition-colors">Ver o Convivus</a><a href="gestao.html#valores" class="border border-white/50 px-6 py-3 rounded-full font-semibold hover:bg-white/10 transition-colors">Ver valores</a></div></div>
+</section>
+<p class="mt-8 text-xs text-gray-500 max-w-3xl rv">Este guia é informativo e não substitui a orientação do Corpo de Bombeiros, de um profissional habilitado nem de um advogado.</p>
+</main>
+<footer class="border-t border-stone-200 bg-white/60"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid gap-8 md:grid-cols-3">
+ <div><a href="index.html" class="flex items-center gap-2"><img src="assets/logo-condofluxo.png" alt="CondoFluxo" class="h-9 w-auto" width="140" height="37"></a><p class="mt-4 text-sm text-gray-600 max-w-xs">Sob o mesmo teto: gestão do condomínio e comunicação com os moradores, numa só marca.</p></div>
+ <div class="text-sm"><p class="font-semibold mb-3">Páginas</p><div class="flex flex-col gap-2 text-gray-600"><a href="gestao.html" class="hover:text-emerald-700">Convivus</a><a href="gestao.html#valores" class="hover:text-emerald-700">Valores</a><a href="comunicacao.html" class="hover:text-emerald-700">Comunicação</a><a href="sobre.html" class="hover:text-emerald-700">Sobre</a><a href="contato.html" class="hover:text-emerald-700">Contato</a><a href="manutencao-predial-normativa.html" class="hover:text-emerald-700">Guia: manutenção predial</a><a href="ppci-avcb-guia.html" class="hover:text-emerald-700">Guia: PPCI e AVCB</a></div></div>
+ <div class="text-sm"><p class="font-semibold mb-3">Contato</p><div class="flex flex-col gap-2 text-gray-600">
+  <a href="https://wa.me/5551996117922" target="_blank" rel="noopener" class="flex items-center gap-2 hover:text-emerald-700"><svg viewBox="0 0 24 24" class="w-4 h-4 shrink-0 text-emerald-600" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>+55 51 99611-7922</a>
+  <span class="flex items-center gap-2 break-all"><i data-lucide="mail" class="w-4 h-4 shrink-0 text-emerald-600"></i>condofluxo@condofluxo.com.br</span>
+  <a href="https://www.instagram.com/condofluxo" target="_blank" rel="noopener" class="flex items-center gap-2 hover:text-emerald-700"><svg viewBox="0 0 24 24" class="w-4 h-4 shrink-0 text-emerald-600" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg>@condofluxo</a>
+  <a href="https://www.condofluxo.com.br/gestao" target="_blank" rel="noopener" class="flex items-center gap-2 hover:text-emerald-700 break-all"><i data-lucide="globe" class="w-4 h-4 shrink-0 text-emerald-600"></i>www.condofluxo.com.br/gestao</a></div></div>
+ </div><div class="border-t border-stone-200 py-5 text-center text-xs text-gray-500">© 2026 CondoFluxo. Todos os direitos reservados.</div></footer>
+<a href="https://wa.me/5551996117922?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20CondoFluxo%20e%20gostaria%20de%20conversar." target="_blank" rel="noopener" class="wa-fab" aria-label="Conversar pelo WhatsApp"><svg viewBox="0 0 24 24" class="" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
+<script>
+(function(){
+  try{ if('scrollRestoration' in history) history.scrollRestoration='manual'; }catch(e){}
+  function toTop(){
+    if(location.hash) return;
+    try{ window.scrollTo(0,0); document.documentElement.scrollTop=0; document.body.scrollTop=0;
+      var t=document.getElementById('top'); if(t&&t.scrollIntoView) t.scrollIntoView({block:'start'}); }catch(e){}
+  }
+  toTop();
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href]');
+    if(!a||e.defaultPrevented||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button) return;
+    var h=a.getAttribute('href');
+    if(!h||h.charAt(0)==='#'||/^[a-z][a-z0-9+.-]*:/i.test(h)||a.target==='_blank'||a.hasAttribute('download')) return;
+    document.body.classList.add('leaving');
+  });
+  window.addEventListener('pageshow',function(){document.body.classList.remove('leaving');});
+  window.addEventListener('load',toTop);
+  window.addEventListener('pageshow',toTop);
+  try{ if(window.lucide) lucide.createIcons(); }catch(e){}
+  var els=[].slice.call(document.querySelectorAll('.rv'));
+  function show(el){el.classList.add('in');setTimeout(function(){el.classList.add('done');},1100);}
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){show(e.target);io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(el){io.observe(el);});
+    setTimeout(function(){els.forEach(function(el){if(!el.classList.contains('in'))show(el);});},2500);
+  } else { els.forEach(show); }
+  var b=document.getElementById('mbtn'),m=document.getElementById('mpanel');
+  if(b&&m){b.addEventListener('click',function(){var h=m.hidden;m.hidden=!h;b.setAttribute('aria-expanded',String(h));});}
+  document.querySelectorAll('[data-copy]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var t=btn.getAttribute('data-copy'),old=btn.textContent;
+      try{navigator.clipboard.writeText(t).then(function(){btn.textContent='Copiado';setTimeout(function(){btn.textContent=old;},1500);},function(){btn.textContent='Selecione o texto';});}
+      catch(e){btn.textContent='Selecione o texto';}
+    });
+  });
+  var tg=document.querySelectorAll('.tgl');
+  if(tg.length){
+    var notes={m:'Valor por condomínio, até 150 unidades. Sem fidelidade e sem taxa de saída.',a:'Pague 11 mensalidades e use 12. Cobrança uma vez por ano por condomínio, até 150 unidades. Sem fidelidade.'};
+    tg.forEach(function(b){b.addEventListener('click',function(){
+      var c=b.getAttribute('data-cycle');
+      tg.forEach(function(x){var on=x===b;x.setAttribute('aria-pressed',String(on));x.className='tgl px-4 py-2 rounded-full '+(on?'bg-emerald-600 text-white':'text-gray-700');});
+      document.querySelectorAll('[data-m]').forEach(function(el){el.querySelector('.num').textContent=el.getAttribute(c==='m'?'data-m':'data-a');var p=el.parentNode.querySelector('.per');if(p)p.textContent=c==='m'?'por condomínio ao mês':'por condomínio ao ano';});
+      document.getElementById('price-note').textContent=notes[c];
+    });});
+  }
+  var f=document.getElementById('msg-form');
+  if(f){
+    var C=window.CF_FORM||{};
+    var svc=((C.provider==='formspree'&&C.endpoint)||(C.provider==='web3forms'&&C.accessKey))?C.provider:'';
+    var btn=f.querySelector('button[type=submit]');
+    var hint=document.getElementById('send-hint');
+    if(svc&&hint) hint.textContent='Ao enviar, a mensagem segue por e-mail para a CondoFluxo e o WhatsApp abre com o texto pronto.';
+    f.addEventListener('submit',function(e){
+      e.preventDefault();
+      var v=function(id){return (document.getElementById(id).value||'').trim();};
+      var st=document.getElementById('send-status');
+      if(v('f-hp')) return;
+      var nome=v('f-nome'),ret=v('f-ret');
+      if(!nome){st.textContent='Informe o seu nome para enviar.';document.getElementById('f-nome').focus();return;}
+      if(!ret){st.textContent='Informe um e-mail ou WhatsApp para retorno.';document.getElementById('f-ret').focus();return;}
+      var papel=v('f-papel'),cond=v('f-cond'),cid=v('f-cid'),qtd=v('f-qtd'),int=v('f-int'),msg=v('f-msg');
+      var t='Olá! Meu nome é '+nome+' e sou '+papel+(cond?' do condomínio '+cond:'')+(cid?', em '+cid:'')+'.\n\nContato para retorno: '+ret+'.'+(qtd?'\n\nQuantidade de condomínios: '+qtd+'.':'')+'\n\nTenho interesse em: '+int+'.\n\n'+msg+'\n\nObrigado!';
+      var wa='https://wa.me/5551996117922?text='+encodeURIComponent(t);
+      var mail='mailto:condofluxo@condofluxo.com.br?subject='+encodeURIComponent('Contato pelo site CondoFluxo')+'&body='+encodeURIComponent(t);
+      document.getElementById('wa-send').href=wa;
+      document.getElementById('mail-link').href=mail;
+      document.getElementById('out-wrap').hidden=false;
+      try{window.open(wa,'_blank','noopener');}catch(x){}
+      if(!svc){
+        st.textContent='Abrimos o WhatsApp e o seu programa de e-mail com a mensagem pronta. Confirme o envio em cada um.';
+        try{window.location.href=mail;}catch(x){}
+        return;
+      }
+      st.textContent='Enviando...'; btn.disabled=true;
+      var data={name:nome,contato:ret,perfil:papel,condominio:cond,cidade:cid,quantidade:qtd,interesse:int,mensagem:t};
+      if(/@/.test(ret)) data.email=ret;
+      var url,body;
+      if(svc==='formspree'){url=C.endpoint;body=Object.assign({_subject:'Contato pelo site CondoFluxo'},data);}
+      else{url='https://api.web3forms.com/submit';body=Object.assign({access_key:C.accessKey,subject:'Contato pelo site CondoFluxo',from_name:'Site CondoFluxo',message:t},data);}
+      fetch(url,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(body)})
+        .then(function(r){return r.json().catch(function(){return {};}).then(function(j){return r.ok&&(svc==='formspree'||j.success===true);});})
+        .catch(function(){return false;})
+        .then(function(ok){
+          btn.disabled=false;
+          st.textContent=ok?'Recebemos a sua mensagem por e-mail. Abrimos também o WhatsApp com o texto pronto: é só confirmar o envio por lá.':'Não conseguimos enviar o e-mail automaticamente. Abrimos o WhatsApp com a mensagem pronta e, se preferir, use o link abaixo para enviar por e-mail.';
+        });
+    });
+  }
+})();
+</script></body></html>

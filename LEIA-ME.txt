@@ -1,0 +1,35 @@
+Site CondoFluxo - versao local
+
+COMO ABRIR
+De dois cliques em index.html (abre no navegador).
+Paginas: index.html, gestao.html (Convivus), comunicacao.html, sobre.html, contato.html,
+manutencao-predial-normativa.html (guia), ppci-avcb-guia.html (guia).
+Imagens e logos: pasta assets (mantenha ao lado dos arquivos HTML).
+Precisa de internet: fontes (Google Fonts), Tailwind CSS e icones (Lucide) sao carregados por CDN.
+
+COMO PUBLICAR
+Envie todos os arquivos e a pasta assets para a hospedagem do dominio.
+sitemap.xml, robots.txt e llms.txt devem ficar na raiz do site.
+Se o site usar enderecos sem .html (por exemplo /gestao), ajuste as URLs do sitemap.xml e do llms.txt.
+
+FORMULARIO DE CONTATO (botao Enviar)
+Sem configuracao, o botao Enviar abre o WhatsApp e o programa de e-mail do visitante com a
+mensagem pronta; o visitante confirma o envio em cada um.
+
+Para o e-mail chegar sozinho em condofluxo@condofluxo.com.br, use um servico de formularios:
+ 1. Crie uma conta gratuita em formspree.io OU web3forms.com.
+ 2. Cadastre condofluxo@condofluxo.com.br como e-mail de destino e confirme o e-mail de verificacao.
+ 3. Formspree: crie um formulario e copie o endereco (https://formspree.io/f/xxxxxxxx).
+    Web3Forms: copie a chave de acesso (Access Key).
+ 4. Abra o arquivo config.js num editor de texto (Bloco de Notas) e preencha:
+      Formspree:  provider: 'formspree',  endpoint: 'https://formspree.io/f/xxxxxxxx'
+      Web3Forms:  provider: 'web3forms',  accessKey: 'sua-chave'
+ 5. Publique o config.js junto com o site e envie uma mensagem de teste pela pagina de contato.
+Depois disso, o botao Enviar manda o e-mail pelo servico e abre o WhatsApp com a mensagem pronta.
+Se o servico falhar, a pagina avisa e oferece o link para enviar por e-mail pelo programa do visitante.
+
+Observacoes:
+ - O endereco/chave do servico fica visivel no codigo da pagina (e assim que esses servicos funcionam).
+   O formulario tem um campo escondido contra robos de spam.
+ - Os planos gratuitos tem limite mensal de envios; confira no site do servico.
+ - Os dados do formulario passam pelo servico escolhido. Inclua isso na politica de privacidade do site (LGPD).
