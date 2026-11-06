@@ -10,7 +10,8 @@ Precisa de internet: fontes (Google Fonts), Tailwind CSS e icones (Lucide) sao c
 COMO PUBLICAR
 Envie todos os arquivos e a pasta assets para a hospedagem do dominio.
 sitemap.xml, robots.txt e llms.txt devem ficar na raiz do site.
-Se o site usar enderecos sem .html (por exemplo /gestao), ajuste as URLs do sitemap.xml e do llms.txt.
+O sitemap.xml e o llms.txt usam enderecos sem .html (por exemplo /gestao), como funcionam na Cloudflare Pages, Netlify, Vercel e GitHub Pages.
+Se a sua hospedagem exigir o .html no endereco, ajuste as URLs desses dois arquivos.
 
 FORMULARIO DE CONTATO (botao Enviar)
 Sem configuracao, o botao Enviar abre o WhatsApp e o programa de e-mail do visitante com a
