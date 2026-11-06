@@ -11,7 +11,10 @@
 #   desc   -> resumo de 1 ou 2 frases (listagem, Google e redes sociais)
 #   date   -> data de publicação, AAAA-MM-DD
 #   cat    -> categoria exibida no selo
-#   icon   -> ícone Lucide (https://lucide.dev/icons) do cartão
+#   icon   -> ícone Lucide (https://lucide.dev/icons) do cartão (usado se não houver imagem)
+#   image  -> (opcional) nome do arquivo em src/assets_src, sem extensão. Precisa de .svg
+#             (exibido no site) e .png (usado nas redes sociais), proporção 1200x630
+#   image_alt -> texto alternativo da imagem
 #   read   -> tempo de leitura em minutos
 #   body   -> HTML do corpo. Use <h2>, <h3>, <p>, <ul><li>, <ol><li>, <strong>, <a>.
 #   faq    -> (opcional) lista de (pergunta, resposta) para a seção de perguntas
@@ -28,6 +31,8 @@ POSTS = [
         "cat": "Manutenção",
         "icon": "wrench",
         "read": 4,
+        "image": "blog-manutencao-predial",
+        "image_alt": "Ilustração de prédios residenciais ao lado de um calendário de manutenção com checklist",
         "body": """
 <p>Quem assume um condomínio costuma receber uma pasta de papéis, um zelador que sabe de cor onde está cada registro e uma lista de coisas que \"sempre se fez assim\". O problema aparece quando o síndico muda, o zelador sai ou alguém pergunta: <em>quando foi a última limpeza da caixa d'água?</em> Sem registro, a resposta vira memória, e memória não comprova nada.</p>
 
