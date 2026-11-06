@@ -215,15 +215,15 @@ def metas(title,desc,fname,ld,img=None):
         m+='<script type="application/ld+json">'+json.dumps({"@context":"https://schema.org","@graph":ld},ensure_ascii=False).replace('</','<\\/')+'</script>'
     return m
 
-def page(fname,title,cur,main,full,desc='',wamsg='Olá! Vim pelo site da CondoFluxo e gostaria de conversar.',ld=None,img=None):
+def page(fname,title,cur,main,full,desc='',wamsg='Olá! Vim pelo site da CondoFluxo e gostaria de conversar.',ld=None,img=None,extra_head=''):
     fab=f'<a href="{walink(wamsg)}" target="_blank" rel="noopener" class="wa-fab" aria-label="Conversar pelo WhatsApp">{wa("")}</a>'
     body=f'<div id="top" style="position:absolute;top:0;left:0;width:1px;height:1px" aria-hidden="true"></div>{nav(cur)}\n<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20 lg:pt-32">{main}</main>\n{FOOT}\n{fab}\n<script>{JS}</script>'
     pre='<script>document.documentElement.classList.add("js")</script>'
     mt=metas(title,desc,fname,ld,img) if desc else ''
     if full:
-        doc=f'<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>{title}</title>{mt}{HEAD}<style>{CSS}</style>{pre}</head><body>{body}</body></html>'
+        doc=f'<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>{title}</title>{extra_head}{mt}{HEAD}<style>{CSS}</style>{pre}</head><body>{body}</body></html>'
     else:
-        doc=f'<title>{title}</title>{mt}{HEAD}<style>{CSS}</style>{pre}\n{body}'
+        doc=f'<title>{title}</title>{extra_head}{mt}{HEAD}<style>{CSS}</style>{pre}\n{body}'
     open(os.path.join(OUT,fname),'w').write(doc)
 
 def pill(icon,text):
@@ -581,6 +581,17 @@ for po in POSTS:
     ld=[{"@type":"BlogPosting","headline":po['title'],"description":po['desc'],"datePublished":po['date'],"dateModified":po.get('updated',po['date']),"inLanguage":"pt-BR","mainEntityOfPage":SITE+"/"+cp(purl(po)),"author":{"@type":"Organization","name":"CondoFluxo"},"publisher":{"@type":"Organization","name":"CondoFluxo","url":SITE,"logo":{"@type":"ImageObject","url":SITE+"/assets/logo-condofluxo.png"}},"image":SITE+"/assets/"+po.get("image_og",po.get("image",""))  if po.get("image") else SITE+"/assets/fachada-verde.jpg"}]
     if fq: ld.append(faq_ld(fq))
     page(purl(po),po['title']+' | CondoFluxo','blog.html',art,True,desc=po['desc'],ld=ld,img=('assets/'+po.get('image_og',po['image'])) if po.get('image') else None)
+
+# ================= PÁGINA 404 =================
+# Cloudflare Pages, Netlify e GitHub Pages usam o 404.html da raiz quando o endereço não existe.
+# O <base href="/"> garante que links e imagens funcionem mesmo em endereços com subpastas.
+NF=f"""<section class="grid gap-10 lg:grid-cols-2 lg:gap-14 items-center">
+<div class="rv">{pill('search-x','Erro 404 · Página não encontrada')}<h1 class="text-4xl sm:text-5xl lg:text-6xl leading-[1.1] font-medium tracking-tight font-serif">Nada está no lugar,<br><span class="text-emerald-700">nem esta página</span></h1><p class="text-lg text-gray-600 mt-6 leading-relaxed max-w-xl">O endereço pode ter sido digitado errado ou a página mudou de lugar. Enquanto você volta, repare neste condomínio: sem prazo, sem responsável e sem prova, é assim que a rotina fica.</p>
+<div class="mt-8 flex flex-wrap gap-3"><a href="index.html" class="bg-emerald-600 text-white px-7 py-3 rounded-full font-semibold hover:bg-emerald-700 transition-colors">Voltar para o início</a><a href="gestao.html" class="gradient-border inline-block px-7 py-3 rounded-full font-semibold text-emerald-700 hover:shadow-lg transition-all">Conhecer o Convivus</a></div>
+<p class="mt-6 text-sm text-gray-500">Ou vá direto para <a href="comunicacao.html" class="text-emerald-700 font-medium hover:underline">Comunicação</a>, <a href="blog.html" class="text-emerald-700 font-medium hover:underline">Blog</a> ou <a href="contato.html" class="text-emerald-700 font-medium hover:underline">Falar conosco</a>.</p></div>
+<figure class="rv"><img src="assets/condominio-desorganizado.svg" alt="Ilustração de um condomínio desorganizado: lixeiras transbordando, correspondência espalhada, avisos tortos no mural, extintor vencido, vazamento na parede e fios soltos." width="960" height="640" class="w-full h-auto rounded-3xl shadow-xl border border-gray-100 bg-white"></figure>
+</section>"""
+page('404.html','Página não encontrada | CondoFluxo','',NF,True,extra_head='<base href="/"><meta name="robots" content="noindex">')
 
 CONFIG_JS='''// Configuração do envio de e-mail do formulário de contato.
 // Enquanto estiver em branco, o botão Enviar abre o WhatsApp e o programa de e-mail do visitante.

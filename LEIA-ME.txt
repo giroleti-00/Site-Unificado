@@ -12,6 +12,7 @@ Envie todos os arquivos e a pasta assets para a hospedagem do dominio.
 sitemap.xml, robots.txt e llms.txt devem ficar na raiz do site.
 O sitemap.xml e o llms.txt usam enderecos sem .html (por exemplo /gestao), como funcionam na Cloudflare Pages, Netlify, Vercel e GitHub Pages.
 Se a sua hospedagem exigir o .html no endereco, ajuste as URLs desses dois arquivos.
+O 404.html e a pagina exibida quando o endereco nao existe; Cloudflare Pages, Netlify e GitHub Pages usam esse arquivo sozinhos quando ele fica na raiz.
 
 FORMULARIO DE CONTATO (botao Enviar)
 O envio por e-mail ja esta configurado com o Web3Forms (arquivo config.js). Ao clicar em Enviar,
