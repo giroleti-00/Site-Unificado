@@ -154,7 +154,7 @@ JS='''
 LOGO='<img src="assets/logo-condofluxo.png" alt="CondoFluxo" class="h-9 w-auto" width="140" height="37">'
 WORD=''
 
-LINKS=[('gestao.html','Convivus'),('comunicacao.html','Comunicação'),('sobre.html','Sobre'),('contato.html','Contato')]
+LINKS=[('gestao.html','Convivus'),('comunicacao.html','Comunicação'),('sobre.html','Sobre')]
 
 PORTAL_URL='https://portalconvivus.condofluxo.com.br'
 
