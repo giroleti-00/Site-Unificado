@@ -187,8 +187,11 @@ FOOT=f'''<footer class="border-t border-stone-200 bg-white/60"><div class="max-w
 import shutil
 shutil.copytree(os.path.join(HERE,'assets_src'),os.path.join(OUT,'assets'),dirs_exist_ok=True)
 
+def cp(f):
+    return '' if f=='index.html' else (f[:-5] if f.endswith('.html') else f)
+
 def metas(title,desc,fname,ld):
-    url=SITE+('/' if fname=='index.html' else '/'+fname)
+    url=SITE+'/'+cp(fname)
     d=html.escape(desc,quote=True); t=html.escape(title,quote=True)
     m=f'<meta name="description" content="{d}"><meta name="theme-color" content="#065f46"><meta property="og:type" content="website"><meta property="og:locale" content="pt_BR"><meta property="og:site_name" content="CondoFluxo"><meta property="og:title" content="{t}"><meta property="og:description" content="{d}"><meta property="og:url" content="{url}"><meta property="og:image" content="{SITE}/assets/fachada-verde.jpg"><meta name="twitter:card" content="summary_large_image">'
     if ld:
@@ -363,7 +366,7 @@ ges+=COMPARE+PRICING+FAQ_G+cta('Quer ver o portal funcionando?','Agende uma demo
 page('gestao.html','Convivus | CondoFluxo','gestao.html',ges,True,
      desc='Convivus: portal web para síndicos e moradores, com manutenção ligada às normas ABNT, controle de PPCI e AVCB, documentos com auditoria e avisos. De R$ 99 a R$ 119 por condomínio ao mês, sem fidelidade.',
      wamsg='Olá! Vi o Convivus no site e quero agendar uma demonstração.',
-     ld=[{"@type":"SoftwareApplication","name":"Convivus","applicationCategory":"BusinessApplication","operatingSystem":"Web","url":SITE+"/gestao.html","description":"Portal web para síndicos e moradores com manutenção ligada às normas ABNT, controle de PPCI e AVCB, documentos com auditoria, avisos e chamados.","offers":{"@type":"AggregateOffer","priceCurrency":"BRL","lowPrice":"99","highPrice":"119","offerCount":"3"},"publisher":{"@type":"Organization","name":"CondoFluxo"}},faq_ld(FAQ_GESTAO)])
+     ld=[{"@type":"SoftwareApplication","name":"Convivus","applicationCategory":"BusinessApplication","operatingSystem":"Web","url":SITE+"/gestao","description":"Portal web para síndicos e moradores com manutenção ligada às normas ABNT, controle de PPCI e AVCB, documentos com auditoria, avisos e chamados.","offers":{"@type":"AggregateOffer","priceCurrency":"BRL","lowPrice":"99","highPrice":"119","offerCount":"3"},"publisher":{"@type":"Organization","name":"CondoFluxo"}},faq_ld(FAQ_GESTAO)])
 
 # ================= COMUNICAÇÃO =================
 com=head('palette','CondoFluxo Comunicação','Clara e profissional,','para todo o condomínio','Produzimos os materiais que substituem o grupo de WhatsApp e os papéis soltos na portaria. Serviço sob demanda, feito com a identidade do seu condomínio.')
@@ -540,7 +543,7 @@ open(os.path.join(OUT,'config.js'),'w').write(CONFIG_JS)
 # ================= ARQUIVOS DE SEO (só no build local) =================
 if os.environ.get('CF_FULL')=='1':
     pages=['index.html','gestao.html','comunicacao.html','sobre.html','contato.html','manutencao-predial-normativa.html','ppci-avcb-guia.html']
-    sm='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'  <url><loc>{SITE}/{"" if f=="index.html" else f}</loc></url>\n' for f in pages)+'</urlset>\n'
+    sm='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'  <url><loc>{SITE}/{cp(f)}</loc></url>\n' for f in pages)+'</urlset>\n'
     open(os.path.join(OUT,'sitemap.xml'),'w').write(sm)
     open(os.path.join(OUT,'robots.txt'),'w').write(f'User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n')
     open(os.path.join(OUT,'llms.txt'),'w').write(f"""# CondoFluxo
@@ -548,15 +551,15 @@ if os.environ.get('CF_FULL')=='1':
 > A CondoFluxo reúne duas frentes: o Convivus, portal web de gestão e conformidade para condomínios, e materiais de comunicação para os moradores. Site em português do Brasil.
 
 ## Convivus (portal de gestão)
-- [Convivus]({SITE}/gestao.html): manutenção preventiva ligada às normas ABNT (NBR 5674, 15575, 17170, 16747), controle de PPCI/APPCI e AVCB com aviso de renovação, documentos com auditoria, mural com confirmação de leitura, chamados, perfis de acesso por papel. Não é um sistema financeiro.
+- [Convivus]({SITE}/gestao): manutenção preventiva ligada às normas ABNT (NBR 5674, 15575, 17170, 16747), controle de PPCI/APPCI e AVCB com aviso de renovação, documentos com auditoria, mural com confirmação de leitura, chamados, perfis de acesso por papel. Não é um sistema financeiro.
 - Valores públicos, por condomínio ao mês, para até 150 unidades: R$ 119 (até 3 condomínios), R$ 109 (4 a 7), R$ 99 (8 ou mais). Plano anual: pague 11 mensalidades e use 12. Sem fidelidade e sem taxa de saída. Acima de 150 unidades, somam-se R$ 25 por mês a cada bloco de 50, até 400 unidades.
 
 ## Comunicação
-- [Comunicação]({SITE}/comunicacao.html): Manual de Convivência, comunicados visuais e sites informativos para condomínios, sob demanda.
+- [Comunicação]({SITE}/comunicacao): Manual de Convivência, comunicados visuais e sites informativos para condomínios, sob demanda.
 
 ## Guias
-- [Manutenção predial normativa]({SITE}/manutencao-predial-normativa.html): NBR 5674 e NBR 15575 para síndicos.
-- [PPCI e AVCB]({SITE}/ppci-avcb-guia.html): o que acompanhar na licença de incêndio.
+- [Manutenção predial normativa]({SITE}/manutencao-predial-normativa): NBR 5674 e NBR 15575 para síndicos.
+- [PPCI e AVCB]({SITE}/ppci-avcb-guia): o que acompanhar na licença de incêndio.
 
 ## Contato
 - WhatsApp: +55 51 99611-7922
