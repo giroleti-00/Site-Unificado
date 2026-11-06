@@ -4,14 +4,14 @@ HERE=os.path.dirname(os.path.abspath(__file__))
 OUT=os.environ.get('CF_OUT',os.path.join(HERE,'..','_build'))
 os.makedirs(OUT,exist_ok=True)
 
-HEAD='''<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet"><script src="https://cdn.tailwindcss.com/3.4.17"></script>
-<script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','ui-sans-serif','system-ui','sans-serif'],serif:['Playfair Display','ui-serif','Georgia','serif']}}}}</script>
+HEAD='''<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"><script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script>tailwind.config={theme:{extend:{fontFamily:{sans:['Figtree','ui-sans-serif','system-ui','sans-serif'],serif:['Figtree','ui-sans-serif','system-ui','sans-serif']}}}}</script>
 <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script><link rel="icon" type="image/png" href="assets/icone.png">'''
 
 CSS='''
 :root{--bg:#fafaf9;--ink:#111827;--glass:rgba(255,255,255,.95);color-scheme:light}
 html{background:var(--bg)}
-body{margin:0;font-family:'Inter',system-ui,sans-serif;background:linear-gradient(135deg,#fafaf9,#fff 50%,rgba(236,253,245,.4));color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body{margin:0;font-family:'Figtree',system-ui,sans-serif;background:linear-gradient(135deg,#fafaf9,#fff 50%,rgba(236,253,245,.4));color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 .glass-effect{backdrop-filter:blur(20px);background:var(--glass);border:1px solid rgba(255,255,255,.2)}
 .gradient-border{background:linear-gradient(white,white) padding-box,linear-gradient(135deg,#10b981,#059669) border-box;border:2px solid transparent}
 .js .rv{opacity:0;transform:translateY(24px);transition:opacity .8s ease-out,transform .8s ease-out}
@@ -26,7 +26,7 @@ body{margin:0;font-family:'Inter',system-ui,sans-serif;background:linear-gradien
 }
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid #047857;outline-offset:3px}
 .sem-dot{width:14px;height:14px;border-radius:9999px;display:block}
-.fld{width:100%;border:1px solid #d6d3d1;border-radius:.9rem;background:#fff;padding:.75rem 1rem;font:500 .95rem Inter,sans-serif;color:#111827}
+.fld{width:100%;border:1px solid #d6d3d1;border-radius:.9rem;background:#fff;padding:.75rem 1rem;font:500 .95rem Figtree,sans-serif;color:#111827}
 .lbl{font-size:.8rem;font-weight:600;color:#44403c;margin-bottom:.35rem;display:block}
 @view-transition{navigation:auto}
 nav.glass-effect{view-transition-name:site-nav}
@@ -50,6 +50,12 @@ body.leaving main,body.leaving footer{opacity:0;transform:translateY(-10px)}
 details>summary{list-style:none}details>summary::-webkit-details-marker{display:none}
 details>summary::after{content:'+';float:right;font-weight:500;color:#047857;margin-left:1rem}
 details[open]>summary::after{content:'\\2212'}
+/* Tipografia: títulos em Figtree, sem itálico nos destaques (cor verde destaca) */
+.font-serif{font-weight:700!important;letter-spacing:-.01em!important}
+.font-serif .italic,.font-serif .font-light{font-style:normal!important;font-weight:inherit!important}
+h1.font-serif{line-height:1.1!important;font-size:clamp(2.25rem,4.3vw,3.6rem)!important}
+h2.font-serif{line-height:1.15!important}
+h3.font-serif{line-height:1.2!important}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}.lift:hover,.lift-t:hover{transform:none!important}.js .rv{opacity:1;transform:none}main,footer{animation:none}body.leaving main,body.leaving footer{opacity:1;transform:none}}
 '''
 
