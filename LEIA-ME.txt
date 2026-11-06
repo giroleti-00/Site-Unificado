@@ -14,20 +14,18 @@ O sitemap.xml e o llms.txt usam enderecos sem .html (por exemplo /gestao), como 
 Se a sua hospedagem exigir o .html no endereco, ajuste as URLs desses dois arquivos.
 
 FORMULARIO DE CONTATO (botao Enviar)
-Sem configuracao, o botao Enviar abre o WhatsApp e o programa de e-mail do visitante com a
-mensagem pronta; o visitante confirma o envio em cada um.
+O envio por e-mail ja esta configurado com o Web3Forms (arquivo config.js). Ao clicar em Enviar,
+a mensagem chega por e-mail em condofluxo@gmail.com (e-mail cadastrado no Web3Forms) e o WhatsApp
+abre com o texto pronto. Se o servico falhar, a pagina avisa e oferece o link para enviar por
+e-mail pelo programa do visitante.
 
-Para o e-mail chegar sozinho em condofluxo@condofluxo.com.br, use um servico de formularios:
- 1. Crie uma conta gratuita em formspree.io OU web3forms.com.
- 2. Cadastre condofluxo@condofluxo.com.br como e-mail de destino e confirme o e-mail de verificacao.
- 3. Formspree: crie um formulario e copie o endereco (https://formspree.io/f/xxxxxxxx).
-    Web3Forms: copie a chave de acesso (Access Key).
- 4. Abra o arquivo config.js num editor de texto (Bloco de Notas) e preencha:
-      Formspree:  provider: 'formspree',  endpoint: 'https://formspree.io/f/xxxxxxxx'
-      Web3Forms:  provider: 'web3forms',  accessKey: 'sua-chave'
- 5. Publique o config.js junto com o site e envie uma mensagem de teste pela pagina de contato.
-Depois disso, o botao Enviar manda o e-mail pelo servico e abre o WhatsApp com a mensagem pronta.
-Se o servico falhar, a pagina avisa e oferece o link para enviar por e-mail pelo programa do visitante.
+Para trocar o e-mail de destino ou a chave, edite o arquivo config.js (Bloco de Notas):
+  Web3Forms:  provider: 'web3forms',  accessKey: 'sua-chave'
+  Formspree:  provider: 'formspree',  endpoint: 'https://formspree.io/f/xxxxxxxx'
+Deixando provider em branco (''), o botao Enviar volta a abrir o WhatsApp e o programa de e-mail
+do visitante com a mensagem pronta.
+O plano gratuito do Web3Forms permite cerca de 250 envios por mes. Publique o config.js junto
+com o site.
 
 Observacoes:
  - O endereco/chave do servico fica visivel no codigo da pagina (e assim que esses servicos funcionam).

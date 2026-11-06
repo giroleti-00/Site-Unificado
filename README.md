@@ -27,4 +27,4 @@ Tailwind CSS, Lucide e Google Fonts são carregados por CDN.
 
 ## Formulário de contato
 
-Edite `config.js` (Formspree ou Web3Forms) para o e-mail chegar sozinho. Sem configuração, o botão Enviar abre o WhatsApp e o programa de e-mail do visitante.
+O envio por e-mail do formulário de contato está ativo via Web3Forms (`config.js`, e-mail de destino condofluxo@gmail.com). Para trocar de serviço ou de chave, edite `config.js`; deixando `provider` em branco, o botão Enviar abre o WhatsApp e o programa de e-mail do visitante.

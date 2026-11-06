@@ -538,6 +538,10 @@ window.CF_FORM = {
   accessKey: ''
 };
 '''
+W3KEY=os.environ.get('CF_WEB3_KEY','26e2bc49-3639-4a82-84eb-eab2796f7334').strip()
+if W3KEY:
+    CONFIG_JS=CONFIG_JS.replace("  provider: '',","  provider: 'web3forms',").replace("  accessKey: ''","  accessKey: '"+W3KEY+"'")
+    CONFIG_JS=CONFIG_JS.replace("// Enquanto estiver em branco,","// Envio por e-mail ativo via Web3Forms (a chave de acesso é pública por desenho).\n// Se ficar em branco,")
 open(os.path.join(OUT,'config.js'),'w').write(CONFIG_JS)
 
 # ================= ARQUIVOS DE SEO (só no build local) =================
