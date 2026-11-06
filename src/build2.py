@@ -550,7 +550,7 @@ POSTS=sorted(POSTS,key=lambda x:x['date'],reverse=True)
 def purl(po): return f"blog-{po['slug']}.html"
 
 def card_post(po):
-    cover=f"""<div class="-m-6 mb-0 overflow-hidden rounded-t-3xl"><img src="assets/{po['image']}.svg" alt="{po.get('image_alt','')}" width="1200" height="630" loading="lazy" class="w-full h-auto block group-hover:scale-105 transition-transform duration-500"></div>""" if po.get('image') else f"""<div class="w-10 h-10 bg-emerald-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300"><i data-lucide="{po['icon']}" class="w-5 h-5 text-emerald-600"></i></div>"""
+    cover=f"""<div class="-m-6 mb-0 overflow-hidden rounded-t-3xl"><img src="assets/{po['image']}" alt="{po.get('image_alt','')}" width="1600" height="893" loading="lazy" class="w-full h-auto block group-hover:scale-105 transition-transform duration-500"></div>""" if po.get('image') else f"""<div class="w-10 h-10 bg-emerald-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300"><i data-lucide="{po['icon']}" class="w-5 h-5 text-emerald-600"></i></div>"""
     return f"""<a href="{purl(po)}" class="rounded-3xl bg-white border border-gray-100 p-6 flex flex-col gap-4 shadow-lg hover:shadow-xl transition-shadow duration-300 group lift rv overflow-hidden">{cover}<div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-semibold text-gray-500"><span class="text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full">{po['cat']}</span><time datetime="{po['date']}">{data_br(po['date'])}</time><span>{po['read']} min de leitura</span></div><h2 class="font-serif text-xl font-medium leading-tight">{po['title']}</h2><p class="text-sm text-gray-600 leading-relaxed">{po['desc']}</p><span class="mt-auto inline-flex items-center gap-2 text-sm font-semibold text-emerald-700 group-hover:gap-3 transition-all">Ler artigo <i data-lucide="arrow-right" class="w-4 h-4"></i></span></a>"""
 
 if POSTS:
@@ -565,7 +565,7 @@ page('blog.html','Blog | CondoFluxo','blog.html',bl,True,
 for po in POSTS:
     fq=po.get('faq') or []
     fq_html=f"""<section class="mt-16 max-w-3xl"><div class="mb-6 rv"><h2 class="font-serif text-2xl lg:text-3xl font-medium">Perguntas <span class="italic font-light text-emerald-700">frequentes</span></h2></div>{faq(fq)}</section>""" if fq else ''
-    cover_html=f"""<figure class="max-w-4xl mb-12 rv"><img src="assets/{po['image']}.svg" alt="{po.get('image_alt','')}" width="1200" height="630" class="w-full h-auto rounded-3xl shadow-xl border border-gray-100"></figure>""" if po.get('image') else ''
+    cover_html=f"""<figure class="max-w-4xl mb-12 rv"><img src="assets/{po['image']}" alt="{po.get('image_alt','')}" width="1600" height="893" class="w-full h-auto rounded-3xl shadow-xl border border-gray-100"></figure>""" if po.get('image') else ''
     outros=[x for x in POSTS if x['slug']!=po['slug']][:3]
     outros_html=('<section class="mt-20"><div class="max-w-3xl mb-6 rv"><h2 class="font-serif text-2xl lg:text-3xl font-medium">Continue <span class="italic font-light text-emerald-700">lendo</span></h2></div><div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">'+''.join(card_post(x) for x in outros)+'</div></section>') if outros else ''
     art=f"""<a href="blog.html" class="inline-flex items-center gap-2 text-sm font-semibold text-emerald-700 hover:gap-3 transition-all mb-8 rv"><i data-lucide="arrow-left" class="w-4 h-4"></i>Todos os artigos</a>
@@ -578,9 +578,9 @@ for po in POSTS:
 </section>
 {outros_html}
 <p class="mt-8 text-xs text-gray-500 max-w-3xl rv">Este artigo é informativo e não substitui a orientação de um profissional habilitado nem de um advogado.</p>"""
-    ld=[{"@type":"BlogPosting","headline":po['title'],"description":po['desc'],"datePublished":po['date'],"dateModified":po.get('updated',po['date']),"inLanguage":"pt-BR","mainEntityOfPage":SITE+"/"+cp(purl(po)),"author":{"@type":"Organization","name":"CondoFluxo"},"publisher":{"@type":"Organization","name":"CondoFluxo","url":SITE,"logo":{"@type":"ImageObject","url":SITE+"/assets/logo-condofluxo.png"}},"image":SITE+"/assets/"+po["image"]+".png" if po.get("image") else SITE+"/assets/fachada-verde.jpg"}]
+    ld=[{"@type":"BlogPosting","headline":po['title'],"description":po['desc'],"datePublished":po['date'],"dateModified":po.get('updated',po['date']),"inLanguage":"pt-BR","mainEntityOfPage":SITE+"/"+cp(purl(po)),"author":{"@type":"Organization","name":"CondoFluxo"},"publisher":{"@type":"Organization","name":"CondoFluxo","url":SITE,"logo":{"@type":"ImageObject","url":SITE+"/assets/logo-condofluxo.png"}},"image":SITE+"/assets/"+po.get("image_og",po.get("image",""))  if po.get("image") else SITE+"/assets/fachada-verde.jpg"}]
     if fq: ld.append(faq_ld(fq))
-    page(purl(po),po['title']+' | CondoFluxo','blog.html',art,True,desc=po['desc'],ld=ld,img=('assets/'+po['image']+'.png') if po.get('image') else None)
+    page(purl(po),po['title']+' | CondoFluxo','blog.html',art,True,desc=po['desc'],ld=ld,img=('assets/'+po.get('image_og',po['image'])) if po.get('image') else None)
 
 CONFIG_JS='''// Configuração do envio de e-mail do formulário de contato.
 // Enquanto estiver em branco, o botão Enviar abre o WhatsApp e o programa de e-mail do visitante.
