@@ -1,4 +1,4 @@
-import os,json,html
+import os,sys,json,html
 from urllib.parse import quote
 HERE=os.path.dirname(os.path.abspath(__file__))
 OUT=os.environ.get('CF_OUT',os.path.join(HERE,'..','_build'))
@@ -56,6 +56,17 @@ details[open]>summary::after{content:'\\2212'}
 h1.font-serif{line-height:1.1!important;font-size:clamp(2.25rem,4.3vw,3.6rem)!important}
 h2.font-serif{line-height:1.15!important}
 h3.font-serif{line-height:1.2!important}
+/* Artigos do blog */
+.post h2{font-family:'Figtree',sans-serif;font-weight:700;font-size:1.55rem;line-height:1.2;margin:2.4rem 0 .8rem;letter-spacing:-.01em}
+.post h3{font-weight:700;font-size:1.2rem;margin:1.8rem 0 .6rem}
+.post p{color:#44403c;line-height:1.8;margin:0 0 1.15rem;font-size:1.06rem}
+.post ul,.post ol{margin:0 0 1.4rem;padding-left:1.4rem;color:#44403c;line-height:1.75;font-size:1.06rem}
+.post ul{list-style:disc}.post ol{list-style:decimal}
+.post li{margin:.5rem 0;padding-left:.2rem}
+.post li::marker{color:#059669;font-weight:700}
+.post a{color:#047857;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.post a:hover{color:#065f46}
+.post strong{color:#111827}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}.lift:hover,.lift-t:hover{transform:none!important}.js .rv{opacity:1;transform:none}main,footer{animation:none}body.leaving main,body.leaving footer{opacity:1;transform:none}}
 '''
 
@@ -154,7 +165,7 @@ JS='''
 LOGO='<img src="assets/logo-condofluxo.png" alt="CondoFluxo" class="h-9 w-auto" width="140" height="37">'
 WORD=''
 
-LINKS=[('gestao.html','Convivus'),('comunicacao.html','Comunicação'),('sobre.html','Sobre'),('contato.html','Contato')]
+LINKS=[('gestao.html','Convivus'),('comunicacao.html','Comunicação'),('blog.html','Blog'),('sobre.html','Sobre'),('contato.html','Contato')]
 
 PORTAL_URL='https://portalconvivus.condofluxo.com.br'
 
@@ -182,7 +193,7 @@ SITE='https://www.condofluxo.com.br'
 
 FOOT=f'''<footer class="border-t border-stone-200 bg-white/60"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid gap-8 md:grid-cols-3">
  <div><a href="index.html" class="flex items-center gap-2">{LOGO}{WORD}</a><p class="mt-4 text-sm text-gray-600 max-w-xs">Sob o mesmo teto: gestão do condomínio e comunicação com os moradores, numa só marca.</p></div>
- <div class="text-sm"><p class="font-semibold mb-3">Páginas</p><div class="flex flex-col gap-2 text-gray-600"><a href="gestao.html" class="hover:text-emerald-700">Convivus</a><a href="gestao.html#valores" class="hover:text-emerald-700">Valores</a><a href="comunicacao.html" class="hover:text-emerald-700">Comunicação</a><a href="sobre.html" class="hover:text-emerald-700">Sobre</a><a href="contato.html" class="hover:text-emerald-700">Contato</a><a href="manutencao-predial-normativa.html" class="hover:text-emerald-700">Guia: manutenção predial</a><a href="ppci-avcb-guia.html" class="hover:text-emerald-700">Guia: PPCI e AVCB</a></div></div>
+ <div class="text-sm"><p class="font-semibold mb-3">Páginas</p><div class="flex flex-col gap-2 text-gray-600"><a href="gestao.html" class="hover:text-emerald-700">Convivus</a><a href="gestao.html#valores" class="hover:text-emerald-700">Valores</a><a href="comunicacao.html" class="hover:text-emerald-700">Comunicação</a><a href="blog.html" class="hover:text-emerald-700">Blog</a><a href="sobre.html" class="hover:text-emerald-700">Sobre</a><a href="contato.html" class="hover:text-emerald-700">Contato</a><a href="manutencao-predial-normativa.html" class="hover:text-emerald-700">Guia: manutenção predial</a><a href="ppci-avcb-guia.html" class="hover:text-emerald-700">Guia: PPCI e AVCB</a></div></div>
  <div class="text-sm"><p class="font-semibold mb-3">Contato</p><div class="flex flex-col gap-2 text-gray-600">
   <a href="{WA_LINK}" target="_blank" rel="noopener" class="flex items-center gap-2 hover:text-emerald-700">{wa('w-4 h-4 shrink-0 text-emerald-600')}+55 51 99611-7922</a>
   <span class="flex items-center gap-2 break-all"><i data-lucide="mail" class="w-4 h-4 shrink-0 text-emerald-600"></i>condofluxo@condofluxo.com.br</span>
@@ -529,6 +540,46 @@ page('ppci-avcb-guia.html','PPCI e AVCB: guia para síndicos | CondoFluxo','',p,
      desc='Guia para síndicos sobre PPCI, APPCI e AVCB: o que significa cada documento, o que acompanhar e como organizar a renovação da licença de incêndio.',
      ld=[faq_ld(PFAQ)])
 
+# ================= BLOG =================
+sys.path.insert(0,HERE)
+from blog_posts import POSTS
+MESES=['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro']
+def data_br(iso):
+    a,m,d=iso.split('-'); return f'{int(d)} de {MESES[int(m)-1]} de {a}'
+POSTS=sorted(POSTS,key=lambda x:x['date'],reverse=True)
+def purl(po): return f"blog-{po['slug']}.html"
+
+def card_post(po):
+    return f"""<a href="{purl(po)}" class="rounded-3xl bg-white border border-gray-100 p-6 flex flex-col gap-4 shadow-lg hover:shadow-xl transition-shadow duration-300 group lift rv"><div class="w-10 h-10 bg-emerald-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300"><i data-lucide="{po['icon']}" class="w-5 h-5 text-emerald-600"></i></div><div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-semibold text-gray-500"><span class="text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full">{po['cat']}</span><time datetime="{po['date']}">{data_br(po['date'])}</time><span>{po['read']} min de leitura</span></div><h2 class="font-serif text-xl font-medium leading-tight">{po['title']}</h2><p class="text-sm text-gray-600 leading-relaxed">{po['desc']}</p><span class="mt-auto inline-flex items-center gap-2 text-sm font-semibold text-emerald-700 group-hover:gap-3 transition-all">Ler artigo <i data-lucide="arrow-right" class="w-4 h-4"></i></span></a>"""
+
+if POSTS:
+    lista='<div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">'+''.join(card_post(po) for po in POSTS)+'</div>'
+else:
+    lista='<p class="text-gray-600">Os primeiros artigos chegam em breve.</p>'
+bl=head('newspaper','Blog','Condomínio sem improviso:','guias e boas práticas','Artigos curtos para síndicos, conselheiros e administradoras sobre manutenção, normas, documentos e convivência.')+lista+cta('Quer o condomínio com prazo e prova?','O Convivus organiza manutenção, licenças e documentos num só lugar.','Falar conosco')
+page('blog.html','Blog | CondoFluxo','blog.html',bl,True,
+     desc='Artigos para síndicos, conselheiros e administradoras: manutenção predial, normas ABNT, PPCI e AVCB, documentos e convivência em condomínios.',
+     ld=[{"@type":"Blog","name":"Blog CondoFluxo","url":SITE+"/blog","inLanguage":"pt-BR","publisher":{"@type":"Organization","name":"CondoFluxo","url":SITE}}])
+
+for po in POSTS:
+    fq=po.get('faq') or []
+    fq_html=f"""<section class="mt-16 max-w-3xl"><div class="mb-6 rv"><h2 class="font-serif text-2xl lg:text-3xl font-medium">Perguntas <span class="italic font-light text-emerald-700">frequentes</span></h2></div>{faq(fq)}</section>""" if fq else ''
+    outros=[x for x in POSTS if x['slug']!=po['slug']][:3]
+    outros_html=('<section class="mt-20"><div class="max-w-3xl mb-6 rv"><h2 class="font-serif text-2xl lg:text-3xl font-medium">Continue <span class="italic font-light text-emerald-700">lendo</span></h2></div><div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">'+''.join(card_post(x) for x in outros)+'</div></section>') if outros else ''
+    art=f"""<a href="blog.html" class="inline-flex items-center gap-2 text-sm font-semibold text-emerald-700 hover:gap-3 transition-all mb-8 rv"><i data-lucide="arrow-left" class="w-4 h-4"></i>Todos os artigos</a>
+<header class="max-w-3xl mb-10 rv">{pill(po['icon'],po['cat'])}<h1 class="text-3xl sm:text-4xl lg:text-5xl leading-[1.1] font-medium tracking-tight font-serif">{po['title']}</h1><p class="text-lg text-gray-600 mt-5 leading-relaxed">{po['desc']}</p><p class="mt-5 text-sm text-gray-500 flex flex-wrap items-center gap-x-4 gap-y-1"><span class="inline-flex items-center gap-1.5"><i data-lucide="calendar" class="w-4 h-4 text-emerald-600"></i><time datetime="{po['date']}">{data_br(po['date'])}</time></span><span class="inline-flex items-center gap-1.5"><i data-lucide="clock" class="w-4 h-4 text-emerald-600"></i>{po['read']} min de leitura</span><span class="inline-flex items-center gap-1.5"><i data-lucide="user" class="w-4 h-4 text-emerald-600"></i>Equipe CondoFluxo</span></p></header>
+<article class="post max-w-3xl rv">{po['body']}</article>
+{fq_html}
+<section class="mt-20 rounded-3xl bg-gradient-to-br from-emerald-900 to-teal-800 text-white p-8 lg:p-12 shadow-2xl rv grid gap-6 lg:grid-cols-2 items-center">
+<div><img src="assets/logo-convivus.png" alt="Convivus" class="h-10 w-auto bg-white rounded-xl p-2 mb-5"><h2 class="font-serif text-2xl lg:text-3xl font-medium leading-tight">Prazo, responsável <span class="italic font-light text-emerald-200">e prova, num só lugar</span></h2></div>
+<div class="grid gap-5"><p class="text-emerald-50/90 leading-relaxed">O Convivus reúne manutenção ligada às normas, licenças com aviso de renovação, documentos com histórico e mural com confirmação de leitura.</p><div class="flex flex-wrap gap-3"><a href="gestao.html" class="bg-white text-emerald-800 px-6 py-3 rounded-full font-semibold hover:bg-emerald-50 transition-colors">Ver o Convivus</a><a href="contato.html" class="border border-white/50 px-6 py-3 rounded-full font-semibold hover:bg-white/10 transition-colors">Fale conosco</a></div></div>
+</section>
+{outros_html}
+<p class="mt-8 text-xs text-gray-500 max-w-3xl rv">Este artigo é informativo e não substitui a orientação de um profissional habilitado nem de um advogado.</p>"""
+    ld=[{"@type":"BlogPosting","headline":po['title'],"description":po['desc'],"datePublished":po['date'],"dateModified":po.get('updated',po['date']),"inLanguage":"pt-BR","mainEntityOfPage":SITE+"/"+cp(purl(po)),"author":{"@type":"Organization","name":"CondoFluxo"},"publisher":{"@type":"Organization","name":"CondoFluxo","url":SITE,"logo":{"@type":"ImageObject","url":SITE+"/assets/logo-condofluxo.png"}},"image":SITE+"/assets/fachada-verde.jpg"}]
+    if fq: ld.append(faq_ld(fq))
+    page(purl(po),po['title']+' | CondoFluxo','blog.html',art,True,desc=po['desc'],ld=ld)
+
 CONFIG_JS='''// Configuração do envio de e-mail do formulário de contato.
 // Enquanto estiver em branco, o botão Enviar abre o WhatsApp e o programa de e-mail do visitante.
 //
@@ -552,10 +603,11 @@ open(os.path.join(OUT,'config.js'),'w').write(CONFIG_JS)
 
 # ================= ARQUIVOS DE SEO (só no build local) =================
 if os.environ.get('CF_FULL')=='1':
-    pages=['index.html','gestao.html','comunicacao.html','sobre.html','contato.html','manutencao-predial-normativa.html','ppci-avcb-guia.html']
+    pages=['index.html','gestao.html','comunicacao.html','blog.html','sobre.html','contato.html','manutencao-predial-normativa.html','ppci-avcb-guia.html']+[purl(po) for po in POSTS]
     sm='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'  <url><loc>{SITE}/{cp(f)}</loc></url>\n' for f in pages)+'</urlset>\n'
     open(os.path.join(OUT,'sitemap.xml'),'w').write(sm)
     open(os.path.join(OUT,'robots.txt'),'w').write(f'User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n')
+    BLOG_LLMS=''.join(f"- [{po['title']}]({SITE}/{cp(purl(po))}): {po['desc']}\n" for po in POSTS).rstrip('\n')
     open(os.path.join(OUT,'llms.txt'),'w').write(f"""# CondoFluxo
 
 > A CondoFluxo reúne duas frentes: o Convivus, portal web de gestão e conformidade para condomínios, e materiais de comunicação para os moradores. Site em português do Brasil.
@@ -570,6 +622,10 @@ if os.environ.get('CF_FULL')=='1':
 ## Guias
 - [Manutenção predial normativa]({SITE}/manutencao-predial-normativa): NBR 5674 e NBR 15575 para síndicos.
 - [PPCI e AVCB]({SITE}/ppci-avcb-guia): o que acompanhar na licença de incêndio.
+
+## Blog
+- [Blog]({SITE}/blog): artigos para síndicos sobre manutenção predial, normas, PPCI/AVCB, documentos e convivência.
+{BLOG_LLMS}
 
 ## Contato
 - WhatsApp: +55 51 99611-7922
