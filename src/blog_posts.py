@@ -73,7 +73,7 @@ POSTS = [
         "slug": "checklist-manutencao-predial-por-frequencia",
         "title": "Checklist de manutenção predial por frequência: do diário ao quinquenal",
         "desc": "Uma referência para síndicos organizarem as rotinas do condomínio, da conferência diária aos laudos de longo prazo, com os prazos revisados e as normas ABNT de cada item.",
-        "date": "2026-11-08",
+        "date": "2026-11-09",
         "cat": "Manutenção",
         "icon": "list-checks",
         "read": 7,
