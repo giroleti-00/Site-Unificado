@@ -172,6 +172,7 @@ h3.font-serif{line-height:1.2!important}
       if(!nome){st.textContent='Informe o seu nome para enviar.';document.getElementById('f-nome').focus();return;}
       if(!ret){st.textContent='Informe um e-mail ou WhatsApp para retorno.';document.getElementById('f-ret').focus();return;}
       var papel=v('f-papel'),cond=v('f-cond'),cid=v('f-cid'),qtd=v('f-qtd'),int=v('f-int'),msg=v('f-msg');
+      try{ if(window.cfTrack) cfTrack('generate_lead',{form_name:'contato',interesse:int,quantidade_condominios:qtd}); }catch(x){}
       var t='Olá! Meu nome é '+nome+' e sou '+papel+(cond?' do condomínio '+cond:'')+(cid?', em '+cid:'')+'.\n\nContato para retorno: '+ret+'.'+(qtd?'\n\nQuantidade de condomínios: '+qtd+'.':'')+'\n\nTenho interesse em: '+int+'.\n\n'+msg+'\n\nObrigado!';
       var wa='https://wa.me/5551996117922?text='+encodeURIComponent(t);
       var mail='mailto:condofluxo@condofluxo.com.br?subject='+encodeURIComponent('Contato pelo site CondoFluxo')+'&body='+encodeURIComponent(t);
@@ -204,6 +205,11 @@ h3.font-serif{line-height:1.2!important}
 (function(){
   var C=window.CF_GA||{}, ID=String(C.id||'').trim(), KEY='cf_consent_v1';
   var box=document.getElementById('cc'), st=document.getElementById('cc-st'), fab=document.querySelector('.wa-fab');
+  window.cfTrack=function(n,p){ try{ if(ID&&typeof window.gtag==='function'&&!window['ga-disable-'+ID]) window.gtag('event',n,p||{}); }catch(e){} };
+  document.addEventListener('click',function(e){
+    var a=e.target&&e.target.closest?e.target.closest('a[href*="wa.me/"]'):null;
+    if(a) window.cfTrack('whatsapp_click',{link_location:a.classList.contains('wa-fab')?'botao_flutuante':'pagina'});
+  },true);
   var wraps=document.querySelectorAll('[data-cc-wrap]');
   if(!box||(!ID&&!C.preview)){ for(var i=0;i<wraps.length;i++) wraps[i].hidden=true; return; }
   function get(){ try{ return localStorage.getItem(KEY); }catch(e){ return null; } }
