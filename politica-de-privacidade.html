@@ -1,0 +1,318 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Política de Privacidade | CondoFluxo</title><meta name="description" content="Como a CondoFluxo trata dados pessoais neste site: formulário de contato, Google Analytics, cookies e seus direitos pela LGPD."><meta name="theme-color" content="#065f46"><meta property="og:type" content="website"><meta property="og:locale" content="pt_BR"><meta property="og:site_name" content="CondoFluxo"><meta property="og:title" content="Política de Privacidade | CondoFluxo"><meta property="og:description" content="Como a CondoFluxo trata dados pessoais neste site: formulário de contato, Google Analytics, cookies e seus direitos pela LGPD."><meta property="og:url" content="https://www.condofluxo.com.br/politica-de-privacidade"><meta property="og:image" content="https://www.condofluxo.com.br/assets/fachada-verde.jpg"><meta name="twitter:card" content="summary_large_image"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"><script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script>tailwind.config={theme:{extend:{fontFamily:{sans:['Figtree','ui-sans-serif','system-ui','sans-serif'],serif:['Figtree','ui-sans-serif','system-ui','sans-serif']}}}}</script>
+<script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script><link rel="icon" type="image/png" href="assets/icone.png"><style>
+:root{--bg:#fafaf9;--ink:#111827;--glass:rgba(255,255,255,.95);color-scheme:light}
+html{background:var(--bg)}
+body{margin:0;font-family:'Figtree',system-ui,sans-serif;background:linear-gradient(135deg,#fafaf9,#fff 50%,rgba(236,253,245,.4));color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+.glass-effect{backdrop-filter:blur(20px);background:var(--glass);border:1px solid rgba(255,255,255,.2)}
+.gradient-border{background:linear-gradient(white,white) padding-box,linear-gradient(135deg,#10b981,#059669) border-box;border:2px solid transparent}
+.js .rv{opacity:0;transform:translateY(24px);transition:opacity .8s ease-out,transform .8s ease-out}
+.js .rv.in{opacity:1;transform:none}
+.d2{transition-delay:.15s!important}.d3{transition-delay:.3s!important}.d4{transition-delay:.45s!important}
+.js .rv.in.done{transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s ease,border-color .35s ease,background-color .35s ease,opacity .35s ease}
+.lift:hover,.lift-s:hover{border-color:#a7f3d0}
+@media (hover:hover){
+.js .rv.in.done.lift:hover{transform:translateY(-6px);box-shadow:0 22px 40px -14px rgba(6,95,70,.28)}
+.js .rv.in.done.lift-t:hover{transform:translateY(-6px)}
+.js .rv.in.done.lift-s:hover{box-shadow:0 12px 26px -12px rgba(6,95,70,.25)}
+}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid #047857;outline-offset:3px}
+.sem-dot{width:14px;height:14px;border-radius:9999px;display:block}
+.fld{width:100%;border:1px solid #d6d3d1;border-radius:.9rem;background:#fff;padding:.75rem 1rem;font:500 .95rem Figtree,sans-serif;color:#111827}
+.lbl{font-size:.8rem;font-weight:600;color:#44403c;margin-bottom:.35rem;display:block}
+@view-transition{navigation:auto}
+nav.glass-effect{view-transition-name:site-nav}
+@keyframes pageIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes fadeOnly{from{opacity:0}to{opacity:1}}
+main{animation:pageIn .65s cubic-bezier(.22,1,.36,1) backwards}
+footer{animation:fadeOnly .7s .2s ease-out backwards}
+main,footer{transition:opacity .22s ease,transform .22s ease}
+body.leaving main,body.leaving footer{opacity:0;transform:translateY(-10px)}
+.card-link{transition:transform .3s ease}
+.plan{position:relative;overflow:hidden;isolation:isolate;cursor:default}
+.plan::before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(135deg,#065f46,#064e3b);opacity:0;transition:opacity .4s ease}
+.plan .pt,.plan .pn,.plan .ps{transition:color .4s ease}
+.plan:hover::before,.plan:active::before{opacity:1}
+.plan:hover .pt,.plan:hover .pn,.plan:active .pt,.plan:active .pn{color:#fff}
+.plan:hover .ps,.plan:active .ps{color:#a7f3d0}
+[hidden]{display:none!important}
+.wa-fab{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:60;width:56px;height:56px;border-radius:9999px;background:#16a34a;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 25px rgba(0,0,0,.25);transition:transform .25s ease,background-color .25s ease}
+.wa-fab:hover{transform:scale(1.08);background:#15803d}
+.wa-fab svg{width:30px;height:30px}
+details>summary{list-style:none}details>summary::-webkit-details-marker{display:none}
+details>summary::after{content:'+';float:right;font-weight:500;color:#047857;margin-left:1rem}
+details[open]>summary::after{content:'\2212'}
+/* Tipografia: títulos em Figtree, sem itálico nos destaques (cor verde destaca) */
+.font-serif{font-weight:700!important;letter-spacing:-.01em!important}
+.font-serif .italic,.font-serif .font-light{font-style:normal!important;font-weight:inherit!important}
+h1.font-serif{line-height:1.1!important;font-size:clamp(2.25rem,4.3vw,3.6rem)!important}
+h2.font-serif{line-height:1.15!important}
+h3.font-serif{line-height:1.2!important}
+/* Artigos do blog */
+.post h2{font-family:'Figtree',sans-serif;font-weight:700;font-size:1.55rem;line-height:1.2;margin:2.4rem 0 .8rem;letter-spacing:-.01em}
+.post h3{font-weight:700;font-size:1.2rem;margin:1.8rem 0 .6rem}
+.post p{color:#44403c;line-height:1.8;margin:0 0 1.15rem;font-size:1.06rem}
+.post ul,.post ol{margin:0 0 1.4rem;padding-left:1.4rem;color:#44403c;line-height:1.75;font-size:1.06rem}
+.post ul{list-style:disc}.post ol{list-style:decimal}
+.post li{margin:.5rem 0;padding-left:.2rem}
+.post li::marker{color:#059669;font-weight:700}
+.post a{color:#047857;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.post a:hover{color:#065f46}
+.post strong{color:#111827}
+.post table{width:100%;border-collapse:collapse;font-size:.95rem;margin:0 0 1.6rem}
+.post th,.post td{border-bottom:1px solid #e7e5e4;padding:.65rem .75rem;text-align:left;vertical-align:top;color:#44403c;line-height:1.5}
+.post th{background:#ecfdf5;color:#064e3b;font-weight:700}
+.post code{background:#f5f5f4;border-radius:.35rem;padding:.1rem .35rem;font-size:.9em;color:#064e3b}
+.cc-open{display:inline-flex;align-items:center;gap:.5rem;background:#059669;color:#fff!important;text-decoration:none!important;font-weight:600;padding:.7rem 1.4rem;border-radius:9999px;border:0;cursor:pointer;font:inherit;font-weight:600}
+.cc-open:hover{background:#047857}
+/* Aviso de cookies */
+.cc{position:fixed;left:max(16px,env(safe-area-inset-left));right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:70;max-width:25rem;background:#fff;border:1px solid #e7e5e4;border-radius:1.25rem;box-shadow:0 20px 50px -12px rgba(6,95,70,.28),0 4px 14px rgba(0,0,0,.08);padding:1.15rem 1.2rem 1.1rem;animation:ccin .35s ease both}
+.cc h2{font-weight:700;font-size:1rem;color:#064e3b;margin:0 0 .35rem;display:flex;align-items:center;gap:.5rem}
+.cc p{font-size:.86rem;line-height:1.55;color:#44403c;margin:0}
+.cc p a{color:#047857;font-weight:600;text-decoration:underline;text-underline-offset:2px}
+.cc-btns{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-top:.95rem}
+.cc-btn{font:inherit;font-size:.9rem;font-weight:600;padding:.65rem 1rem;border-radius:9999px;cursor:pointer;border:1.5px solid #059669;transition:background .2s,color .2s}
+.cc-no{background:#fff;color:#047857}.cc-no:hover{background:#ecfdf5}
+.cc-ok{background:#059669;color:#fff}.cc-ok:hover{background:#047857}
+.cc-btn:focus-visible{outline:3px solid #34d399;outline-offset:2px}
+@keyframes ccin{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media(min-width:640px){.cc{right:auto}}
+@media(max-width:639px){.wa-fab.cc-up{bottom:calc(var(--ccH,0px) + 28px)}}
+.lnk-btn{background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer;text-decoration:underline;text-underline-offset:2px}
+.lnk-btn:hover{color:#047857}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}.lift:hover,.lift-t:hover{transform:none!important}.js .rv{opacity:1;transform:none}main,footer{animation:none}body.leaving main,body.leaving footer{opacity:1;transform:none}}
+</style><script>document.documentElement.classList.add("js")</script></head><body><div id="top" style="position:absolute;top:0;left:0;width:1px;height:1px" aria-hidden="true"></div><nav class="fixed top-0 w-full z-50 glass-effect" style="padding-top:env(safe-area-inset-top,0px)">
+ <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex items-center justify-between h-16">
+  <a href="index.html" class="flex items-center gap-2"><img src="assets/logo-condofluxo.png" alt="CondoFluxo" class="h-9 w-auto" width="140" height="37"></a>
+  <div class="hidden lg:flex items-center gap-6 xl:gap-8 text-sm font-medium"><a href="gestao.html" class="text-gray-600 hover:text-emerald-600 transition-colors">Convivus</a><a href="comunicacao.html" class="text-gray-600 hover:text-emerald-600 transition-colors">Comunicação</a><a href="blog.html" class="text-gray-600 hover:text-emerald-600 transition-colors">Blog</a><a href="sobre.html" class="text-gray-600 hover:text-emerald-600 transition-colors">Sobre</a><a href="https://portalconvivus.condofluxo.com.br" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 border border-emerald-600 text-emerald-700 px-4 py-2 rounded-full hover:bg-emerald-50 transition-colors whitespace-nowrap"><i data-lucide="log-in" class="w-4 h-4"></i>Acesse o Portal Convivus</a><a href="contato.html" class="bg-emerald-600 text-white px-4 py-2 rounded-full hover:bg-emerald-700 transition-colors">Falar conosco</a></div>
+  <button id="mbtn" class="lg:hidden text-sm font-semibold border border-gray-300 rounded-full px-4 py-2" aria-expanded="false" aria-controls="mpanel" type="button">Menu</button>
+ </div>
+ <div id="mpanel" class="lg:hidden pb-4 flex flex-col text-sm font-medium" hidden><a href="gestao.html" class="py-2 text-gray-700">Convivus</a><a href="comunicacao.html" class="py-2 text-gray-700">Comunicação</a><a href="blog.html" class="py-2 text-gray-700">Blog</a><a href="sobre.html" class="py-2 text-gray-700">Sobre</a><a href="https://portalconvivus.condofluxo.com.br" target="_blank" rel="noopener" class="mt-2 inline-flex items-center justify-center gap-2 border border-emerald-600 text-emerald-700 px-4 py-3 rounded-full text-center"><i data-lucide="log-in" class="w-4 h-4"></i>Acesse o Portal Convivus</a><a href="contato.html" class="mt-2 bg-emerald-600 text-white px-4 py-3 rounded-full text-center">Falar conosco</a></div></div></nav>
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20 lg:pt-32"><div class="max-w-3xl mb-14 rv"><div class="inline-flex items-center gap-2 bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full text-sm font-medium mb-6"><i data-lucide="shield-check" class="w-4 h-4"></i>Privacidade</div><h1 class="text-4xl sm:text-5xl lg:text-6xl leading-[1] font-medium tracking-tight font-serif">Política de<br><span class="font-light italic text-emerald-700">Privacidade</span></h1><p class="text-lg text-gray-600 mt-6 leading-relaxed">Como a CondoFluxo trata os seus dados neste site, em linguagem simples. Atualizada em 10 de novembro de 2026.</p></div><article class="post max-w-3xl rv">
+<h2>1. Quem é o responsável</h2>
+<p>Este site (www.condofluxo.com.br) é mantido pela CondoFluxo, de Porto Alegre (RS), que também desenvolve o Convivus, portal de gestão para condomínios. Para qualquer assunto de privacidade e proteção de dados, com base na Lei Geral de Proteção de Dados (LGPD, Lei 13.709/2018), escreva para <strong>condofluxo@condofluxo.com.br</strong>.</p>
+<p>Esta política vale para este site. O portal Convivus, que exige cadastro e login, pode ter regras próprias de tratamento de dados, informadas no momento do cadastro.</p>
+
+<h2>2. Quais dados coletamos e para quê</h2>
+<h3>Formulário de contato</h3>
+<p>Se você preencher o formulário da página Contato, recebemos o que você digitar: nome, se é síndico, morador ou outro perfil, condomínio e cidade, quantidade de condomínios, interesse, e-mail ou WhatsApp para retorno e a mensagem. Usamos esses dados apenas para responder ao seu contato e apresentar o Convivus ou os materiais de comunicação. A base legal é a realização de procedimentos preliminares a um possível contrato, a pedido do próprio titular (LGPD, art. 7º, V).</p>
+<p>Mensagens enviadas diretamente por WhatsApp, e-mail ou Instagram seguem também as regras de cada um desses serviços.</p>
+<h3>Estatísticas de acesso (Google Analytics)</h3>
+<p>Somente se você aceitar, usamos o Google Analytics 4 para medir o uso do site: páginas visitadas, tempo de permanência, tipo de dispositivo e navegador, origem do acesso (por exemplo, uma busca ou o Instagram) e localização aproximada, como cidade ou região. As informações são analisadas em conjunto, para melhorar o conteúdo. Não enviamos ao Google o seu nome, e-mail ou telefone, e não usamos esses dados para publicidade nem para personalizar anúncios. A base legal é o seu consentimento (LGPD, art. 7º, I), que você pode retirar quando quiser.</p>
+<h3>Dados técnicos de acesso</h3>
+<p>Como em qualquer site, os servidores que entregam as páginas recebem dados técnicos da sua conexão, como o endereço IP, o navegador e a data do acesso. Isso é necessário para o site funcionar e ficar seguro.</p>
+
+<h2>3. Cookies e armazenamento no navegador</h2>
+<p>Antes de você aceitar, nenhum cookie de medição é criado e nenhum dado é enviado ao Google Analytics.</p>
+<div class="overflow-x-auto"><table>
+<thead><tr><th>Nome</th><th>Para que serve</th><th>Duração</th><th>Tipo</th></tr></thead>
+<tbody>
+<tr><td><code>cf_consent_v1</code> (armazenamento local)</td><td>Guarda a sua escolha sobre os cookies, para não perguntar de novo a cada página.</td><td>Até você limpar os dados do navegador</td><td>Necessário</td></tr>
+<tr><td><code>_ga</code></td><td>Identifica o navegador de forma anônima, para contar visitantes (Google Analytics).</td><td>2 anos</td><td>Medição, só com o seu aceite</td></tr>
+<tr><td><code>_ga_N91QJF2G98</code></td><td>Mantém o estado da sessão de visita (Google Analytics).</td><td>2 anos</td><td>Medição, só com o seu aceite</td></tr>
+</tbody></table></div>
+<p>Para mudar de ideia, use o botão abaixo ou o link &ldquo;Preferências de cookies&rdquo; no rodapé de qualquer página. Ao recusar, apagamos os cookies de medição deste navegador. Você também pode bloquear ou apagar cookies nas configurações do navegador.</p>
+<p><button type="button" class="cc-open" data-cookie-pref>Abrir preferências de cookies</button></p>
+
+<h2>4. Com quem os dados passam</h2>
+<p>Não vendemos dados pessoais. Para o site funcionar, usamos estes serviços de terceiros:</p>
+<ul>
+<li><strong>Google.</strong> O Google Analytics só roda com o seu aceite. As fontes de texto (Google Fonts) são entregues pelos servidores do Google, que recebem o endereço IP de quem visita o site.</li>
+<li><strong>Web3Forms.</strong> Serviço que entrega por e-mail as mensagens do formulário de contato; os dados do formulário passam por ele antes de chegar à CondoFluxo.</li>
+<li><strong>Cloudflare.</strong> Hospedagem e proteção do site; recebe dados técnicos de acesso para entregar as páginas.</li>
+<li><strong>Bibliotecas de código (CDN).</strong> Estilos e ícones do site são carregados de servidores públicos (cdn.tailwindcss.com e unpkg.com), que recebem dados técnicos do acesso, como o endereço IP.</li>
+<li><strong>WhatsApp e Instagram (Meta).</strong> Ao clicar nesses botões, ou ao enviar o formulário (que abre o WhatsApp com a mensagem pronta), você passa a usar serviços da Meta, regidos pelas políticas dela.</li>
+</ul>
+<p>Alguns desses serviços podem tratar dados fora do Brasil.</p>
+
+<h2>5. Por quanto tempo guardamos</h2>
+<p>As mensagens do formulário ficam guardadas pelo tempo necessário para atender o seu pedido e manter a relação comercial, se houver. Depois disso, eliminamos ou anonimizamos os dados, salvo se a lei exigir a guarda. Os dados do Google Analytics seguem o prazo de retenção configurado na ferramenta, de no máximo 14 meses. Os cookies seguem os prazos da tabela acima.</p>
+
+<h2>6. Seus direitos</h2>
+<p>Pela LGPD (art. 18), você pode pedir a qualquer momento:</p>
+<ul>
+<li>a confirmação de que tratamos dados seus e o acesso a eles;</li>
+<li>a correção de dados incompletos, inexatos ou desatualizados;</li>
+<li>a anonimização, o bloqueio ou a eliminação de dados desnecessários ou tratados fora da lei;</li>
+<li>a portabilidade dos dados, quando aplicável;</li>
+<li>a informação sobre com quem compartilhamos os dados;</li>
+<li>a eliminação dos dados tratados com o seu consentimento e a retirada desse consentimento.</li>
+</ul>
+<p>Para exercer qualquer um desses direitos, escreva para condofluxo@condofluxo.com.br. Se achar que o tratamento não está correto, você também pode recorrer à Autoridade Nacional de Proteção de Dados (ANPD).</p>
+
+<h2>7. Segurança</h2>
+<p>O site é entregue por conexão segura (HTTPS) e coletamos apenas o necessário para as finalidades acima. Nenhum sistema é totalmente imune a falhas; se houver um incidente que possa afetar os seus dados, avisaremos nos termos da lei.</p>
+
+<h2>8. Mudanças nesta política</h2>
+<p>Podemos atualizar esta política quando o site mudar ou a lei exigir. A data da última atualização fica no topo da página.</p>
+</article></main>
+<footer class="border-t border-stone-200 bg-white/60"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid gap-8 md:grid-cols-3">
+ <div><a href="index.html" class="flex items-center gap-2"><img src="assets/logo-condofluxo.png" alt="CondoFluxo" class="h-9 w-auto" width="140" height="37"></a><p class="mt-4 text-sm text-gray-600 max-w-xs">Sob o mesmo teto: gestão do condomínio e comunicação com os moradores, numa só marca.</p></div>
+ <div class="text-sm"><p class="font-semibold mb-3">Páginas</p><div class="flex flex-col gap-2 text-gray-600"><a href="gestao.html" class="hover:text-emerald-700">Convivus</a><a href="gestao.html#valores" class="hover:text-emerald-700">Valores</a><a href="comunicacao.html" class="hover:text-emerald-700">Comunicação</a><a href="blog.html" class="hover:text-emerald-700">Blog</a><a href="sobre.html" class="hover:text-emerald-700">Sobre</a><a href="contato.html" class="hover:text-emerald-700">Contato</a><a href="manutencao-predial-normativa.html" class="hover:text-emerald-700">Guia: manutenção predial</a><a href="ppci-avcb-guia.html" class="hover:text-emerald-700">Guia: PPCI e AVCB</a></div></div>
+ <div class="text-sm"><p class="font-semibold mb-3">Contato</p><div class="flex flex-col gap-2 text-gray-600">
+  <a href="https://wa.me/5551996117922" target="_blank" rel="noopener" class="flex items-center gap-2 hover:text-emerald-700"><svg viewBox="0 0 24 24" class="w-4 h-4 shrink-0 text-emerald-600" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>+55 51 99611-7922</a>
+  <span class="flex items-center gap-2 break-all"><i data-lucide="mail" class="w-4 h-4 shrink-0 text-emerald-600"></i>condofluxo@condofluxo.com.br</span>
+  <a href="https://www.instagram.com/condofluxo" target="_blank" rel="noopener" class="flex items-center gap-2 hover:text-emerald-700"><svg viewBox="0 0 24 24" class="w-4 h-4 shrink-0 text-emerald-600" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg>@condofluxo</a>
+  <a href="https://www.condofluxo.com.br/gestao" target="_blank" rel="noopener" class="flex items-center gap-2 hover:text-emerald-700 break-all"><i data-lucide="globe" class="w-4 h-4 shrink-0 text-emerald-600"></i>www.condofluxo.com.br/gestao</a></div></div>
+ </div><div class="border-t border-stone-200 py-5 text-center text-xs text-gray-500">© 2026 CondoFluxo. Todos os direitos reservados.<span class="mx-2" aria-hidden="true">·</span><a href="politica-de-privacidade.html" class="underline underline-offset-2 hover:text-emerald-700">Política de Privacidade</a><span data-cc-wrap><span class="mx-2" aria-hidden="true">·</span><button type="button" class="lnk-btn" data-cookie-pref>Preferências de cookies</button></span></div></footer>
+<a href="https://wa.me/5551996117922?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20CondoFluxo%20e%20gostaria%20de%20conversar." target="_blank" rel="noopener" class="wa-fab" aria-label="Conversar pelo WhatsApp"><svg viewBox="0 0 24 24" class="" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
+<div id="cc" class="cc" role="region" aria-label="Aviso de cookies" hidden>
+ <h2><i data-lucide="cookie" class="w-5 h-5 text-emerald-600"></i>Cookies neste site</h2>
+ <p>Usamos cookies de medição do Google Analytics para entender quais páginas ajudam mais e melhorar o site. Eles só são ativados se você aceitar, e você pode mudar de ideia quando quiser. <a href="politica-de-privacidade.html">Política de Privacidade</a></p>
+ <p id="cc-st" class="cc-st" hidden></p>
+ <div class="cc-btns"><button type="button" class="cc-btn cc-no" data-cc="denied">Recusar</button><button type="button" class="cc-btn cc-ok" data-cc="granted">Aceitar</button></div>
+</div>
+<script src="config.js"></script><script>
+(function(){
+  try{ if('scrollRestoration' in history) history.scrollRestoration='manual'; }catch(e){}
+  function toTop(){
+    if(location.hash) return;
+    try{ window.scrollTo(0,0); document.documentElement.scrollTop=0; document.body.scrollTop=0;
+      var t=document.getElementById('top'); if(t&&t.scrollIntoView) t.scrollIntoView({block:'start'}); }catch(e){}
+  }
+  toTop();
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href]');
+    if(!a||e.defaultPrevented||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button) return;
+    var h=a.getAttribute('href');
+    if(!h||h.charAt(0)==='#'||/^[a-z][a-z0-9+.-]*:/i.test(h)||a.target==='_blank'||a.hasAttribute('download')) return;
+    document.body.classList.add('leaving');
+  });
+  window.addEventListener('pageshow',function(){document.body.classList.remove('leaving');});
+  window.addEventListener('load',toTop);
+  window.addEventListener('pageshow',toTop);
+  try{ if(window.lucide) lucide.createIcons(); }catch(e){}
+  var els=[].slice.call(document.querySelectorAll('.rv'));
+  function show(el){el.classList.add('in');setTimeout(function(){el.classList.add('done');},1100);}
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){show(e.target);io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(el){io.observe(el);});
+    setTimeout(function(){els.forEach(function(el){if(!el.classList.contains('in'))show(el);});},2500);
+  } else { els.forEach(show); }
+  var b=document.getElementById('mbtn'),m=document.getElementById('mpanel');
+  if(b&&m){b.addEventListener('click',function(){var h=m.hidden;m.hidden=!h;b.setAttribute('aria-expanded',String(h));});}
+  document.querySelectorAll('[data-copy]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var t=btn.getAttribute('data-copy'),old=btn.textContent;
+      try{navigator.clipboard.writeText(t).then(function(){btn.textContent='Copiado';setTimeout(function(){btn.textContent=old;},1500);},function(){btn.textContent='Selecione o texto';});}
+      catch(e){btn.textContent='Selecione o texto';}
+    });
+  });
+  var tg=document.querySelectorAll('.tgl');
+  if(tg.length){
+    var notes={m:'Valor por condomínio, até 150 unidades. Sem fidelidade e sem taxa de saída.',a:'Pague 11 mensalidades e use 12. Cobrança uma vez por ano por condomínio, até 150 unidades. Sem fidelidade.'};
+    tg.forEach(function(b){b.addEventListener('click',function(){
+      var c=b.getAttribute('data-cycle');
+      tg.forEach(function(x){var on=x===b;x.setAttribute('aria-pressed',String(on));x.className='tgl px-4 py-2 rounded-full '+(on?'bg-emerald-600 text-white':'text-gray-700');});
+      document.querySelectorAll('[data-m]').forEach(function(el){el.querySelector('.num').textContent=el.getAttribute(c==='m'?'data-m':'data-a');var p=el.parentNode.querySelector('.per');if(p)p.textContent=c==='m'?'por condomínio ao mês':'por condomínio ao ano';});
+      document.getElementById('price-note').textContent=notes[c];
+    });});
+  }
+  var f=document.getElementById('msg-form');
+  if(f){
+    var C=window.CF_FORM||{};
+    var svc=((C.provider==='formspree'&&C.endpoint)||(C.provider==='web3forms'&&C.accessKey))?C.provider:'';
+    var btn=f.querySelector('button[type=submit]');
+    var hint=document.getElementById('send-hint');
+    if(svc&&hint) hint.textContent='Ao enviar, a mensagem segue por e-mail para a CondoFluxo e o WhatsApp abre com o texto pronto.';
+    f.addEventListener('submit',function(e){
+      e.preventDefault();
+      var v=function(id){return (document.getElementById(id).value||'').trim();};
+      var st=document.getElementById('send-status');
+      if(v('f-hp')) return;
+      var nome=v('f-nome'),ret=v('f-ret');
+      if(!nome){st.textContent='Informe o seu nome para enviar.';document.getElementById('f-nome').focus();return;}
+      if(!ret){st.textContent='Informe um e-mail ou WhatsApp para retorno.';document.getElementById('f-ret').focus();return;}
+      var papel=v('f-papel'),cond=v('f-cond'),cid=v('f-cid'),qtd=v('f-qtd'),int=v('f-int'),msg=v('f-msg');
+      var t='Olá! Meu nome é '+nome+' e sou '+papel+(cond?' do condomínio '+cond:'')+(cid?', em '+cid:'')+'.\n\nContato para retorno: '+ret+'.'+(qtd?'\n\nQuantidade de condomínios: '+qtd+'.':'')+'\n\nTenho interesse em: '+int+'.\n\n'+msg+'\n\nObrigado!';
+      var wa='https://wa.me/5551996117922?text='+encodeURIComponent(t);
+      var mail='mailto:condofluxo@condofluxo.com.br?subject='+encodeURIComponent('Contato pelo site CondoFluxo')+'&body='+encodeURIComponent(t);
+      document.getElementById('wa-send').href=wa;
+      document.getElementById('mail-link').href=mail;
+      document.getElementById('out-wrap').hidden=false;
+      try{window.open(wa,'_blank','noopener');}catch(x){}
+      if(!svc){
+        st.textContent='Abrimos o WhatsApp e o seu programa de e-mail com a mensagem pronta. Confirme o envio em cada um.';
+        try{window.location.href=mail;}catch(x){}
+        return;
+      }
+      st.textContent='Enviando...'; btn.disabled=true;
+      var data={name:nome,contato:ret,perfil:papel,condominio:cond,cidade:cid,quantidade:qtd,interesse:int,mensagem:t};
+      if(/@/.test(ret)) data.email=ret;
+      var url,body;
+      if(svc==='formspree'){url=C.endpoint;body=Object.assign({_subject:'Contato pelo site CondoFluxo'},data);}
+      else{url='https://api.web3forms.com/submit';body=Object.assign({access_key:C.accessKey,subject:'Contato pelo site CondoFluxo',from_name:'Site CondoFluxo',message:t},data);}
+      fetch(url,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(body)})
+        .then(function(r){return r.json().catch(function(){return {};}).then(function(j){return r.ok&&(svc==='formspree'||j.success===true);});})
+        .catch(function(){return false;})
+        .then(function(ok){
+          btn.disabled=false;
+          st.textContent=ok?'Recebemos a sua mensagem por e-mail. Abrimos também o WhatsApp com o texto pronto: é só confirmar o envio por lá.':'Não conseguimos enviar o e-mail automaticamente. Abrimos o WhatsApp com a mensagem pronta e, se preferir, use o link abaixo para enviar por e-mail.';
+        });
+    });
+  }
+})();
+</script><script>
+(function(){
+  var C=window.CF_GA||{}, ID=String(C.id||'').trim(), KEY='cf_consent_v1';
+  var box=document.getElementById('cc'), st=document.getElementById('cc-st'), fab=document.querySelector('.wa-fab');
+  var wraps=document.querySelectorAll('[data-cc-wrap]');
+  if(!box||(!ID&&!C.preview)){ for(var i=0;i<wraps.length;i++) wraps[i].hidden=true; return; }
+  function get(){ try{ return localStorage.getItem(KEY); }catch(e){ return null; } }
+  function put(v){ try{ localStorage.setItem(KEY,v); }catch(e){} }
+  var loaded=false;
+  function load(){
+    if(!ID) return;
+    window['ga-disable-'+ID]=false;
+    if(loaded) return; loaded=true;
+    window.dataLayer=window.dataLayer||[];
+    window.gtag=function(){ window.dataLayer.push(arguments); };
+    gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'granted'});
+    gtag('js',new Date());
+    gtag('config',ID,{allow_google_signals:false,allow_ad_personalization_signals:false});
+    var s=document.createElement('script'); s.async=true;
+    s.src='https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(ID);
+    document.head.appendChild(s);
+  }
+  function wipe(){
+    if(ID) window['ga-disable-'+ID]=true;
+    var parts=location.hostname.split('.'), doms=[''], k;
+    for(k=0;k<parts.length-1;k++) doms.push('.'+parts.slice(k).join('.'));
+    var list=document.cookie?document.cookie.split(';'):[];
+    list.forEach(function(c){
+      var n=c.split('=')[0].trim();
+      if(n==='_ga'||n.indexOf('_ga_')===0||n==='_gid'||n.indexOf('_gat')===0){
+        doms.forEach(function(d){ document.cookie=n+'=; Max-Age=0; path=/'+(d?'; domain='+d:''); });
+      }
+    });
+  }
+  function place(){
+    if(!fab) return;
+    if(box.hidden){ fab.classList.remove('cc-up'); document.documentElement.style.removeProperty('--ccH'); }
+    else { document.documentElement.style.setProperty('--ccH',box.offsetHeight+'px'); fab.classList.add('cc-up'); }
+  }
+  function show(manual){
+    var cur=get();
+    if(manual&&cur){ st.hidden=false; st.textContent='Sua escolha atual: '+(cur==='granted'?'cookies de medição aceitos.':'cookies de medição recusados.'); }
+    else { st.hidden=true; }
+    box.hidden=false; place();
+    if(manual){ var b=box.querySelector('.cc-ok'); if(b&&b.focus) b.focus(); }
+  }
+  function choose(v){
+    put(v);
+    if(v==='granted') load(); else wipe();
+    box.hidden=true; place();
+  }
+  var cur=get();
+  if(cur==='granted') load(); else if(cur!=='denied') show(false);
+  box.addEventListener('click',function(e){
+    var b=e.target.closest?e.target.closest('[data-cc]'):null;
+    if(b) choose(b.getAttribute('data-cc'));
+  });
+  document.addEventListener('click',function(e){
+    var t=e.target.closest?e.target.closest('[data-cookie-pref]'):null;
+    if(t){ e.preventDefault(); show(true); }
+  });
+  window.addEventListener('resize',place);
+})();
+</script></body></html>
