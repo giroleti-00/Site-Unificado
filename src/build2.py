@@ -67,6 +67,27 @@ h3.font-serif{line-height:1.2!important}
 .post a{color:#047857;font-weight:600;text-decoration:underline;text-underline-offset:3px}
 .post a:hover{color:#065f46}
 .post strong{color:#111827}
+.post table{width:100%;border-collapse:collapse;font-size:.95rem;margin:0 0 1.6rem}
+.post th,.post td{border-bottom:1px solid #e7e5e4;padding:.65rem .75rem;text-align:left;vertical-align:top;color:#44403c;line-height:1.5}
+.post th{background:#ecfdf5;color:#064e3b;font-weight:700}
+.post code{background:#f5f5f4;border-radius:.35rem;padding:.1rem .35rem;font-size:.9em;color:#064e3b}
+.cc-open{display:inline-flex;align-items:center;gap:.5rem;background:#059669;color:#fff!important;text-decoration:none!important;font-weight:600;padding:.7rem 1.4rem;border-radius:9999px;border:0;cursor:pointer;font:inherit;font-weight:600}
+.cc-open:hover{background:#047857}
+/* Aviso de cookies */
+.cc{position:fixed;left:max(16px,env(safe-area-inset-left));right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:70;max-width:25rem;background:#fff;border:1px solid #e7e5e4;border-radius:1.25rem;box-shadow:0 20px 50px -12px rgba(6,95,70,.28),0 4px 14px rgba(0,0,0,.08);padding:1.15rem 1.2rem 1.1rem;animation:ccin .35s ease both}
+.cc h2{font-weight:700;font-size:1rem;color:#064e3b;margin:0 0 .35rem;display:flex;align-items:center;gap:.5rem}
+.cc p{font-size:.86rem;line-height:1.55;color:#44403c;margin:0}
+.cc p a{color:#047857;font-weight:600;text-decoration:underline;text-underline-offset:2px}
+.cc-btns{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-top:.95rem}
+.cc-btn{font:inherit;font-size:.9rem;font-weight:600;padding:.65rem 1rem;border-radius:9999px;cursor:pointer;border:1.5px solid #059669;transition:background .2s,color .2s}
+.cc-no{background:#fff;color:#047857}.cc-no:hover{background:#ecfdf5}
+.cc-ok{background:#059669;color:#fff}.cc-ok:hover{background:#047857}
+.cc-btn:focus-visible{outline:3px solid #34d399;outline-offset:2px}
+@keyframes ccin{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media(min-width:640px){.cc{right:auto}}
+@media(max-width:639px){.wa-fab.cc-up{bottom:calc(var(--ccH,0px) + 28px)}}
+.lnk-btn{background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer;text-decoration:underline;text-underline-offset:2px}
+.lnk-btn:hover{color:#047857}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}.lift:hover,.lift-t:hover{transform:none!important}.js .rv{opacity:1;transform:none}main,footer{animation:none}body.leaving main,body.leaving footer{opacity:1;transform:none}}
 '''
 
@@ -162,6 +183,78 @@ JS='''
 })();
 '''
 
+CONSENT_HTML='''<div id="cc" class="cc" role="region" aria-label="Aviso de cookies" hidden>
+ <h2><i data-lucide="cookie" class="w-5 h-5 text-emerald-600"></i>Cookies neste site</h2>
+ <p>Usamos cookies de medição do Google Analytics para entender quais páginas ajudam mais e melhorar o site. Eles só são ativados se você aceitar, e você pode mudar de ideia quando quiser. <a href="politica-de-privacidade.html">Política de Privacidade</a></p>
+ <p id="cc-st" class="cc-st" hidden></p>
+ <div class="cc-btns"><button type="button" class="cc-btn cc-no" data-cc="denied">Recusar</button><button type="button" class="cc-btn cc-ok" data-cc="granted">Aceitar</button></div>
+</div>'''
+
+CONSENT_JS='''
+(function(){
+  var C=window.CF_GA||{}, ID=String(C.id||'').trim(), KEY='cf_consent_v1';
+  var box=document.getElementById('cc'), st=document.getElementById('cc-st'), fab=document.querySelector('.wa-fab');
+  var wraps=document.querySelectorAll('[data-cc-wrap]');
+  if(!box||(!ID&&!C.preview)){ for(var i=0;i<wraps.length;i++) wraps[i].hidden=true; return; }
+  function get(){ try{ return localStorage.getItem(KEY); }catch(e){ return null; } }
+  function put(v){ try{ localStorage.setItem(KEY,v); }catch(e){} }
+  var loaded=false;
+  function load(){
+    if(!ID) return;
+    window['ga-disable-'+ID]=false;
+    if(loaded) return; loaded=true;
+    window.dataLayer=window.dataLayer||[];
+    window.gtag=function(){ window.dataLayer.push(arguments); };
+    gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'granted'});
+    gtag('js',new Date());
+    gtag('config',ID,{allow_google_signals:false,allow_ad_personalization_signals:false});
+    var s=document.createElement('script'); s.async=true;
+    s.src='https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(ID);
+    document.head.appendChild(s);
+  }
+  function wipe(){
+    if(ID) window['ga-disable-'+ID]=true;
+    var parts=location.hostname.split('.'), doms=[''], k;
+    for(k=0;k<parts.length-1;k++) doms.push('.'+parts.slice(k).join('.'));
+    var list=document.cookie?document.cookie.split(';'):[];
+    list.forEach(function(c){
+      var n=c.split('=')[0].trim();
+      if(n==='_ga'||n.indexOf('_ga_')===0||n==='_gid'||n.indexOf('_gat')===0){
+        doms.forEach(function(d){ document.cookie=n+'=; Max-Age=0; path=/'+(d?'; domain='+d:''); });
+      }
+    });
+  }
+  function place(){
+    if(!fab) return;
+    if(box.hidden){ fab.classList.remove('cc-up'); document.documentElement.style.removeProperty('--ccH'); }
+    else { document.documentElement.style.setProperty('--ccH',box.offsetHeight+'px'); fab.classList.add('cc-up'); }
+  }
+  function show(manual){
+    var cur=get();
+    if(manual&&cur){ st.hidden=false; st.textContent='Sua escolha atual: '+(cur==='granted'?'cookies de medição aceitos.':'cookies de medição recusados.'); }
+    else { st.hidden=true; }
+    box.hidden=false; place();
+    if(manual){ var b=box.querySelector('.cc-ok'); if(b&&b.focus) b.focus(); }
+  }
+  function choose(v){
+    put(v);
+    if(v==='granted') load(); else wipe();
+    box.hidden=true; place();
+  }
+  var cur=get();
+  if(cur==='granted') load(); else if(cur!=='denied') show(false);
+  box.addEventListener('click',function(e){
+    var b=e.target.closest?e.target.closest('[data-cc]'):null;
+    if(b) choose(b.getAttribute('data-cc'));
+  });
+  document.addEventListener('click',function(e){
+    var t=e.target.closest?e.target.closest('[data-cookie-pref]'):null;
+    if(t){ e.preventDefault(); show(true); }
+  });
+  window.addEventListener('resize',place);
+})();
+'''
+
 LOGO='<img src="assets/logo-condofluxo.png" alt="CondoFluxo" class="h-9 w-auto" width="140" height="37">'
 WORD=''
 
@@ -199,7 +292,7 @@ FOOT=f'''<footer class="border-t border-stone-200 bg-white/60"><div class="max-w
   <span class="flex items-center gap-2 break-all"><i data-lucide="mail" class="w-4 h-4 shrink-0 text-emerald-600"></i>condofluxo@condofluxo.com.br</span>
   <a href="{IG_LINK}" target="_blank" rel="noopener" class="flex items-center gap-2 hover:text-emerald-700">{ig('w-4 h-4 shrink-0 text-emerald-600')}@condofluxo</a>
   <a href="https://www.condofluxo.com.br/gestao" target="_blank" rel="noopener" class="flex items-center gap-2 hover:text-emerald-700 break-all"><i data-lucide="globe" class="w-4 h-4 shrink-0 text-emerald-600"></i>www.condofluxo.com.br/gestao</a></div></div>
- </div><div class="border-t border-stone-200 py-5 text-center text-xs text-gray-500">© 2026 CondoFluxo. Todos os direitos reservados.</div></footer>'''
+ </div><div class="border-t border-stone-200 py-5 text-center text-xs text-gray-500">© 2026 CondoFluxo. Todos os direitos reservados.<span class="mx-2" aria-hidden="true">·</span><a href="politica-de-privacidade.html" class="underline underline-offset-2 hover:text-emerald-700">Política de Privacidade</a><span data-cc-wrap><span class="mx-2" aria-hidden="true">·</span><button type="button" class="lnk-btn" data-cookie-pref>Preferências de cookies</button></span></div></footer>'''
 
 import shutil
 shutil.copytree(os.path.join(HERE,'assets_src'),os.path.join(OUT,'assets'),dirs_exist_ok=True)
@@ -217,7 +310,7 @@ def metas(title,desc,fname,ld,img=None):
 
 def page(fname,title,cur,main,full,desc='',wamsg='Olá! Vim pelo site da CondoFluxo e gostaria de conversar.',ld=None,img=None,extra_head=''):
     fab=f'<a href="{walink(wamsg)}" target="_blank" rel="noopener" class="wa-fab" aria-label="Conversar pelo WhatsApp">{wa("")}</a>'
-    body=f'<div id="top" style="position:absolute;top:0;left:0;width:1px;height:1px" aria-hidden="true"></div>{nav(cur)}\n<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20 lg:pt-32">{main}</main>\n{FOOT}\n{fab}\n<script>{JS}</script>'
+    body=f'<div id="top" style="position:absolute;top:0;left:0;width:1px;height:1px" aria-hidden="true"></div>{nav(cur)}\n<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20 lg:pt-32">{main}</main>\n{FOOT}\n{fab}\n{CONSENT_HTML}\n<script src="config.js"></script><script>{JS}</script><script>{CONSENT_JS}</script>'
     pre='<script>document.documentElement.classList.add("js")</script>'
     mt=metas(title,desc,fname,ld,img) if desc else ''
     if full:
@@ -423,7 +516,7 @@ page('sobre.html','Sobre o Convivus | CondoFluxo','sobre.html',sob,True,
 
 # ================= CONTATO =================
 ct=head('mail','Contato','Conte como é','o seu condomínio','Respondemos por WhatsApp, telefone ou e-mail. Preencha abaixo e clique em Enviar: abrimos o WhatsApp e o e-mail com a mensagem pronta.')
-ct+='''<script src="config.js"></script><section class="grid gap-4 lg:grid-cols-5">
+ct+='''<section class="grid gap-4 lg:grid-cols-5">
  <div class="lg:col-span-2 rounded-3xl bg-gradient-to-br from-emerald-800 to-emerald-900 text-white p-8 shadow-2xl flex flex-col gap-5 rv">
   <div class="flex gap-4 items-start"><span class="w-10 h-10 rounded-full bg-white/15 flex items-center justify-center shrink-0">@@WA@@</span><div class="min-w-0"><p class="text-xs uppercase tracking-widest text-emerald-200 mb-1">WhatsApp</p><p class="font-medium">+55 51 99611-7922</p><div class="mt-2 flex flex-wrap gap-2"><a href="@@WALINK@@" target="_blank" rel="noopener" class="text-xs font-semibold bg-white text-emerald-800 rounded-full px-3 py-1 hover:bg-emerald-50">Abrir conversa</a><button type="button" data-copy="+55 51 99611-7922" class="text-xs font-semibold border border-white/40 rounded-full px-3 py-1 hover:bg-white/10">Copiar</button></div></div></div>
   <div class="flex gap-4 items-start"><span class="w-10 h-10 rounded-full bg-white/15 flex items-center justify-center shrink-0"><i data-lucide="mail" class="w-5 h-5 text-white"></i></span><div class="min-w-0"><p class="text-xs uppercase tracking-widest text-emerald-200 mb-1">E-mail</p><p class="font-medium break-all">condofluxo@condofluxo.com.br</p><button type="button" data-copy="condofluxo@condofluxo.com.br" class="mt-2 text-xs font-semibold border border-white/40 rounded-full px-3 py-1 hover:bg-white/10">Copiar</button></div></div>
@@ -441,6 +534,7 @@ ct+='''<script src="config.js"></script><section class="grid gap-4 lg:grid-cols-
    <div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden" aria-hidden="true"><label for="f-hp">Não preencha este campo</label><input id="f-hp" type="text" tabindex="-1" autocomplete="off"></div>
    <div class="sm:col-span-2"><label class="lbl" for="f-msg">O que você precisa</label><textarea class="fld" id="f-msg" rows="4">Quero conhecer e entender como funciona a contratação.</textarea></div>
    <div class="sm:col-span-2 flex flex-wrap items-center gap-4"><button type="submit" class="bg-emerald-600 text-white px-8 py-3 rounded-full font-medium hover:bg-emerald-700 transition-colors">Enviar</button><p id="send-hint" class="text-xs text-gray-500 max-w-sm">Ao enviar, abrimos o WhatsApp e o seu programa de e-mail com a mensagem pronta.</p></div>
+   <p class="sm:col-span-2 text-xs text-gray-500">Usamos os seus dados só para responder ao seu contato. Saiba mais na <a href="politica-de-privacidade.html" class="font-semibold text-emerald-700 underline underline-offset-2">Política de Privacidade</a>.</p>
    <p id="send-status" class="sm:col-span-2 text-sm text-gray-700" role="status"></p>
   </form>
   <div id="out-wrap" class="mt-2 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm" hidden><span class="text-gray-500">Não abriu?</span><a id="wa-send" href="#" target="_blank" rel="noopener" class="font-semibold text-emerald-700 underline">Enviar pelo WhatsApp</a><a id="mail-link" href="#" class="font-semibold text-emerald-700 underline">Enviar por e-mail</a></div>
@@ -593,6 +687,70 @@ NF=f"""<section class="grid gap-10 lg:grid-cols-2 lg:gap-14 items-center">
 </section>"""
 page('404.html','Página não encontrada | CondoFluxo','',NF,True,extra_head='<base href="/"><meta name="robots" content="noindex">')
 
+# ================= POLÍTICA DE PRIVACIDADE =================
+GA_COOKIE_ID=os.environ.get('CF_GA_ID','G-N91QJF2G98').strip() or 'G-N91QJF2G98'
+pv=head('shield-check','Privacidade','Política de','Privacidade','Como a CondoFluxo trata os seus dados neste site, em linguagem simples. Atualizada em 10 de novembro de 2026.')
+pv+=f"""<article class="post max-w-3xl rv">
+<h2>1. Quem é o responsável</h2>
+<p>Este site (www.condofluxo.com.br) é mantido pela CondoFluxo, de Porto Alegre (RS), que também desenvolve o Convivus, portal de gestão para condomínios. Para qualquer assunto de privacidade e proteção de dados, com base na Lei Geral de Proteção de Dados (LGPD, Lei 13.709/2018), escreva para <strong>condofluxo@condofluxo.com.br</strong>.</p>
+<p>Esta política vale para este site. O portal Convivus, que exige cadastro e login, pode ter regras próprias de tratamento de dados, informadas no momento do cadastro.</p>
+
+<h2>2. Quais dados coletamos e para quê</h2>
+<h3>Formulário de contato</h3>
+<p>Se você preencher o formulário da página Contato, recebemos o que você digitar: nome, se é síndico, morador ou outro perfil, condomínio e cidade, quantidade de condomínios, interesse, e-mail ou WhatsApp para retorno e a mensagem. Usamos esses dados apenas para responder ao seu contato e apresentar o Convivus ou os materiais de comunicação. A base legal é a realização de procedimentos preliminares a um possível contrato, a pedido do próprio titular (LGPD, art. 7º, V).</p>
+<p>Mensagens enviadas diretamente por WhatsApp, e-mail ou Instagram seguem também as regras de cada um desses serviços.</p>
+<h3>Estatísticas de acesso (Google Analytics)</h3>
+<p>Somente se você aceitar, usamos o Google Analytics 4 para medir o uso do site: páginas visitadas, tempo de permanência, tipo de dispositivo e navegador, origem do acesso (por exemplo, uma busca ou o Instagram) e localização aproximada, como cidade ou região. As informações são analisadas em conjunto, para melhorar o conteúdo. Não enviamos ao Google o seu nome, e-mail ou telefone, e não usamos esses dados para publicidade nem para personalizar anúncios. A base legal é o seu consentimento (LGPD, art. 7º, I), que você pode retirar quando quiser.</p>
+<h3>Dados técnicos de acesso</h3>
+<p>Como em qualquer site, os servidores que entregam as páginas recebem dados técnicos da sua conexão, como o endereço IP, o navegador e a data do acesso. Isso é necessário para o site funcionar e ficar seguro.</p>
+
+<h2>3. Cookies e armazenamento no navegador</h2>
+<p>Antes de você aceitar, nenhum cookie de medição é criado e nenhum dado é enviado ao Google Analytics.</p>
+<div class="overflow-x-auto"><table>
+<thead><tr><th>Nome</th><th>Para que serve</th><th>Duração</th><th>Tipo</th></tr></thead>
+<tbody>
+<tr><td><code>cf_consent_v1</code> (armazenamento local)</td><td>Guarda a sua escolha sobre os cookies, para não perguntar de novo a cada página.</td><td>Até você limpar os dados do navegador</td><td>Necessário</td></tr>
+<tr><td><code>_ga</code></td><td>Identifica o navegador de forma anônima, para contar visitantes (Google Analytics).</td><td>2 anos</td><td>Medição, só com o seu aceite</td></tr>
+<tr><td><code>_ga_{GA_COOKIE_ID.replace('G-','')}</code></td><td>Mantém o estado da sessão de visita (Google Analytics).</td><td>2 anos</td><td>Medição, só com o seu aceite</td></tr>
+</tbody></table></div>
+<p>Para mudar de ideia, use o botão abaixo ou o link &ldquo;Preferências de cookies&rdquo; no rodapé de qualquer página. Ao recusar, apagamos os cookies de medição deste navegador. Você também pode bloquear ou apagar cookies nas configurações do navegador.</p>
+<p><button type="button" class="cc-open" data-cookie-pref>Abrir preferências de cookies</button></p>
+
+<h2>4. Com quem os dados passam</h2>
+<p>Não vendemos dados pessoais. Para o site funcionar, usamos estes serviços de terceiros:</p>
+<ul>
+<li><strong>Google.</strong> O Google Analytics só roda com o seu aceite. As fontes de texto (Google Fonts) são entregues pelos servidores do Google, que recebem o endereço IP de quem visita o site.</li>
+<li><strong>Web3Forms.</strong> Serviço que entrega por e-mail as mensagens do formulário de contato; os dados do formulário passam por ele antes de chegar à CondoFluxo.</li>
+<li><strong>Cloudflare.</strong> Hospedagem e proteção do site; recebe dados técnicos de acesso para entregar as páginas.</li>
+<li><strong>Bibliotecas de código (CDN).</strong> Estilos e ícones do site são carregados de servidores públicos (cdn.tailwindcss.com e unpkg.com), que recebem dados técnicos do acesso, como o endereço IP.</li>
+<li><strong>WhatsApp e Instagram (Meta).</strong> Ao clicar nesses botões, ou ao enviar o formulário (que abre o WhatsApp com a mensagem pronta), você passa a usar serviços da Meta, regidos pelas políticas dela.</li>
+</ul>
+<p>Alguns desses serviços podem tratar dados fora do Brasil.</p>
+
+<h2>5. Por quanto tempo guardamos</h2>
+<p>As mensagens do formulário ficam guardadas pelo tempo necessário para atender o seu pedido e manter a relação comercial, se houver. Depois disso, eliminamos ou anonimizamos os dados, salvo se a lei exigir a guarda. Os dados do Google Analytics seguem o prazo de retenção configurado na ferramenta, de no máximo 14 meses. Os cookies seguem os prazos da tabela acima.</p>
+
+<h2>6. Seus direitos</h2>
+<p>Pela LGPD (art. 18), você pode pedir a qualquer momento:</p>
+<ul>
+<li>a confirmação de que tratamos dados seus e o acesso a eles;</li>
+<li>a correção de dados incompletos, inexatos ou desatualizados;</li>
+<li>a anonimização, o bloqueio ou a eliminação de dados desnecessários ou tratados fora da lei;</li>
+<li>a portabilidade dos dados, quando aplicável;</li>
+<li>a informação sobre com quem compartilhamos os dados;</li>
+<li>a eliminação dos dados tratados com o seu consentimento e a retirada desse consentimento.</li>
+</ul>
+<p>Para exercer qualquer um desses direitos, escreva para condofluxo@condofluxo.com.br. Se achar que o tratamento não está correto, você também pode recorrer à Autoridade Nacional de Proteção de Dados (ANPD).</p>
+
+<h2>7. Segurança</h2>
+<p>O site é entregue por conexão segura (HTTPS) e coletamos apenas o necessário para as finalidades acima. Nenhum sistema é totalmente imune a falhas; se houver um incidente que possa afetar os seus dados, avisaremos nos termos da lei.</p>
+
+<h2>8. Mudanças nesta política</h2>
+<p>Podemos atualizar esta política quando o site mudar ou a lei exigir. A data da última atualização fica no topo da página.</p>
+</article>"""
+page('politica-de-privacidade.html','Política de Privacidade | CondoFluxo','',pv,True,
+     desc='Como a CondoFluxo trata dados pessoais neste site: formulário de contato, Google Analytics, cookies e seus direitos pela LGPD.')
+
 CONFIG_JS='''// Configuração do envio de e-mail do formulário de contato.
 // Enquanto estiver em branco, o botão Enviar abre o WhatsApp e o programa de e-mail do visitante.
 //
@@ -607,16 +765,29 @@ window.CF_FORM = {
   endpoint: '',
   accessKey: ''
 };
+
+// Google Analytics 4. O código do Google só é carregado depois que o visitante clica em Aceitar
+// no aviso de cookies (LGPD). Para trocar a propriedade, altere o id (formato G-XXXXXXXXXX).
+// Para desligar o Analytics e o aviso de cookies, deixe o id em branco ('').
+window.CF_GA = {
+  id: '',
+  preview: false
+};
 '''
 W3KEY=os.environ.get('CF_WEB3_KEY','26e2bc49-3639-4a82-84eb-eab2796f7334').strip()
 if W3KEY:
     CONFIG_JS=CONFIG_JS.replace("  provider: '',","  provider: 'web3forms',").replace("  accessKey: ''","  accessKey: '"+W3KEY+"'")
     CONFIG_JS=CONFIG_JS.replace("// Enquanto estiver em branco,","// Envio por e-mail ativo via Web3Forms (a chave de acesso é pública por desenho).\n// Se ficar em branco,")
+GAID=os.environ.get('CF_GA_ID','G-N91QJF2G98').strip()
+if GAID:
+    CONFIG_JS=CONFIG_JS.replace("  id: '',","  id: '"+GAID+"',")
+if os.environ.get('CF_GA_PREVIEW')=='1':
+    CONFIG_JS=CONFIG_JS.replace("  preview: false","  preview: true")
 open(os.path.join(OUT,'config.js'),'w').write(CONFIG_JS)
 
 # ================= ARQUIVOS DE SEO (só no build local) =================
 if os.environ.get('CF_FULL')=='1':
-    pages=['index.html','gestao.html','comunicacao.html','blog.html','sobre.html','contato.html','manutencao-predial-normativa.html','ppci-avcb-guia.html']+[purl(po) for po in POSTS]
+    pages=['index.html','gestao.html','comunicacao.html','blog.html','sobre.html','contato.html','manutencao-predial-normativa.html','ppci-avcb-guia.html','politica-de-privacidade.html']+[purl(po) for po in POSTS]
     sm='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'  <url><loc>{SITE}/{cp(f)}</loc></url>\n' for f in pages)+'</urlset>\n'
     open(os.path.join(OUT,'sitemap.xml'),'w').write(sm)
     open(os.path.join(OUT,'robots.txt'),'w').write(f'User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n')
@@ -639,6 +810,9 @@ if os.environ.get('CF_FULL')=='1':
 ## Blog
 - [Blog]({SITE}/blog): artigos para síndicos sobre manutenção predial, normas, PPCI/AVCB, documentos e convivência.
 {BLOG_LLMS}
+
+## Privacidade
+- [Política de Privacidade]({SITE}/politica-de-privacidade): dados coletados, cookies (Google Analytics só com consentimento) e direitos pela LGPD.
 
 ## Contato
 - WhatsApp: +55 51 99611-7922

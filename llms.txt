@@ -18,6 +18,9 @@
 - [Checklist de manutenção predial por frequência: do diário ao quinquenal](https://www.condofluxo.com.br/blog-checklist-manutencao-predial-por-frequencia): Uma referência para síndicos organizarem as rotinas do condomínio, da conferência diária aos laudos de longo prazo, com os prazos revisados e as normas ABNT de cada item.
 - [Manutenção predial no condomínio: por onde o síndico começa](https://www.condofluxo.com.br/blog-manutencao-predial-por-onde-comecar): Um roteiro simples para sair do improviso: levantar os sistemas do prédio, definir responsável e periodicidade e guardar a prova de cada serviço.
 
+## Privacidade
+- [Política de Privacidade](https://www.condofluxo.com.br/politica-de-privacidade): dados coletados, cookies (Google Analytics só com consentimento) e direitos pela LGPD.
+
 ## Contato
 - WhatsApp: +55 51 99611-7922
 - E-mail: condofluxo@condofluxo.com.br

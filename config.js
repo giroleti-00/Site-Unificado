@@ -13,3 +13,11 @@ window.CF_FORM = {
   endpoint: '',
   accessKey: '26e2bc49-3639-4a82-84eb-eab2796f7334'
 };
+
+// Google Analytics 4. O código do Google só é carregado depois que o visitante clica em Aceitar
+// no aviso de cookies (LGPD). Para trocar a propriedade, altere o id (formato G-XXXXXXXXXX).
+// Para desligar o Analytics e o aviso de cookies, deixe o id em branco ('').
+window.CF_GA = {
+  id: 'G-N91QJF2G98',
+  preview: false
+};

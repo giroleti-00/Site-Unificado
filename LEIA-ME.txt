@@ -3,7 +3,8 @@ Site CondoFluxo - versao local
 COMO ABRIR
 De dois cliques em index.html (abre no navegador).
 Paginas: index.html, gestao.html (Convivus), comunicacao.html, sobre.html, contato.html,
-manutencao-predial-normativa.html (guia), ppci-avcb-guia.html (guia).
+manutencao-predial-normativa.html (guia), ppci-avcb-guia.html (guia),
+politica-de-privacidade.html (Politica de Privacidade).
 Imagens e logos: pasta assets (mantenha ao lado dos arquivos HTML).
 Precisa de internet: fontes (Google Fonts), Tailwind CSS e icones (Lucide) sao carregados por CDN.
 
@@ -33,3 +34,14 @@ Observacoes:
    O formulario tem um campo escondido contra robos de spam.
  - Os planos gratuitos tem limite mensal de envios; confira no site do servico.
  - Os dados do formulario passam pelo servico escolhido. Inclua isso na politica de privacidade do site (LGPD).
+
+GOOGLE ANALYTICS E AVISO DE COOKIES (LGPD)
+O site usa o Google Analytics 4 (config.js, bloco window.CF_GA). O codigo do Google so e carregado
+depois que o visitante clica em Aceitar no aviso de cookies; se ele clicar em Recusar, nada e enviado
+ao Google. A escolha fica salva no navegador (cf_consent_v1) e pode ser mudada no link
+"Preferencias de cookies", no rodape de todas as paginas.
+ - Para trocar a propriedade do Analytics: edite o id (formato G-XXXXXXXXXX) em config.js.
+ - Para desligar o Analytics e o aviso de cookies: deixe o id em branco ('').
+ - Se algum dia forem usados outros cookies (anuncios, mapas, videos), atualize o aviso e a
+   Politica de Privacidade (politica-de-privacidade.html, gerada em src/build2.py).
+ - O texto da politica e um modelo geral; recomenda-se revisao juridica e incluir razao social e CNPJ.
