@@ -42,6 +42,8 @@ ao Google. A escolha fica salva no navegador (cf_consent_v1) e pode ser mudada n
 "Preferencias de cookies", no rodape de todas as paginas.
  - Para trocar a propriedade do Analytics: edite o id (formato G-XXXXXXXXXX) em config.js.
  - Para desligar o Analytics e o aviso de cookies: deixe o id em branco ('').
+ - Eventos enviados ao Analytics (somente apos o aceite): generate_lead (formulario de contato enviado,
+   com interesse e quantidade de condominios, sem dados pessoais) e whatsapp_click (clique em links do WhatsApp).
  - Se algum dia forem usados outros cookies (anuncios, mapas, videos), atualize o aviso e a
    Politica de Privacidade (politica-de-privacidade.html, gerada em src/build2.py).
  - O texto da politica e um modelo geral; recomenda-se revisao juridica e incluir razao social e CNPJ.
