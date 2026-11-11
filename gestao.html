@@ -224,6 +224,14 @@ h3.font-serif{line-height:1.2!important}
 (function(){
   var C=window.CF_GA||{}, ID=String(C.id||'').trim(), KEY='cf_consent_v1';
   var box=document.getElementById('cc'), st=document.getElementById('cc-st'), fab=document.querySelector('.wa-fab');
+  // Acesso interno: abrir o site com ?interno=1 marca este navegador (e ?interno=0 desmarca).
+  // Navegadores marcados enviam traffic_type=internal ao Analytics, que o filtro "Internal Traffic" exclui.
+  var INT=false;
+  try{
+    var mi=/[?&]interno=([01])(?:&|#|$)/.exec(location.search);
+    if(mi){ if(mi[1]==='1') localStorage.setItem('cf_internal','1'); else localStorage.removeItem('cf_internal'); }
+    INT=localStorage.getItem('cf_internal')==='1';
+  }catch(e){}
   window.cfTrack=function(n,p){ try{ if(ID&&typeof window.gtag==='function'&&!window['ga-disable-'+ID]) window.gtag('event',n,p||{}); }catch(e){} };
   document.addEventListener('click',function(e){
     var a=e.target&&e.target.closest?e.target.closest('a[href*="wa.me/"]'):null;
@@ -242,7 +250,9 @@ h3.font-serif{line-height:1.2!important}
     window.gtag=function(){ window.dataLayer.push(arguments); };
     gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'granted'});
     gtag('js',new Date());
-    gtag('config',ID,{allow_google_signals:false,allow_ad_personalization_signals:false});
+    var cfg={allow_google_signals:false,allow_ad_personalization_signals:false};
+    if(INT) cfg.traffic_type='internal';
+    gtag('config',ID,cfg);
     var s=document.createElement('script'); s.async=true;
     s.src='https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(ID);
     document.head.appendChild(s);
