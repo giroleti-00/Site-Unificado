@@ -44,6 +44,10 @@ ao Google. A escolha fica salva no navegador (cf_consent_v1) e pode ser mudada n
  - Para desligar o Analytics e o aviso de cookies: deixe o id em branco ('').
  - Eventos enviados ao Analytics (somente apos o aceite): generate_lead (formulario de contato enviado,
    com interesse e quantidade de condominios, sem dados pessoais) e whatsapp_click (clique em links do WhatsApp).
+ - Para nao contar as suas proprias visitas: abra o site com ?interno=1 no final do endereco
+   (por exemplo https://www.condofluxo.com.br/?interno=1) uma vez em cada navegador ou celular seu.
+   Para desfazer, abra com ?interno=0. Esses acessos saem marcados como trafego interno no Analytics,
+   e o filtro "Internal Traffic" (Admin > Filtros de dados) os exclui.
  - Se algum dia forem usados outros cookies (anuncios, mapas, videos), atualize o aviso e a
    Politica de Privacidade (politica-de-privacidade.html, gerada em src/build2.py).
  - O texto da politica e um modelo geral; recomenda-se revisao juridica e incluir razao social e CNPJ.
