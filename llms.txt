@@ -15,6 +15,7 @@
 
 ## Blog
 - [Blog](https://www.condofluxo.com.br/blog): artigos para síndicos sobre manutenção predial, normas, PPCI/AVCB, documentos e convivência.
+- [Condomínios e a NFS-e: o que muda em 1º de dezembro](https://www.condofluxo.com.br/blog-nfse-condominios): A partir de 1º de dezembro de 2026, o condomínio passa a emitir NFS-e no próprio CNPJ. Entenda a regra, por que isso não é imposto novo, a exceção dos 80% e o que fazer até lá.
 - [Checklist de manutenção predial por frequência: do diário ao quinquenal](https://www.condofluxo.com.br/blog-checklist-manutencao-predial-por-frequencia): Uma referência para síndicos organizarem as rotinas do condomínio, da conferência diária aos laudos de longo prazo, com os prazos revisados e as normas ABNT de cada item.
 - [Manutenção predial no condomínio: por onde o síndico começa](https://www.condofluxo.com.br/blog-manutencao-predial-por-onde-comecar): Um roteiro simples para sair do improviso: levantar os sistemas do prédio, definir responsável e periodicidade e guardar a prova de cada serviço.
 

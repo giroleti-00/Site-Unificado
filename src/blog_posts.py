@@ -24,6 +24,92 @@
 
 POSTS = [
     {
+        "slug": "nfse-condominios",
+        "title": "Condomínios e a NFS-e: o que muda em 1º de dezembro",
+        "desc": "A partir de 1º de dezembro de 2026, o condomínio passa a emitir NFS-e no próprio CNPJ. Entenda a regra, por que isso não é imposto novo, a exceção dos 80% e o que fazer até lá.",
+        "date": "2026-11-11",
+        "cat": "Legislação",
+        "icon": "receipt",
+        "read": 6,
+        "image": "blog-nfse-condominios.jpg",
+        "image_og": "blog-nfse-condominios-og.jpg",
+        "image_alt": "Notebook com a tela da NFS-e, calendário marcando 1º de dezembro de 2026 e caderno com checklist sobre a mesa, com um prédio residencial ao fundo",
+        "body": """
+<p>A Reforma Tributária do consumo chegou ao dia a dia do condomínio. A partir de <strong>1º de dezembro de 2026</strong>, a taxa condominial e as demais receitas do condomínio passam a ser documentadas em Nota Fiscal de Serviços Eletrônica (NFS-e). A nota é emitida no CNPJ do próprio condomínio, e não no da administradora.</p>
+
+<h2>O que diz a nova regra</h2>
+<p>A obrigação vem do Ato Conjunto RFB/CGIBS nº 4, de 30 de julho de 2026 (art. 1º, III, "f"). Ele inclui no cronograma da NFS-e a cobrança de taxas e demais valores condominiais pelo condomínio edilício, além das outras receitas do condomínio. O regulamento do IBS (Resolução CGIBS nº 6/2026) confirma que o dever de emitir documento fiscal alcança as operações do condomínio.</p>
+<p>O ato define <strong>quando</strong> o documento passa a ser exigido. Quem paga ou não paga tributo é assunto da Lei Complementar 214/2025, explicada mais abaixo.</p>
+<table>
+<thead><tr><th>Data</th><th>O que acontece</th></tr></thead>
+<tbody>
+<tr><td><strong>01/10/2026</strong></td><td>Publicada a Nota Técnica SE/CGNFS-e nº 009, que cria o código 99.05.01, Operações Condominiais. A nota da taxa de administração passa a trazer os campos de IBS e CBS.</td></tr>
+<tr><td><strong>03/11/2026</strong></td><td>O ambiente nacional da NFS-e entra em produção com o novo leiaute.</td></tr>
+<tr><td><strong>01/12/2026</strong></td><td>Cobranças e outras receitas do condomínio passam a exigir NFS-e.</td></tr>
+<tr><td><strong>01/01/2027</strong></td><td>Administradoras do Simples Nacional passam a destacar IBS e CBS nas suas notas.</td></tr>
+</tbody>
+</table>
+<p>Em 2026, o IBS e a CBS estão em fase de teste: os campos são preenchidos na nota, mas não há cobrança efetiva dos novos tributos. A transição da Reforma segue até 2033.</p>
+
+<h2>Emitir nota não é pagar imposto</h2>
+<p>Pelo art. 26 da LC 214/2025, o condomínio edilício, como regra, <strong>não é contribuinte</strong> do IBS nem da CBS. A cota condominial continua sendo rateio de despesas entre os condôminos. O que muda é que agora ela fica documentada em nota fiscal.</p>
+<p>Essa condição muda em dois cenários:</p>
+<ul>
+<li><strong>Regra dos 80%.</strong> Se as cobranças feitas aos condôminos ficarem abaixo de 80% da receita total, ou seja, se as receitas com terceiros passarem de 20%, o condomínio passa a recolher IBS e CBS sobre essas operações com terceiros.</li>
+<li><strong>Opção pelo regime regular.</strong> Qualquer condomínio pode optar por ser contribuinte. Nesse caso, o IBS e a CBS incidem sobre tudo o que ele cobra, inclusive as cotas dos moradores, com direito a créditos. Por isso a opção raramente compensa em prédios residenciais.</li>
+</ul>
+<p>As receitas que pesam nessa conta são as de exploração das áreas comuns: aluguel do topo do prédio para antenas de telefonia, publicidade em fachada e elevadores, locação do salão de festas a não condôminos e estacionamento para terceiros. Prédios comerciais e mistos tendem a chegar perto do limite antes dos residenciais.</p>
+<p>Dois efeitos indiretos valem para todos:</p>
+<ul>
+<li>O condomínio que não é contribuinte recebe notas de fornecedores já com IBS e CBS, mas não aproveita esses créditos. Serviços de limpeza, portaria e segurança devem pesar mais no orçamento a partir de 2027.</li>
+<li>A NFS-e não substitui a declaração, no Imposto de Renda dos proprietários, dos rendimentos obtidos com as áreas comuns. São obrigações distintas.</li>
+</ul>
+
+<h2>Como é a nota fiscal do condomínio</h2>
+<p>A nota usa o código de tributação nacional <strong>99.05.01, Operações Condominiais</strong>. É um código de IBS e CBS, sem ISS.</p>
+<p>Ela não sai pelo sistema da prefeitura. Os códigos do grupo 99 só são emitidos pelos canais nacionais: o Emissor Nacional (web e aplicativo) ou a integração por API com o ambiente nacional da NFS-e. Na prática, cada condomínio precisa de CNPJ ativo e de um meio de acesso ao emissor, como o certificado digital.</p>
+<p>O leiaute pede a data de vencimento original e cada cobrança do boleto separada por tipo: condomínio ordinário, condomínio privativo, fundo de promoção e propaganda, impostos e taxas, fundo de reserva e outras cobranças, como a taxa extra. Descontos, como o de pontualidade, aparecem destacados.</p>
+<p>Receitas com terceiros não usam o 99.05.01. O aluguel do salão ou de uma vaga a não condôminos, por exemplo, vai nos códigos de locação e cessão de imóveis (99.03.x).</p>
+
+<h2>Nota do condomínio x nota da administradora</h2>
+<p>São dois documentos diferentes. A administradora já emite NFS-e pela sua taxa de administração. A novidade é a nota das cobranças, no CNPJ do condomínio. A administradora ou o síndico pode operar a emissão, mas a nota é sempre do condomínio.</p>
+<table>
+<thead><tr><th></th><th>Nota do condomínio</th><th>Nota da administradora</th></tr></thead>
+<tbody>
+<tr><td><strong>Emitente</strong></td><td>Condomínio, no CNPJ próprio</td><td>Administradora</td></tr>
+<tr><td><strong>O que registra</strong></td><td>Taxas e valores cobrados dos condôminos</td><td>Taxa de administração</td></tr>
+<tr><td><strong>Código</strong></td><td>99.05.01</td><td>Serviço de administração, com ISS</td></tr>
+<tr><td><strong>Onde emitir</strong></td><td>Só nos emissores nacionais</td><td>Conforme o município da administradora</td></tr>
+<tr><td><strong>Campos de IBS e CBS</strong></td><td>A partir de 01/12/2026</td><td>A partir de 01/10/2026 (Simples Nacional: 01/01/2027)</td></tr>
+</tbody>
+</table>
+
+<h2>Checklist até 1º de dezembro</h2>
+<ol>
+<li><strong>Confirme o CNPJ.</strong> Cada condomínio precisa estar com o cadastro ativo e regular.</li>
+<li><strong>Garanta o acesso ao Emissor Nacional.</strong> Providencie o certificado digital e defina quem opera a emissão: a administradora ou o síndico.</li>
+<li><strong>Separe as cobranças por tipo.</strong> Taxa ordinária, fundo de reserva e taxa extra precisam aparecer separadas no rateio e no plano de contas.</li>
+<li><strong>Levante as receitas com terceiros.</strong> Antenas, publicidade e locação de espaços: calcule quanto representam da receita total.</li>
+<li><strong>Atualize o cadastro de unidades.</strong> Proprietários, coproprietários, inquilinos e inscrição de IPTU de cada unidade.</li>
+<li><strong>Alinhe com o contador e com o sistema de cobrança.</strong> Defina o enquadramento tributário e como as notas sairão no fechamento do mês.</li>
+<li><strong>Revise o orçamento de 2027.</strong> Considere o aumento de custo dos serviços terceirizados.</li>
+<li><strong>Informe síndico, conselho e moradores.</strong> Explique o que muda e, principalmente, o que não muda na cota.</li>
+</ol>
+
+<h2>Base legal</h2>
+<p>As principais referências são o <a href="https://www.cgibs.gov.br/upload/arquivos/202607/31091735-20260730-16h30-ato-conjunto-rfb-cgibs-na-c2-ba-4-260731-090909.pdf" target="_blank" rel="noopener">Ato Conjunto RFB/CGIBS nº 4/2026</a>, a <a href="https://www.gov.br/nfse/pt-br/biblioteca/documentacao-tecnica/rtc/nota-tecnica-009-se-cgnfs-e-v-1-01.pdf" target="_blank" rel="noopener">Nota Técnica SE/CGNFS-e nº 009</a> e a Lei Complementar 214/2025, art. 26. A Reforma ainda terá regulamentações complementares, e a aplicação da regra dos 80% a cada caso depende de interpretação. Valide o enquadramento do seu condomínio com o contador.</p>
+<p>Para a rotina de manutenção, que segue valendo independentemente da parte fiscal, veja o <a href="blog-checklist-manutencao-predial-por-frequencia.html">checklist de manutenção predial por frequência</a>.</p>
+""",
+        "faq": [
+            ("A partir de quando o condomínio precisa emitir nota fiscal?",
+             "A partir de 1º de dezembro de 2026, conforme o Ato Conjunto RFB/CGIBS nº 4/2026. A obrigação vale para as cobranças feitas aos condôminos e para as outras receitas do condomínio."),
+            ("A taxa de condomínio vai ficar mais cara por causa da nota?",
+             "A emissão da nota, por si só, não cria imposto sobre a cota. Como regra, o condomínio não é contribuinte de IBS e CBS. O orçamento pode subir por outro motivo: o custo de serviços terceirizados, como limpeza e portaria, tende a aumentar com a Reforma a partir de 2027."),
+            ("Dá para emitir a nota do condomínio no sistema da prefeitura?",
+             "Não. O código 99.05.01 só é emitido pelo Emissor Nacional (web e aplicativo) ou por integração via API com o ambiente nacional da NFS-e."),
+        ],
+    },
+    {
         "slug": "manutencao-predial-por-onde-comecar",
         "title": "Manutenção predial no condomínio: por onde o síndico começa",
         "desc": "Um roteiro simples para sair do improviso: levantar os sistemas do prédio, definir responsável e periodicidade e guardar a prova de cada serviço.",
