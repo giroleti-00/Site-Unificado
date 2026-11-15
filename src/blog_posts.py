@@ -24,6 +24,94 @@
 
 POSTS = [
     {
+        "slug": "acidente-falta-manutencao-processo-sindico",
+        "title": "Acidente por falta de manutenção pode gerar processo contra o síndico?",
+        "desc": "Sim. Além do condomínio, o síndico pode responder na esfera civil e, em casos graves, na criminal. Veja o que diz a lei, quando a responsabilidade é afastada e como se proteger com registros.",
+        "date": "2026-11-14",
+        "cat": "Responsabilidade",
+        "icon": "shield-alert",
+        "read": 5,
+        "body": """
+<p><strong>Sim. Um acidente causado por falta de manutenção pode gerar processo contra o síndico, e não só contra o condomínio.</strong> Dependendo do caso, ele pode responder na esfera civil (indenização) e, nas situações mais graves, até na criminal.</p>
+<p>Essa é uma das dúvidas mais comuns entre síndicos, principalmente entre os profissionais que cuidam de vários condomínios ao mesmo tempo. Um portão com mola quebrada, um piso solto na garagem, um elevador sem manutenção: qualquer um desses itens pode virar um acidente. E o acidente pode virar um processo.</p>
+<p>Neste artigo, explicamos o que diz a lei, em que situações o síndico pode ser responsabilizado e, principalmente, o que ele pode fazer para se proteger.</p>
+
+<h2>O que diz a lei: a conservação é dever do síndico</h2>
+<p>O ponto de partida é o <strong>art. 1.348, inciso V, do Código Civil</strong>. Ele diz que compete ao síndico "diligenciar a conservação e a guarda das partes comuns e zelar pela prestação dos serviços que interessem aos possuidores".</p>
+<p>Na prática, tudo o que está na área comum passa pela gestão do síndico: elevadores, bombas, reservatórios, para-raios, extintores e hidrantes, gerador, fachada, piscina, portões. O mesmo artigo também faz do síndico o representante do condomínio, ativa e passivamente. Por isso, quando algo dá errado, ele está na linha de frente.</p>
+
+<h2>Na esfera civil: o dever de indenizar</h2>
+<p>Quem sofre um dano por ação ou omissão de outra pessoa tem direito a ser indenizado. A regra está nos <strong>arts. 186 e 927 do Código Civil</strong> e vale tanto para negligência quanto para imprudência ou imperícia.</p>
+<p>No caso de um acidente por falta de manutenção, o caminho costuma ser este:</p>
+<ol>
+<li><strong>O condomínio é acionado primeiro.</strong> Como pessoa jurídica responsável pelas áreas comuns, ele responde perante a vítima quando o dano decorre de falta de manutenção ou de ausência de sinalização.</li>
+<li><strong>O síndico pode responder pessoalmente.</strong> Isso acontece quando fica provado que ele agiu com culpa, deixando de cumprir as atribuições que a lei lhe dá.</li>
+<li><strong>O condomínio pode cobrar do síndico.</strong> Se o condomínio pagou a indenização e a culpa foi do síndico, pode buscar o ressarcimento contra ele.</li>
+</ol>
+<p>Ou seja: o fato de a ação ser movida contra o condomínio não significa que o síndico está fora da história.</p>
+
+<h2>Na esfera criminal: quando a omissão vira crime</h2>
+<p>Nos casos mais graves, a responsabilidade pode ir além da indenização. O síndico ocupa o que o Direito chama de <strong>posição de garantidor</strong>, prevista no <strong>art. 13, §2º, do Código Penal</strong>: ele tem o dever e a possibilidade de agir para evitar o resultado.</p>
+<p>Por isso, se alguém se fere ou morre por causa de uma omissão na manutenção, o síndico pode responder por <strong>lesão corporal</strong> ou <strong>homicídio culposo</strong>, ou seja, sem intenção, mas por negligência.</p>
+<p>Isso não é automático. Em geral, é preciso demonstrar que o síndico sabia do risco (ou deveria saber), que podia agir e que não agiu. É exatamente nesse ponto que a documentação da gestão faz toda a diferença.</p>
+
+<h2>"Mas eu contratei uma empresa": terceirizar não basta</h2>
+<p>Um engano comum é achar que, ao contratar uma empresa de manutenção, a responsabilidade passa toda para ela. Não é bem assim.</p>
+<p>Quando o serviço é terceirizado, a responsabilidade pode ser <strong>compartilhada entre a empresa, o condomínio e o síndico</strong>. O síndico continua podendo responder por:</p>
+<ul>
+<li><strong>Falha na fiscalização:</strong> não acompanhar se o serviço foi feito, quando e como.</li>
+<li><strong>Escolha equivocada do prestador:</strong> contratar uma empresa sem qualificação, sem responsável técnico ou sem a documentação exigida.</li>
+</ul>
+<p>Contratar é o primeiro passo. Acompanhar, cobrar e registrar é o que efetivamente protege o síndico.</p>
+
+<h2>E quando o condomínio não responde?</h2>
+<p>Nem todo acidente gera responsabilidade. Situações de <strong>força maior</strong> ou sem culpa da gestão costumam afastar o dever de indenizar, desde que o condomínio tenha agido e sinalizado o risco. Alguns exemplos:</p>
+<ul>
+<li><strong>Piso molhado por chuva forte:</strong> em regra, força maior, desde que o local tenha sido sinalizado.</li>
+<li><strong>Galho que cai e danifica um carro:</strong> a responsabilidade tende a ser afastada se houver poda regular comprovada.</li>
+<li><strong>Criança sozinha no elevador:</strong> as regras de segurança de elevadores costumam vedar o transporte de menores de 12 anos desacompanhados, e a responsabilidade tende a recair sobre os pais ou responsáveis.</li>
+</ul>
+<p>Repare no padrão: em todos os casos, o que afasta a responsabilidade é o condomínio conseguir mostrar que fez a parte dele.</p>
+
+<h2>A melhor defesa do síndico é a prova</h2>
+<p>Se acontecer um acidente, a pergunta central será: <strong>o síndico consegue provar que cumpriu o seu dever?</strong> Sem registro, fica muito difícil demonstrar que não houve omissão. Por isso, todo síndico deveria ter sempre à mão:</p>
+<ul>
+<li><strong>Plano de manutenção preventiva em dia</strong>, com as periodicidades das normas ABNT (como a NBR 5674). Veja o <a href="blog-checklist-manutencao-predial-por-frequencia.html">checklist de manutenção predial por frequência</a>.</li>
+<li><strong>Laudos, notas fiscais e contratos</strong> de cada serviço executado.</li>
+<li><strong>PPCI aprovado e licença de incêndio válida</strong> (no RS, o APPCI emitido pelo Corpo de Bombeiros).</li>
+<li><strong>Chamados e ocorrências registrados com data</strong>, mostrando quando o problema foi informado e quando foi resolvido.</li>
+<li><strong>Fotos e avisos de sinalização</strong> em áreas com risco temporário.</li>
+<li><strong>Atas e comunicados</strong> que comprovem que a assembleia e os moradores foram informados sobre riscos e obras necessárias.</li>
+</ul>
+<p>Esse histórico precisa estar organizado e acessível. Documento perdido em e-mail, pasta física ou WhatsApp do zelador não ajuda na hora em que é preciso comprovar.</p>
+
+<h2>Como o Convivus ajuda o síndico a se proteger</h2>
+<p>Cuidar do prédio é obrigação do síndico. Provar que cuidou também. O <a href="gestao.html">Convivus</a> foi criado para que essa prova esteja sempre pronta:</p>
+<ul>
+<li><strong>Calendário de manutenção preventiva</strong> baseado nas normas ABNT, com semáforo Em dia / A vencer / Vencido e alertas antes do prazo.</li>
+<li><strong>Módulo de PPCI</strong> com os prazos de renovação da licença de incêndio (APPCI, no RS).</li>
+<li><strong>Repositório de documentos com trilha de auditoria</strong>, para laudos, contratos e notas fiscais.</li>
+<li><strong>Livro de Ocorrências</strong> que só recebe novos registros.</li>
+<li><strong>Vários condomínios em uma só conta</strong>, para síndicos profissionais e administradoras.</li>
+</ul>
+<p>Quer ver como funciona na prática? <a href="gestao.html">Conheça o Convivus</a> ou fale com a gente pelo WhatsApp (51) 99611-7922.</p>
+
+<h2>Fontes</h2>
+<ul>
+<li><a href="https://www.sindiconet.com.br/informese/responsabilidade-por-acidentes-ocorridos-no-condominio-colunistas-rodrigo-karpat/amp" target="_blank" rel="noopener">Responsabilidade por acidentes ocorridos no condomínio, por Rodrigo Karpat (SíndicoNet)</a></li>
+<li><a href="https://condominiosc.com.br/jornal-dos-condominios/ponto-de-vista/2980-a-responsabilidade-civil-e-criminal-do-sindico" target="_blank" rel="noopener">A responsabilidade civil e criminal do síndico, Jornal dos Condomínios</a></li>
+</ul>
+""",
+        "faq": [
+            ("O síndico pode ser processado por um acidente no condomínio?",
+             "Pode. O condomínio costuma ser acionado primeiro, mas o síndico também pode responder, na esfera civil, se ficar provado que agiu com culpa ao deixar de cumprir seus deveres de conservação. Nos casos mais graves, pode haver responsabilização criminal."),
+            ("Contratar uma empresa de manutenção livra o síndico da responsabilidade?",
+             "Não. A responsabilidade pode ser compartilhada entre a empresa, o condomínio e o síndico. O síndico ainda pode responder por falha na fiscalização do serviço ou por escolher um prestador sem qualificação ou documentação."),
+            ("Como o síndico comprova que cumpriu o seu dever?",
+             "Com registros: plano de manutenção em dia, laudos, notas fiscais e contratos, PPCI e licença de incêndio válidos, chamados e ocorrências com data, fotos, sinalização e atas que mostrem que moradores e assembleia foram informados."),
+        ],
+    },
+    {
         "slug": "nfse-condominios",
         "title": "Condomínios e a NFS-e: o que muda em 1º de dezembro",
         "desc": "A partir de 1º de dezembro de 2026, o condomínio passa a emitir NFS-e no próprio CNPJ. Entenda a regra, por que isso não é imposto novo, a exceção dos 80% e o que fazer até lá.",
