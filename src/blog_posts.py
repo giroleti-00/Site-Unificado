@@ -31,6 +31,9 @@ POSTS = [
         "cat": "Responsabilidade",
         "icon": "shield-alert",
         "read": 5,
+        "image": "blog-acidente-sindico.jpg",
+        "image_og": "blog-acidente-sindico-og.jpg",
+        "image_alt": "Síndica de blazer verde consultando o calendário de manutenção em um tablet, no hall de um condomínio com elevadores, extintor e placa de piso molhado",
         "body": """
 <p><strong>Sim. Um acidente causado por falta de manutenção pode gerar processo contra o síndico, e não só contra o condomínio.</strong> Dependendo do caso, ele pode responder na esfera civil (indenização) e, nas situações mais graves, até na criminal.</p>
 <p>Essa é uma das dúvidas mais comuns entre síndicos, principalmente entre os profissionais que cuidam de vários condomínios ao mesmo tempo. Um portão com mola quebrada, um piso solto na garagem, um elevador sem manutenção: qualquer um desses itens pode virar um acidente. E o acidente pode virar um processo.</p>
