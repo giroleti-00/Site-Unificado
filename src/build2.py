@@ -319,7 +319,7 @@ def cp(f):
 def metas(title,desc,fname,ld,img=None):
     url=SITE+'/'+cp(fname)
     d=html.escape(desc,quote=True); t=html.escape(title,quote=True)
-    m=f'<meta name="description" content="{d}"><meta name="theme-color" content="#065f46"><meta property="og:type" content="website"><meta property="og:locale" content="pt_BR"><meta property="og:site_name" content="CondoFluxo"><meta property="og:title" content="{t}"><meta property="og:description" content="{d}"><meta property="og:url" content="{url}"><meta property="og:image" content="{SITE}/{img or "assets/fachada-verde.jpg"}"><meta name="twitter:card" content="summary_large_image">'
+    m=f'<link rel="canonical" href="{url}"><meta name="description" content="{d}"><meta name="theme-color" content="#065f46"><meta property="og:type" content="website"><meta property="og:locale" content="pt_BR"><meta property="og:site_name" content="CondoFluxo"><meta property="og:title" content="{t}"><meta property="og:description" content="{d}"><meta property="og:url" content="{url}"><meta property="og:image" content="{SITE}/{img or "assets/fachada-verde.jpg"}"><meta name="twitter:card" content="summary_large_image">'
     if ld:
         m+='<script type="application/ld+json">'+json.dumps({"@context":"https://schema.org","@graph":ld},ensure_ascii=False).replace('</','<\\/')+'</script>'
     return m
