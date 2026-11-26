@@ -156,7 +156,7 @@ JS='''
       try{ if(window.cfTrack) cfTrack('generate_lead',{form_name:'contato',interesse:int,quantidade_condominios:qtd}); }catch(x){}
       var t='Olá! Meu nome é '+nome+' e sou '+papel+(cond?' do condomínio '+cond:'')+(cid?', em '+cid:'')+'.\\n\\nContato para retorno: '+ret+'.'+(qtd?'\\n\\nQuantidade de condomínios: '+qtd+'.':'')+'\\n\\nTenho interesse em: '+int+'.\\n\\n'+msg+'\\n\\nObrigado!';
       var wa='https://wa.me/5551996117922?text='+encodeURIComponent(t);
-      var mail='mailto:condofluxo@condofluxo.com.br?subject='+encodeURIComponent('Contato pelo site Convivus')+'&body='+encodeURIComponent(t);
+      var mail='mailto:convivus@convivus.com.br?subject='+encodeURIComponent('Contato pelo site Convivus')+'&body='+encodeURIComponent(t);
       document.getElementById('wa-send').href=wa;
       document.getElementById('mail-link').href=mail;
       document.getElementById('out-wrap').hidden=false;
@@ -305,9 +305,8 @@ FOOT=f'''<footer class="border-t border-stone-200 bg-white/60"><div class="max-w
  <div class="text-sm"><p class="font-semibold mb-3">Páginas</p><div class="flex flex-col gap-2 text-gray-600"><a href="gestao.html" class="hover:text-emerald-700">O portal</a><a href="gestao.html#valores" class="hover:text-emerald-700">Valores</a><a href="comunicacao.html" class="hover:text-emerald-700">Comunicação</a><a href="blog.html" class="hover:text-emerald-700">Blog</a><a href="sobre.html" class="hover:text-emerald-700">Sobre</a><a href="contato.html" class="hover:text-emerald-700">Contato</a><a href="manutencao-predial-normativa.html" class="hover:text-emerald-700">Guia: manutenção predial</a><a href="ppci-avcb-guia.html" class="hover:text-emerald-700">Guia: PPCI e AVCB</a></div></div>
  <div class="text-sm"><p class="font-semibold mb-3">Contato</p><div class="flex flex-col gap-2 text-gray-600">
   <a href="{WA_LINK}" target="_blank" rel="noopener" class="flex items-center gap-2 hover:text-emerald-700">{wa('w-4 h-4 shrink-0 text-emerald-600')}+55 51 99611-7922</a>
-  <span class="flex items-center gap-2 break-all"><i data-lucide="mail" class="w-4 h-4 shrink-0 text-emerald-600"></i>condofluxo@condofluxo.com.br</span>
-  <a href="{IG_LINK}" target="_blank" rel="noopener" class="flex items-center gap-2 hover:text-emerald-700">{ig('w-4 h-4 shrink-0 text-emerald-600')}@convivusbr</a>
-  <a href="https://www.convivus.com.br/gestao" target="_blank" rel="noopener" class="flex items-center gap-2 hover:text-emerald-700 break-all"><i data-lucide="globe" class="w-4 h-4 shrink-0 text-emerald-600"></i>www.convivus.com.br/gestao</a></div></div>
+  <span class="flex items-center gap-2 break-all"><i data-lucide="mail" class="w-4 h-4 shrink-0 text-emerald-600"></i>convivus@convivus.com.br</span>
+  <a href="{IG_LINK}" target="_blank" rel="noopener" class="flex items-center gap-2 hover:text-emerald-700">{ig('w-4 h-4 shrink-0 text-emerald-600')}@convivusbr</a></div></div>
  </div><div class="border-t border-stone-200 py-5 text-center text-xs text-gray-500">© 2026 Convivus. Todos os direitos reservados.<span class="mx-2" aria-hidden="true">·</span><a href="politica-de-privacidade.html" class="underline underline-offset-2 hover:text-emerald-700">Política de Privacidade</a><span data-cc-wrap><span class="mx-2" aria-hidden="true">·</span><button type="button" class="lnk-btn" data-cookie-pref>Preferências de cookies</button></span></div></footer>'''
 
 import shutil
@@ -423,7 +422,7 @@ home=f'''
 '''
 page('index.html','Convivus | Gestão e convívio do seu condomínio','',home,os.environ.get('CF_FULL')=='1',
      desc='Convivus: portal web para síndicos e moradores, com manutenção ligada às normas ABNT, PPCI e AVCB, documentos com auditoria, avisos e chamados. Valores públicos e sem fidelidade.',
-     ld=[{"@type":"Organization","name":"Convivus","url":SITE,"logo":SITE+"/assets/logo-convivus.png","email":"condofluxo@condofluxo.com.br","telephone":"+55 51 99611-7922","sameAs":[IG_LINK]}])
+     ld=[{"@type":"Organization","name":"Convivus","url":SITE,"logo":SITE+"/assets/logo-convivus.png","email":"convivus@convivus.com.br","telephone":"+55 51 99611-7922","sameAs":[IG_LINK]}])
 
 def tier(name,m,a):
     return f'''<div class="plan lift rounded-3xl bg-white border border-gray-100 shadow-lg p-6 flex flex-col gap-2 rv"><p class="pt text-sm font-semibold text-gray-500">{name}</p><p class="pn font-serif text-4xl font-medium text-gray-900" data-m="{m}" data-a="{a}"><span class="ps text-base font-sans font-medium text-gray-500">R$</span> <span class="num">{m}</span></p><p class="ps text-xs text-gray-500 per">por condomínio ao mês</p></div>'''
@@ -531,7 +530,7 @@ ct=head('mail','Contato','Conte como é','o seu condomínio','Respondemos por Wh
 ct+='''<section class="grid gap-4 lg:grid-cols-5">
  <div class="lg:col-span-2 rounded-3xl bg-gradient-to-br from-emerald-800 to-emerald-900 text-white p-8 shadow-2xl flex flex-col gap-5 rv">
   <div class="flex gap-4 items-start"><span class="w-10 h-10 rounded-full bg-white/15 flex items-center justify-center shrink-0">@@WA@@</span><div class="min-w-0"><p class="text-xs uppercase tracking-widest text-emerald-200 mb-1">WhatsApp</p><p class="font-medium">+55 51 99611-7922</p><div class="mt-2 flex flex-wrap gap-2"><a href="@@WALINK@@" target="_blank" rel="noopener" class="text-xs font-semibold bg-white text-emerald-800 rounded-full px-3 py-1 hover:bg-emerald-50">Abrir conversa</a><button type="button" data-copy="+55 51 99611-7922" class="text-xs font-semibold border border-white/40 rounded-full px-3 py-1 hover:bg-white/10">Copiar</button></div></div></div>
-  <div class="flex gap-4 items-start"><span class="w-10 h-10 rounded-full bg-white/15 flex items-center justify-center shrink-0"><i data-lucide="mail" class="w-5 h-5 text-white"></i></span><div class="min-w-0"><p class="text-xs uppercase tracking-widest text-emerald-200 mb-1">E-mail</p><p class="font-medium break-all">condofluxo@condofluxo.com.br</p><button type="button" data-copy="condofluxo@condofluxo.com.br" class="mt-2 text-xs font-semibold border border-white/40 rounded-full px-3 py-1 hover:bg-white/10">Copiar</button></div></div>
+  <div class="flex gap-4 items-start"><span class="w-10 h-10 rounded-full bg-white/15 flex items-center justify-center shrink-0"><i data-lucide="mail" class="w-5 h-5 text-white"></i></span><div class="min-w-0"><p class="text-xs uppercase tracking-widest text-emerald-200 mb-1">E-mail</p><p class="font-medium break-all">convivus@convivus.com.br</p><button type="button" data-copy="convivus@convivus.com.br" class="mt-2 text-xs font-semibold border border-white/40 rounded-full px-3 py-1 hover:bg-white/10">Copiar</button></div></div>
   <div class="flex gap-4 items-start"><span class="w-10 h-10 rounded-full bg-white/15 flex items-center justify-center shrink-0">@@IG@@</span><div class="min-w-0"><p class="text-xs uppercase tracking-widest text-emerald-200 mb-1">Instagram</p><a href="@@IGLINK@@" target="_blank" rel="noopener" class="font-medium underline">@convivusbr</a></div></div>
   <div class="flex gap-4 items-start"><span class="w-10 h-10 rounded-full bg-white/15 flex items-center justify-center shrink-0"><i data-lucide="globe" class="w-5 h-5 text-white"></i></span><div class="min-w-0"><p class="text-xs uppercase tracking-widest text-emerald-200 mb-1">Site do portal</p><a href="https://www.convivus.com.br/gestao" target="_blank" rel="noopener" class="font-medium underline break-all">www.convivus.com.br/gestao</a></div></div></div>
  <div class="lg:col-span-3 rounded-3xl bg-white border border-gray-100 shadow-lg p-8 rv d2">
@@ -704,7 +703,7 @@ GA_COOKIE_ID=os.environ.get('CF_GA_ID','G-N91QJF2G98').strip() or 'G-N91QJF2G98'
 pv=head('shield-check','Privacidade','Política de','Privacidade','Como o Convivus trata os seus dados neste site, em linguagem simples. Atualizada em 25 de novembro de 2026.')
 pv+=f"""<article class="post max-w-3xl rv">
 <h2>1. Quem é o responsável</h2>
-<p>Este site (www.convivus.com.br) é mantido pelo Convivus, portal de gestão para condomínios de Porto Alegre (RS). Para qualquer assunto de privacidade e proteção de dados, com base na Lei Geral de Proteção de Dados (LGPD, Lei 13.709/2018), escreva para <strong>condofluxo@condofluxo.com.br</strong>.</p>
+<p>Este site (www.convivus.com.br) é mantido pelo Convivus, portal de gestão para condomínios de Porto Alegre (RS). Para qualquer assunto de privacidade e proteção de dados, com base na Lei Geral de Proteção de Dados (LGPD, Lei 13.709/2018), escreva para <strong>convivus@convivus.com.br</strong>.</p>
 <p>Esta política vale para este site. O portal Convivus, que exige cadastro e login, pode ter regras próprias de tratamento de dados, informadas no momento do cadastro.</p>
 
 <h2>2. Quais dados coletamos e para quê</h2>
@@ -752,7 +751,7 @@ pv+=f"""<article class="post max-w-3xl rv">
 <li>a informação sobre com quem compartilhamos os dados;</li>
 <li>a eliminação dos dados tratados com o seu consentimento e a retirada desse consentimento.</li>
 </ul>
-<p>Para exercer qualquer um desses direitos, escreva para condofluxo@condofluxo.com.br. Se achar que o tratamento não está correto, você também pode recorrer à Autoridade Nacional de Proteção de Dados (ANPD).</p>
+<p>Para exercer qualquer um desses direitos, escreva para convivus@convivus.com.br. Se achar que o tratamento não está correto, você também pode recorrer à Autoridade Nacional de Proteção de Dados (ANPD).</p>
 
 <h2>7. Segurança</h2>
 <p>O site é entregue por conexão segura (HTTPS) e coletamos apenas o necessário para as finalidades acima. Nenhum sistema é totalmente imune a falhas; se houver um incidente que possa afetar os seus dados, avisaremos nos termos da lei.</p>
@@ -828,7 +827,7 @@ if os.environ.get('CF_FULL')=='1':
 
 ## Contato
 - WhatsApp: +55 51 99611-7922
-- E-mail: condofluxo@condofluxo.com.br
+- E-mail: convivus@convivus.com.br
 - Instagram: {IG_LINK}
 """)
 
