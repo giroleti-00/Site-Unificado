@@ -4,9 +4,8 @@ HERE=os.path.dirname(os.path.abspath(__file__))
 OUT=os.environ.get('CF_OUT',os.path.join(HERE,'..','_build'))
 os.makedirs(OUT,exist_ok=True)
 
-HEAD='''<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"><script src="https://cdn.tailwindcss.com/3.4.17"></script>
-<script>tailwind.config={theme:{extend:{fontFamily:{sans:['Figtree','ui-sans-serif','system-ui','sans-serif'],serif:['Figtree','ui-sans-serif','system-ui','sans-serif']}}}}</script>
-<script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script><link rel="icon" type="image/png" href="assets/icone.png">'''
+HEAD='''<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="assets/lucide.min.js?v=0.469.0"></script><link rel="icon" type="image/png" href="assets/icone.png">'''
 
 CSS='''
 :root{--bg:#fafaf9;--ink:#111827;--glass:rgba(255,255,255,.95);color-scheme:light}
@@ -312,6 +311,13 @@ FOOT=f'''<footer class="border-t border-stone-200 bg-white/60"><div class="max-w
 import shutil
 shutil.copytree(os.path.join(HERE,'assets_src'),os.path.join(OUT,'assets'),dirs_exist_ok=True)
 
+# Scripts do site em arquivos (sem JavaScript inline: permite CSP sem 'unsafe-inline' em scripts).
+import hashlib,subprocess
+def _v(t): return hashlib.md5(t.encode('utf-8')).hexdigest()[:8]
+for _n,_c in (('site.js',JS.strip()+'\n'),('consent.js',CONSENT_JS.strip()+'\n'),('js-flag.js','document.documentElement.classList.add("js");\n')):
+    open(os.path.join(OUT,'assets',_n),'w').write(_c)
+SITE_JS_V=_v(JS); CONSENT_JS_V=_v(CONSENT_JS)
+
 def cp(f):
     return '' if f=='index.html' else (f[:-5] if f.endswith('.html') else f)
 
@@ -325,13 +331,13 @@ def metas(title,desc,fname,ld,img=None):
 
 def page(fname,title,cur,main,full,desc='',wamsg='Olá! Vim pelo site do Convivus e gostaria de conversar.',ld=None,img=None,extra_head=''):
     fab=f'<a href="{walink(wamsg)}" target="_blank" rel="noopener" class="wa-fab" aria-label="Conversar pelo WhatsApp">{wa("")}</a>'
-    body=f'<div id="top" style="position:absolute;top:0;left:0;width:1px;height:1px" aria-hidden="true"></div>{nav(cur)}\n<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20 lg:pt-32">{main}</main>\n{FOOT}\n{fab}\n{CONSENT_HTML}\n<script src="config.js"></script><script>{JS}</script><script>{CONSENT_JS}</script>'
-    pre='<script>document.documentElement.classList.add("js")</script>'
+    body=f'<div id="top" style="position:absolute;top:0;left:0;width:1px;height:1px" aria-hidden="true"></div>{nav(cur)}\n<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20 lg:pt-32">{main}</main>\n{FOOT}\n{fab}\n{CONSENT_HTML}\n<script src="config.js"></script><script src="assets/site.js?v={SITE_JS_V}"></script><script src="assets/consent.js?v={CONSENT_JS_V}"></script>'
+    pre='<script src="assets/js-flag.js?v=1"></script>'
     mt=metas(title,desc,fname,ld,img) if desc else ''
     if full:
-        doc=f'<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>{title}</title>{extra_head}{mt}{HEAD}<style>{CSS}</style>{pre}</head><body>{body}</body></html>'
+        doc=f'<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>{title}</title>{extra_head}{mt}{HEAD}<style>{CSS}</style><link rel="stylesheet" href="assets/tailwind.css?v=__TWV__">{pre}</head><body>{body}</body></html>'
     else:
-        doc=f'<title>{title}</title>{extra_head}{mt}{HEAD}<style>{CSS}</style>{pre}\n{body}'
+        doc=f'<title>{title}</title>{extra_head}{mt}{HEAD}<style>{CSS}</style><link rel="stylesheet" href="assets/tailwind.css?v=__TWV__">{pre}\n{body}'
     open(os.path.join(OUT,fname),'w').write(doc)
 
 def pill(icon,text):
@@ -700,7 +706,7 @@ page('404.html','Página não encontrada | Convivus','',NF,True,extra_head='<bas
 
 # ================= POLÍTICA DE PRIVACIDADE =================
 GA_COOKIE_ID=os.environ.get('CF_GA_ID','G-N91QJF2G98').strip() or 'G-N91QJF2G98'
-pv=head('shield-check','Privacidade','Política de','Privacidade','Como o Convivus trata os seus dados neste site, em linguagem simples. Atualizada em 25 de novembro de 2026.')
+pv=head('shield-check','Privacidade','Política de','Privacidade','Como o Convivus trata os seus dados neste site, em linguagem simples. Atualizada em 26 de novembro de 2026.')
 pv+=f"""<article class="post max-w-3xl rv">
 <h2>1. Quem é o responsável</h2>
 <p>Este site (www.convivus.com.br) é mantido pelo Convivus, portal de gestão para condomínios de Porto Alegre (RS). Para qualquer assunto de privacidade e proteção de dados, com base na Lei Geral de Proteção de Dados (LGPD, Lei 13.709/2018), escreva para <strong>convivus@convivus.com.br</strong>.</p>
@@ -733,7 +739,6 @@ pv+=f"""<article class="post max-w-3xl rv">
 <li><strong>Google.</strong> O Google Analytics só roda com o seu aceite. As fontes de texto (Google Fonts) são entregues pelos servidores do Google, que recebem o endereço IP de quem visita o site.</li>
 <li><strong>Web3Forms.</strong> Serviço que entrega por e-mail as mensagens do formulário de contato; os dados do formulário passam por ele antes de chegar ao Convivus.</li>
 <li><strong>Cloudflare.</strong> Hospedagem e proteção do site; recebe dados técnicos de acesso para entregar as páginas.</li>
-<li><strong>Bibliotecas de código (CDN).</strong> Estilos e ícones do site são carregados de servidores públicos (cdn.tailwindcss.com e unpkg.com), que recebem dados técnicos do acesso, como o endereço IP.</li>
 <li><strong>WhatsApp e Instagram (Meta).</strong> Ao clicar nesses botões, ou ao enviar o formulário (que abre o WhatsApp com a mensagem pronta), você passa a usar serviços da Meta, regidos pelas políticas dela.</li>
 </ul>
 <p>Alguns desses serviços podem tratar dados fora do Brasil.</p>
@@ -796,6 +801,21 @@ if os.environ.get('CF_GA_PREVIEW')=='1':
     CONFIG_JS=CONFIG_JS.replace("  preview: false","  preview: true")
 open(os.path.join(OUT,'config.js'),'w').write(CONFIG_JS)
 
+# ================= CSS (Tailwind 3.4.17 compilado) e ícones (lucide 0.469.0) =================
+# Ferramentas em src/tailwind (package.json com versões exatas). O CSS só contém as classes usadas.
+TW=os.path.join(HERE,'tailwind')
+if not os.path.isdir(os.path.join(TW,'node_modules')):
+    subprocess.run(['npm','ci','--no-audit','--no-fund'],cwd=TW,check=True,stdout=subprocess.DEVNULL)
+TW_OUT=os.path.join(OUT,'assets','tailwind.css')
+subprocess.run([os.path.join(TW,'node_modules','.bin','tailwindcss'),'-c',os.path.join(TW,'tailwind.config.js'),'-i',os.path.join(TW,'input.css'),'-o',TW_OUT,'--minify',
+    '--content',','.join([os.path.join(OUT,'*.html'),os.path.join(OUT,'assets','site.js'),os.path.join(OUT,'assets','consent.js')])],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+shutil.copy(os.path.join(TW,'node_modules','lucide','dist','umd','lucide.min.js'),os.path.join(OUT,'assets','lucide.min.js'))
+TWV=_v(open(TW_OUT).read())
+for _f in os.listdir(OUT):
+    if _f.endswith('.html'):
+        _p=os.path.join(OUT,_f); _t=open(_p).read()
+        open(_p,'w').write(_t.replace('__TWV__',TWV))
+
 # ================= ARQUIVOS DE SEO (só no build local) =================
 if os.environ.get('CF_FULL')=='1':
     pages=['index.html','gestao.html','comunicacao.html','blog.html','sobre.html','contato.html','manutencao-predial-normativa.html','ppci-avcb-guia.html','politica-de-privacidade.html']+[purl(po) for po in POSTS]
@@ -803,23 +823,27 @@ if os.environ.get('CF_FULL')=='1':
     open(os.path.join(OUT,'sitemap.xml'),'w').write(sm)
     open(os.path.join(OUT,'robots.txt'),'w').write(f'User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n')
     # Cabeçalhos de segurança (Cloudflare Pages lê o arquivo _headers).
-    # 1) Content-Security-Policy aplicada: só diretivas que não quebram nada (antiframe, <base>, plugins).
-    # 2) Content-Security-Policy-Report-Only: política de scripts/estilos/conexões; só registra violações no console.
-    CSP_ENFORCED="frame-ancestors 'none'; base-uri 'self'; object-src 'none'"
-    CSP_REPORT=("default-src 'self'; "
-        "script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://unpkg.com https://www.googletagmanager.com; "
+    # Política estrita: scripts só do próprio site e do Google Tag (carregado após o consentimento de cookies).
+    # CF_CSP=enforce aplica a política; qualquer outro valor deixa em Report-Only (só registra no console).
+    CSP_BASE=("default-src 'self'; "
+        "script-src 'self' https://www.googletagmanager.com; "
         "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; "
         "img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; "
         "connect-src 'self' https://api.web3forms.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; "
         "object-src 'none'; base-uri 'self'; form-action 'self'")
+    if os.environ.get('CF_CSP')=='enforce':
+        CSP_LINES=f"  Content-Security-Policy: {CSP_BASE}; frame-ancestors 'none'\n"
+    else:
+        CSP_LINES=("  Content-Security-Policy: frame-ancestors 'none'; base-uri 'self'; object-src 'none'\n"
+                   f"  Content-Security-Policy-Report-Only: {CSP_BASE}\n")
     open(os.path.join(OUT,'_headers'),'w').write(
         "/*\n"
+        "  Strict-Transport-Security: max-age=31536000\n"
         "  X-Content-Type-Options: nosniff\n"
         "  X-Frame-Options: DENY\n"
         "  Referrer-Policy: strict-origin-when-cross-origin\n"
         "  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()\n"
-        f"  Content-Security-Policy: {CSP_ENFORCED}\n"
-        f"  Content-Security-Policy-Report-Only: {CSP_REPORT}\n")
+        +CSP_LINES)
     BLOG_LLMS=''.join(f"- [{po['title']}]({SITE}/{cp(purl(po))}): {po['desc']}\n" for po in POSTS).rstrip('\n')
     open(os.path.join(OUT,'llms.txt'),'w').write(f"""# Convivus
 

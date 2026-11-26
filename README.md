@@ -7,8 +7,9 @@ Marca Convivus (portal de gestão condominial). A página Comunicação (materia
 
 ## Estrutura
 
-- Raiz: site pronto para publicar (HTML estático + `assets/`, `config.js`, `sitemap.xml`, `robots.txt`, `llms.txt`).
-- `src/build2.py`: gerador das páginas (Python 3, sem dependências externas).
+- Raiz: site pronto para publicar (HTML estático + `assets/`, `config.js`, `sitemap.xml`, `robots.txt`, `llms.txt` e `_headers`, que a Cloudflare Pages lê para aplicar os cabeçalhos de segurança).
+- `src/build2.py`: gerador das páginas (Python 3). O CSS (Tailwind) é compilado no build com Node/npm.
+- `src/tailwind/`: `package.json` com as versões exatas do Tailwind CSS e do Lucide, configuração e `package-lock.json`.
 - `src/assets_src/`: imagens e logos usados pelo gerador.
 
 ## Publicar
@@ -23,7 +24,9 @@ CF_FULL=1 CF_OUT=_build python3 src/build2.py
 ```
 
 O resultado fica em `_build/` (não versionado). Copie para a raiz para atualizar o site publicado.
-Tailwind CSS, Lucide e Google Fonts são carregados por CDN.
+Na primeira execução o gerador roda `npm ci` em `src/tailwind` (precisa de Node 18 ou mais novo e acesso ao registro npm). O CSS compilado (`assets/tailwind.css`), o Lucide (`assets/lucide.min.js`) e os scripts do site (`assets/site.js`, `consent.js`, `js-flag.js`) saem em `assets/`; nenhum script de terceiros é carregado, exceto o Google Tag, que só roda depois do aceite de cookies. Só o Google Fonts continua externo.
+
+Política de segurança de conteúdo (CSP): por padrão sai em modo Report-Only; com `CF_CSP=enforce` o `_headers` passa a aplicá-la.
 
 ## Formulário de contato
 
