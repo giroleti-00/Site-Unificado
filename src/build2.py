@@ -143,7 +143,7 @@ JS='''
     var svc=((C.provider==='formspree'&&C.endpoint)||(C.provider==='web3forms'&&C.accessKey))?C.provider:'';
     var btn=f.querySelector('button[type=submit]');
     var hint=document.getElementById('send-hint');
-    if(svc&&hint) hint.textContent='Ao enviar, a mensagem segue por e-mail para a CondoFluxo e o WhatsApp abre com o texto pronto.';
+    if(svc&&hint) hint.textContent='Ao enviar, a mensagem segue por e-mail para o Convivus e o WhatsApp abre com o texto pronto.';
     f.addEventListener('submit',function(e){
       e.preventDefault();
       var v=function(id){return (document.getElementById(id).value||'').trim();};
@@ -156,7 +156,7 @@ JS='''
       try{ if(window.cfTrack) cfTrack('generate_lead',{form_name:'contato',interesse:int,quantidade_condominios:qtd}); }catch(x){}
       var t='Olá! Meu nome é '+nome+' e sou '+papel+(cond?' do condomínio '+cond:'')+(cid?', em '+cid:'')+'.\\n\\nContato para retorno: '+ret+'.'+(qtd?'\\n\\nQuantidade de condomínios: '+qtd+'.':'')+'\\n\\nTenho interesse em: '+int+'.\\n\\n'+msg+'\\n\\nObrigado!';
       var wa='https://wa.me/5551996117922?text='+encodeURIComponent(t);
-      var mail='mailto:condofluxo@condofluxo.com.br?subject='+encodeURIComponent('Contato pelo site CondoFluxo')+'&body='+encodeURIComponent(t);
+      var mail='mailto:condofluxo@condofluxo.com.br?subject='+encodeURIComponent('Contato pelo site Convivus')+'&body='+encodeURIComponent(t);
       document.getElementById('wa-send').href=wa;
       document.getElementById('mail-link').href=mail;
       document.getElementById('out-wrap').hidden=false;
@@ -170,8 +170,8 @@ JS='''
       var data={name:nome,contato:ret,perfil:papel,condominio:cond,cidade:cid,quantidade:qtd,interesse:int,mensagem:t};
       if(/@/.test(ret)) data.email=ret;
       var url,body;
-      if(svc==='formspree'){url=C.endpoint;body=Object.assign({_subject:'Contato pelo site CondoFluxo'},data);}
-      else{url='https://api.web3forms.com/submit';body=Object.assign({access_key:C.accessKey,subject:'Contato pelo site CondoFluxo',from_name:'Site CondoFluxo',message:t},data);}
+      if(svc==='formspree'){url=C.endpoint;body=Object.assign({_subject:'Contato pelo site Convivus'},data);}
+      else{url='https://api.web3forms.com/submit';body=Object.assign({access_key:C.accessKey,subject:'Contato pelo site Convivus',from_name:'Site Convivus',message:t},data);}
       fetch(url,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(body)})
         .then(function(r){return r.json().catch(function(){return {};}).then(function(j){return r.ok&&(svc==='formspree'||j.success===true);});})
         .catch(function(){return false;})
@@ -271,10 +271,10 @@ CONSENT_JS='''
 })();
 '''
 
-LOGO='<img src="assets/logo-condofluxo.png" alt="CondoFluxo" class="h-9 w-auto" width="140" height="37">'
+LOGO='<img src="assets/logo-convivus.png" alt="Convivus" class="h-9 w-auto" width="161" height="36">'
 WORD=''
 
-LINKS=[('gestao.html','Convivus'),('comunicacao.html','Comunicação'),('blog.html','Blog'),('sobre.html','Sobre')]
+LINKS=[('gestao.html','O portal'),('blog.html','Blog'),('sobre.html','Sobre')]
 
 PORTAL_URL='https://portalconvivus.condofluxo.com.br'
 
@@ -301,14 +301,14 @@ def walink(msg): return WA_LINK+'?text='+quote(msg)
 SITE='https://www.condofluxo.com.br'
 
 FOOT=f'''<footer class="border-t border-stone-200 bg-white/60"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid gap-8 md:grid-cols-3">
- <div><a href="index.html" class="flex items-center gap-2">{LOGO}{WORD}</a><p class="mt-4 text-sm text-gray-600 max-w-xs">Sob o mesmo teto: gestão do condomínio e comunicação com os moradores, numa só marca.</p></div>
- <div class="text-sm"><p class="font-semibold mb-3">Páginas</p><div class="flex flex-col gap-2 text-gray-600"><a href="gestao.html" class="hover:text-emerald-700">Convivus</a><a href="gestao.html#valores" class="hover:text-emerald-700">Valores</a><a href="comunicacao.html" class="hover:text-emerald-700">Comunicação</a><a href="blog.html" class="hover:text-emerald-700">Blog</a><a href="sobre.html" class="hover:text-emerald-700">Sobre</a><a href="contato.html" class="hover:text-emerald-700">Contato</a><a href="manutencao-predial-normativa.html" class="hover:text-emerald-700">Guia: manutenção predial</a><a href="ppci-avcb-guia.html" class="hover:text-emerald-700">Guia: PPCI e AVCB</a></div></div>
+ <div><a href="index.html" class="flex items-center gap-2">{LOGO}{WORD}</a><p class="mt-4 text-sm text-gray-600 max-w-xs">Portal para síndicos e moradores: manutenção, licenças, documentos e avisos do condomínio num só lugar.</p></div>
+ <div class="text-sm"><p class="font-semibold mb-3">Páginas</p><div class="flex flex-col gap-2 text-gray-600"><a href="gestao.html" class="hover:text-emerald-700">O portal</a><a href="gestao.html#valores" class="hover:text-emerald-700">Valores</a><a href="comunicacao.html" class="hover:text-emerald-700">Comunicação</a><a href="blog.html" class="hover:text-emerald-700">Blog</a><a href="sobre.html" class="hover:text-emerald-700">Sobre</a><a href="contato.html" class="hover:text-emerald-700">Contato</a><a href="manutencao-predial-normativa.html" class="hover:text-emerald-700">Guia: manutenção predial</a><a href="ppci-avcb-guia.html" class="hover:text-emerald-700">Guia: PPCI e AVCB</a></div></div>
  <div class="text-sm"><p class="font-semibold mb-3">Contato</p><div class="flex flex-col gap-2 text-gray-600">
   <a href="{WA_LINK}" target="_blank" rel="noopener" class="flex items-center gap-2 hover:text-emerald-700">{wa('w-4 h-4 shrink-0 text-emerald-600')}+55 51 99611-7922</a>
   <span class="flex items-center gap-2 break-all"><i data-lucide="mail" class="w-4 h-4 shrink-0 text-emerald-600"></i>condofluxo@condofluxo.com.br</span>
   <a href="{IG_LINK}" target="_blank" rel="noopener" class="flex items-center gap-2 hover:text-emerald-700">{ig('w-4 h-4 shrink-0 text-emerald-600')}@condofluxo</a>
   <a href="https://www.condofluxo.com.br/gestao" target="_blank" rel="noopener" class="flex items-center gap-2 hover:text-emerald-700 break-all"><i data-lucide="globe" class="w-4 h-4 shrink-0 text-emerald-600"></i>www.condofluxo.com.br/gestao</a></div></div>
- </div><div class="border-t border-stone-200 py-5 text-center text-xs text-gray-500">© 2026 CondoFluxo. Todos os direitos reservados.<span class="mx-2" aria-hidden="true">·</span><a href="politica-de-privacidade.html" class="underline underline-offset-2 hover:text-emerald-700">Política de Privacidade</a><span data-cc-wrap><span class="mx-2" aria-hidden="true">·</span><button type="button" class="lnk-btn" data-cookie-pref>Preferências de cookies</button></span></div></footer>'''
+ </div><div class="border-t border-stone-200 py-5 text-center text-xs text-gray-500">© 2026 Convivus. Todos os direitos reservados.<span class="mx-2" aria-hidden="true">·</span><a href="politica-de-privacidade.html" class="underline underline-offset-2 hover:text-emerald-700">Política de Privacidade</a><span data-cc-wrap><span class="mx-2" aria-hidden="true">·</span><button type="button" class="lnk-btn" data-cookie-pref>Preferências de cookies</button></span></div></footer>'''
 
 import shutil
 shutil.copytree(os.path.join(HERE,'assets_src'),os.path.join(OUT,'assets'),dirs_exist_ok=True)
@@ -319,12 +319,12 @@ def cp(f):
 def metas(title,desc,fname,ld,img=None):
     url=SITE+'/'+cp(fname)
     d=html.escape(desc,quote=True); t=html.escape(title,quote=True)
-    m=f'<link rel="canonical" href="{url}"><meta name="description" content="{d}"><meta name="theme-color" content="#065f46"><meta property="og:type" content="website"><meta property="og:locale" content="pt_BR"><meta property="og:site_name" content="CondoFluxo"><meta property="og:title" content="{t}"><meta property="og:description" content="{d}"><meta property="og:url" content="{url}"><meta property="og:image" content="{SITE}/{img or "assets/fachada-verde.jpg"}"><meta name="twitter:card" content="summary_large_image">'
+    m=f'<link rel="canonical" href="{url}"><meta name="description" content="{d}"><meta name="theme-color" content="#065f46"><meta property="og:type" content="website"><meta property="og:locale" content="pt_BR"><meta property="og:site_name" content="Convivus"><meta property="og:title" content="{t}"><meta property="og:description" content="{d}"><meta property="og:url" content="{url}"><meta property="og:image" content="{SITE}/{img or "assets/fachada-verde.jpg"}"><meta name="twitter:card" content="summary_large_image">'
     if ld:
         m+='<script type="application/ld+json">'+json.dumps({"@context":"https://schema.org","@graph":ld},ensure_ascii=False).replace('</','<\\/')+'</script>'
     return m
 
-def page(fname,title,cur,main,full,desc='',wamsg='Olá! Vim pelo site da CondoFluxo e gostaria de conversar.',ld=None,img=None,extra_head=''):
+def page(fname,title,cur,main,full,desc='',wamsg='Olá! Vim pelo site do Convivus e gostaria de conversar.',ld=None,img=None,extra_head=''):
     fab=f'<a href="{walink(wamsg)}" target="_blank" rel="noopener" class="wa-fab" aria-label="Conversar pelo WhatsApp">{wa("")}</a>'
     body=f'<div id="top" style="position:absolute;top:0;left:0;width:1px;height:1px" aria-hidden="true"></div>{nav(cur)}\n<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20 lg:pt-32">{main}</main>\n{FOOT}\n{fab}\n{CONSENT_HTML}\n<script src="config.js"></script><script>{JS}</script><script>{CONSENT_JS}</script>'
     pre='<script>document.documentElement.classList.add("js")</script>'
@@ -386,10 +386,10 @@ home=f'''
  <div class="absolute inset-0 bg-white/85 lg:hidden"></div>
  <div class="absolute inset-0 hidden lg:block bg-gradient-to-r from-white/95 from-0% via-white/80 via-45% to-transparent to-80%"></div>
  <div class="relative flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between p-6 sm:p-10 lg:p-12">
- <div class="max-w-2xl rv">{pill('house','Sob o mesmo teto')}
+ <div class="max-w-2xl rv">{pill('house','Portal para síndicos e moradores')}
   <h1 class="sm:text-5xl lg:text-6xl xl:text-7xl leading-[0.95] text-4xl font-medium tracking-tight font-serif">Gestão e convívio<br><span class="font-light italic text-emerald-700">do seu condomínio</span></h1>
-  <p class="text-lg text-gray-600 mt-6 leading-relaxed max-w-lg">O CondoFluxo reúne duas frentes numa só marca: o portal de gestão Convivus, que mantém o condomínio em dia com as normas, e materiais de comunicação claros para os moradores.</p>
-  <div class="mt-8 flex flex-wrap items-center gap-3"><a href="{walink('Olá! Quero agendar uma demonstração do Convivus.')}" target="_blank" rel="noopener" class="bg-emerald-600 text-white px-6 py-3 rounded-full font-medium hover:bg-emerald-700 transition-colors">Agendar demonstração</a><a href="gestao.html" class="px-6 py-3 rounded-full font-medium border border-gray-300 hover:border-emerald-600 hover:text-emerald-700 transition-colors">Conhecer o portal</a><a href="comunicacao.html" class="px-3 py-3 font-medium text-gray-600 hover:text-emerald-700 transition-colors">Ver comunicação</a></div>
+  <p class="text-lg text-gray-600 mt-6 leading-relaxed max-w-lg">O Convivus é o portal web que mantém o condomínio em dia: manutenção ligada às normas ABNT, PPCI e AVCB, documentos com auditoria, avisos e chamados para os moradores, tudo num só lugar.</p>
+  <div class="mt-8 flex flex-wrap items-center gap-3"><a href="{walink('Olá! Quero agendar uma demonstração do Convivus.')}" target="_blank" rel="noopener" class="bg-emerald-600 text-white px-6 py-3 rounded-full font-medium hover:bg-emerald-700 transition-colors">Agendar demonstração</a><a href="gestao.html" class="px-6 py-3 rounded-full font-medium border border-gray-300 hover:border-emerald-600 hover:text-emerald-700 transition-colors">Conhecer o portal</a></div>
   <p class="mt-5 text-sm text-gray-600 flex flex-wrap items-center gap-x-2 gap-y-1"><i data-lucide="badge-dollar-sign" class="w-4 h-4 text-emerald-600"></i><span>Convivus de <b>R$ 99</b> a <b>R$ 119</b> por condomínio ao mês, sem fidelidade.</span><a href="gestao.html#valores" class="font-semibold text-emerald-700 underline underline-offset-2">Ver valores</a></p></div>
  <div class="flex flex-col gap-4 lg:items-end rv d2"><div class="p-5 bg-white rounded-2xl shadow-sm border border-gray-100 flex flex-col gap-3 text-sm font-medium">
   <div class="flex items-center gap-3"><i data-lucide="globe" class="w-5 h-5 text-emerald-600"></i>Sem aplicativo para instalar</div>
@@ -414,20 +414,16 @@ home=f'''
 
  <div class="col-span-2 md:col-span-2 lg:col-span-4 lift-t rv d2"><div class="h-full rounded-3xl bg-gradient-to-br from-blue-50 to-indigo-50 p-6 flex flex-col justify-between gap-4 shadow-lg hover:shadow-xl transition-shadow duration-300 group"><div><div class="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300"><i data-lucide="file-check-2" class="w-5 h-5 text-blue-600"></i></div><h3 class="font-serif text-xl font-medium leading-tight mb-3">Documentos com <span class="italic font-light text-blue-700">auditoria</span></h3><p class="text-sm text-gray-600 leading-relaxed mb-4">Laudos, ARTs e licenças guardados com histórico de quem enviou, consultou e alterou.</p><div class="flex items-center gap-2 text-sm font-medium text-blue-700"><i data-lucide="history" class="w-4 h-4"></i>Livro de Ocorrências só recebe novos registros</div></div></div></div>
 
- <div class="col-span-2 md:col-span-4 lg:col-span-4 lift-t rv d3"><div class="relative rounded-3xl overflow-hidden shadow-xl h-full min-h-[260px] bg-teal-900 text-white p-6 flex flex-col justify-end"><img src="assets/morador-tablet.jpg" alt="Morador consultando o portal no tablet, na sala de casa" loading="lazy" class="absolute inset-0 w-full h-full object-cover"><div class="absolute inset-0 bg-gradient-to-t from-emerald-950/90 via-emerald-950/40 to-transparent"></div><div class="relative z-10"><h3 class="font-serif text-xl font-medium mb-2">CondoFluxo Comunicação</h3><p class="text-sm text-white/90 mb-4">Manual de Convivência, comunicados visuais e sites informativos para os moradores.</p><a href="comunicacao.html" class="inline-block bg-white/20 hover:bg-white/30 px-4 py-2 rounded-full text-sm font-medium transition-colors">Ver comunicação</a></div></div></div>
+ <div class="col-span-2 md:col-span-4 lg:col-span-4 lift-t rv d3"><div class="relative rounded-3xl overflow-hidden shadow-xl h-full min-h-[260px] bg-teal-900 text-white p-6 flex flex-col justify-end"><img src="assets/morador-tablet.jpg" alt="Morador consultando o portal no tablet, na sala de casa" loading="lazy" class="absolute inset-0 w-full h-full object-cover"><div class="absolute inset-0 bg-gradient-to-t from-emerald-950/90 via-emerald-950/40 to-transparent"></div><div class="relative z-10"><h3 class="font-serif text-xl font-medium mb-2">Avisos e chamados</h3><p class="text-sm text-white/90 mb-4">Comunicados para o condomínio inteiro ou só para um bloco, com confirmação de leitura, e chamados abertos pelo morador no celular.</p><a href="gestao.html" class="inline-block bg-white/20 hover:bg-white/30 px-4 py-2 rounded-full text-sm font-medium transition-colors">Conhecer o portal</a></div></div></div>
 </section>
 
 {day_html}
-<section class="mt-24 grid gap-5 md:grid-cols-2">
- <div class="rounded-3xl bg-white border border-gray-100 shadow-lg p-8 flex flex-col gap-4 lift rv"><p class="text-xs font-semibold uppercase tracking-widest text-emerald-700">Produto · assinatura</p><img src="assets/logo-convivus.png" alt="Convivus" class="h-12 w-auto self-start"><p class="text-gray-600">Convivus, o portal para síndicos e moradores. Reúne a operação e a conformidade do condomínio num portal web, sem aplicativo para instalar.</p><a href="gestao.html" class="mt-auto inline-flex items-center gap-2 font-semibold text-emerald-700 hover:gap-3 transition-all">Conhecer o portal <i data-lucide="arrow-right" class="w-4 h-4"></i></a></div>
- <div class="rounded-3xl bg-white border border-gray-100 shadow-lg p-8 flex flex-col gap-4 lift rv d2"><p class="text-xs font-semibold uppercase tracking-widest text-emerald-700">Serviço · sob demanda</p><img src="assets/logo-condofluxo.png" alt="CondoFluxo" class="h-12 w-auto self-start"><p class="text-gray-600">Materiais de comunicação claros e profissionais que substituem o grupo de WhatsApp e os papéis soltos na portaria.</p><a href="comunicacao.html" class="mt-auto inline-flex items-center gap-2 font-semibold text-emerald-700 hover:gap-3 transition-all">Ver os materiais <i data-lucide="arrow-right" class="w-4 h-4"></i></a></div>
-</section>
 <section class="mt-24"><div class="max-w-3xl mb-8 rv">{pill('circle-help','Perguntas rápidas')}<h2 class="font-serif text-3xl lg:text-4xl font-medium leading-tight">O que síndicos <span class="italic font-light text-emerald-700">perguntam primeiro</span></h2></div>{faq(FAQ_HOME)}<p class="mt-5 text-sm text-gray-600 rv"><a href="gestao.html#perguntas" class="font-semibold text-emerald-700 underline underline-offset-2">Ver todas as perguntas</a></p></section>
 {cta('Pronto para organizar o seu condomínio?','Conte como é o seu condomínio e receba retorno por WhatsApp, telefone ou e-mail.','Agendar demonstração',walink('Olá! Quero agendar uma demonstração do Convivus.'))}
 '''
-page('index.html','CondoFluxo','',home,os.environ.get('CF_FULL')=='1',
-     desc='A CondoFluxo reúne o portal Convivus, que mantém o condomínio em dia com as normas, e materiais de comunicação para os moradores. Valores públicos e sem fidelidade.',
-     ld=[{"@type":"Organization","name":"CondoFluxo","url":SITE,"logo":SITE+"/assets/logo-condofluxo.png","email":"condofluxo@condofluxo.com.br","telephone":"+55 51 99611-7922","sameAs":[IG_LINK]}])
+page('index.html','Convivus | Gestão e convívio do seu condomínio','',home,os.environ.get('CF_FULL')=='1',
+     desc='Convivus: portal web para síndicos e moradores, com manutenção ligada às normas ABNT, PPCI e AVCB, documentos com auditoria, avisos e chamados. Valores públicos e sem fidelidade.',
+     ld=[{"@type":"Organization","name":"Convivus","url":SITE,"logo":SITE+"/assets/logo-convivus.png","email":"condofluxo@condofluxo.com.br","telephone":"+55 51 99611-7922","sameAs":[IG_LINK]}])
 
 def tier(name,m,a):
     return f'''<div class="plan lift rounded-3xl bg-white border border-gray-100 shadow-lg p-6 flex flex-col gap-2 rv"><p class="pt text-sm font-semibold text-gray-500">{name}</p><p class="pn font-serif text-4xl font-medium text-gray-900" data-m="{m}" data-a="{a}"><span class="ps text-base font-sans font-medium text-gray-500">R$</span> <span class="num">{m}</span></p><p class="ps text-xs text-gray-500 per">por condomínio ao mês</p></div>'''
@@ -489,13 +485,13 @@ COMPARE=f'''<section class="mt-24"><div class="max-w-3xl mb-8 rv">{pill('scale',
 <div class="rounded-3xl bg-white border border-gray-100 shadow-lg overflow-hidden rv"><div class="hidden md:grid grid-cols-[1fr_1.2fr_1.6fr] bg-stone-100 text-xs font-semibold uppercase tracking-widest text-gray-600"><div class="p-4"></div><div class="p-4">Planilha e grupo de mensagens</div><div class="p-4 text-emerald-700">Convivus</div></div>{cmp_rows}</div></section>'''
 FAQ_G=f'''<section id="perguntas" class="mt-24 scroll-mt-24"><div class="max-w-3xl mb-8 rv">{pill('circle-help','Perguntas frequentes')}<h2 class="font-serif text-3xl lg:text-4xl font-medium leading-tight">Antes de <span class="italic font-light text-emerald-700">contratar</span></h2></div>{faq(FAQ_GESTAO)}</section>'''
 ges+=COMPARE+PRICING+FAQ_G+cta('Quer ver o portal funcionando?','Agende uma demonstração e veja o Convivus na prática.','Agendar demonstração',walink('Olá! Vi o Convivus no site e quero agendar uma demonstração.'))
-page('gestao.html','Convivus | CondoFluxo','gestao.html',ges,True,
+page('gestao.html','Portal Convivus | Manutenção, PPCI e documentos do condomínio','gestao.html',ges,True,
      desc='Convivus: portal web para síndicos e moradores, com manutenção ligada às normas ABNT, controle de PPCI e AVCB, documentos com auditoria e avisos. De R$ 99 a R$ 119 por condomínio ao mês, sem fidelidade.',
      wamsg='Olá! Vi o Convivus no site e quero agendar uma demonstração.',
-     ld=[{"@type":"SoftwareApplication","name":"Convivus","applicationCategory":"BusinessApplication","operatingSystem":"Web","url":SITE+"/gestao","description":"Portal web para síndicos e moradores com manutenção ligada às normas ABNT, controle de PPCI e AVCB, documentos com auditoria, avisos e chamados.","offers":{"@type":"AggregateOffer","priceCurrency":"BRL","lowPrice":"99","highPrice":"119","offerCount":"3"},"publisher":{"@type":"Organization","name":"CondoFluxo"}},faq_ld(FAQ_GESTAO)])
+     ld=[{"@type":"SoftwareApplication","name":"Convivus","applicationCategory":"BusinessApplication","operatingSystem":"Web","url":SITE+"/gestao","description":"Portal web para síndicos e moradores com manutenção ligada às normas ABNT, controle de PPCI e AVCB, documentos com auditoria, avisos e chamados.","offers":{"@type":"AggregateOffer","priceCurrency":"BRL","lowPrice":"99","highPrice":"119","offerCount":"3"},"publisher":{"@type":"Organization","name":"Convivus"}},faq_ld(FAQ_GESTAO)])
 
 # ================= COMUNICAÇÃO =================
-com=head('palette','CondoFluxo Comunicação','Clara e profissional,','para todo o condomínio','Produzimos os materiais que substituem o grupo de WhatsApp e os papéis soltos na portaria. Serviço sob demanda, feito com a identidade do seu condomínio.')
+com=head('palette','Comunicação','Clara e profissional,','para todo o condomínio','Produzimos os materiais que substituem o grupo de WhatsApp e os papéis soltos na portaria. Serviço sob demanda, feito com a identidade do seu condomínio.')
 c3=''.join(small(i,b,t,a,c,d) for i,b,t,a,c,d in [
 ('book-open','bg-emerald-100','text-emerald-600','Manual de','Convivência','Regras do condomínio explicadas de forma simples, com a identidade visual do seu prédio.'),
 ('layout-template','bg-amber-100','text-amber-600','Comunicados','visuais','Modelos padronizados para os avisos que se repetem, fáceis de ler no elevador e no celular.'),
@@ -504,18 +500,18 @@ com+='''<section class="relative rounded-3xl overflow-hidden shadow-2xl min-h-[3
 com+=f'<section class="grid gap-4 md:grid-cols-3">{c3}</section>'
 com+='''<section class="mt-16 rounded-3xl bg-gradient-to-br from-teal-700 to-emerald-900 text-white p-8 lg:p-12 shadow-2xl rv grid gap-6 lg:grid-cols-2 items-center"><h2 class="font-serif text-2xl lg:text-4xl font-medium leading-tight">Mais informação para o morador. <span class="italic font-light text-emerald-200">Mais controle para a gestão.</span></h2><p class="text-emerald-50/90 leading-relaxed">Quando o aviso é claro e fica registrado, o grupo de mensagens deixa de ser o único lugar onde as coisas acontecem. Quer o controle completo? O portal Convivus faz esse registro com confirmação de leitura.</p></section>'''
 com+=cta('Precisa de um material para o seu condomínio?','Descreva o que precisa e retornamos com a proposta.','Pedir orçamento')
-page('comunicacao.html','Comunicação | CondoFluxo','comunicacao.html',com,True,
+page('comunicacao.html','Comunicação | Convivus','comunicacao.html',com,True,
      desc='Manual de Convivência, comunicados visuais e sites informativos para condomínios, com a identidade visual do seu prédio. Serviço sob demanda.',
      wamsg='Olá! Quero um orçamento de materiais de comunicação para o meu condomínio.')
 
 # ================= SOBRE =================
 sob=head('users','Sobre o Convivus','Nascemos da rotina','de quem vive em condomínio','O Convivus surgiu da experiência com falhas de comunicação, manutenções sem acompanhamento e documentos sem controle em condomínios.')
-sob+='''<section class="mb-16 grid gap-8 lg:grid-cols-5 rv"><h2 class="lg:col-span-2 font-serif text-3xl lg:text-4xl font-medium leading-tight">Por que a CondoFluxo existe</h2><div class="lg:col-span-3 grid gap-4 text-lg text-gray-700 leading-relaxed">
+sob+='''<section class="mb-16 grid gap-8 lg:grid-cols-5 rv"><h2 class="lg:col-span-2 font-serif text-3xl lg:text-4xl font-medium leading-tight">Por que o Convivus existe</h2><div class="lg:col-span-3 grid gap-4 text-lg text-gray-700 leading-relaxed">
 <p>Quem administra um condomínio precisa fazer duas coisas andarem juntas: manter os moradores bem informados e garantir que o condomínio esteja em dia com normas, manutenções e obrigações legais.</p>
 <p>O mercado oferece ferramentas para finanças, portaria e comunicação, mas na prática a informação fica espalhada e a gestão das obrigações depende de planilhas, papéis e grupos de mensagens.</p>
-<p>O CondoFluxo nasce dessa lacuna. A ideia vem da experiência de mais de 15 anos de Ana Fernandes na construção civil e na administração de condomínios, onde se repetiam falhas de comunicação, manutenções sem acompanhamento, PPCI e licenças sem controle central e informações importantes sem histórico ou comprovação.</p>
-<p>Por isso o CondoFluxo conecta comunicação, manutenção e conformidade em um só fluxo: moradores sabem o que precisam, e a gestão tem clareza do que fazer, quando fazer e como comprovar.</p>
-<p>Daí nasce o Convivus, o portal que reúne o que o morador precisa saber e o que o condomínio precisa controlar.</p>
+<p>O Convivus nasce dessa lacuna. A ideia vem da experiência de mais de 15 anos de Ana Fernandes na construção civil e na administração de condomínios, onde se repetiam falhas de comunicação, manutenções sem acompanhamento, PPCI e licenças sem controle central e informações importantes sem histórico ou comprovação.</p>
+<p>Por isso o Convivus conecta comunicação, manutenção e conformidade em um só fluxo: moradores sabem o que precisam, e a gestão tem clareza do que fazer, quando fazer e como comprovar.</p>
+<p>O Convivus reúne, num único portal, o que o morador precisa saber e o que o condomínio precisa controlar.</p>
 <p class="font-serif text-2xl text-emerald-800 pt-2">Mais informação para o morador. Mais controle para a gestão. Mais segurança para o condomínio.</p></div></section>
 '''
 sob+=f'''<section class="grid gap-4 lg:grid-cols-5">
@@ -527,8 +523,8 @@ sob+=f'''<section class="grid gap-4 lg:grid-cols-5">
  </div></section>
 <section class="mt-16 relative rounded-3xl overflow-hidden shadow-2xl min-h-[300px] lg:min-h-[420px] rv"><img src="assets/fachada-entrada.jpg" alt="Entrada de um edifício residencial com jardim e marquise verde" loading="lazy" class="absolute inset-0 w-full h-full object-cover"><div class="absolute inset-x-0 bottom-0 p-6 lg:p-8 bg-gradient-to-t from-black/70 to-transparent text-white"><p class="font-serif text-2xl">Sob o mesmo teto</p></div></section>
 <section class="mt-4 rounded-3xl bg-white border border-gray-100 shadow-lg p-8 rv grid gap-4 md:grid-cols-2 text-sm text-gray-700"><div><p class="font-semibold mb-1">O nome</p><p class="text-gray-600">Convivus vem do latim convivere, viver junto.</p></div><div><p class="font-semibold mb-1">Contratação</p><p class="text-gray-600">O serviço pode ser contratado por CNPJ ou por CPF.</p></div></section>'''+cta('Vamos conversar?','Conte como é o seu condomínio.','Falar conosco')
-page('sobre.html','Sobre o Convivus | CondoFluxo','sobre.html',sob,True,
-     desc='A história do Convivus e da CondoFluxo e a experiência de Ana Fernandes em construção civil e na administração de condomínios.')
+page('sobre.html','Sobre o Convivus','sobre.html',sob,True,
+     desc='A história do Convivus e a experiência de Ana Fernandes em construção civil e na administração de condomínios.')
 
 # ================= CONTATO =================
 ct=head('mail','Contato','Conte como é','o seu condomínio','Respondemos por WhatsApp, telefone ou e-mail. Preencha abaixo e clique em Enviar: abrimos o WhatsApp e o e-mail com a mensagem pronta.')
@@ -556,8 +552,8 @@ ct+='''<section class="grid gap-4 lg:grid-cols-5">
   <div id="out-wrap" class="mt-2 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm" hidden><span class="text-gray-500">Não abriu?</span><a id="wa-send" href="#" target="_blank" rel="noopener" class="font-semibold text-emerald-700 underline">Enviar pelo WhatsApp</a><a id="mail-link" href="#" class="font-semibold text-emerald-700 underline">Enviar por e-mail</a></div>
  </div></section>'''
 ct=ct.replace('@@WA@@',wa('w-5 h-5 text-white')).replace('@@IG@@',ig('w-5 h-5 text-white')).replace('@@WALINK@@',WA_LINK).replace('@@IGLINK@@',IG_LINK)
-page('contato.html','Contato | CondoFluxo','contato.html',ct,True,
-     desc='Fale com a CondoFluxo pelo WhatsApp, e-mail ou Instagram, ou monte a sua mensagem e peça uma demonstração do Convivus.')
+page('contato.html','Contato | Convivus','contato.html',ct,True,
+     desc='Fale com o Convivus pelo WhatsApp, e-mail ou Instagram, ou monte a sua mensagem e peça uma demonstração do Convivus.')
 
 # ================= GUIA: MANUTENÇÃO PREDIAL NORMATIVA =================
 GFAQ=[('O que é a NBR 5674?','É a norma da ABNT sobre manutenção de edificações. Ela trata a manutenção como um sistema organizado, com programa de atividades e periodicidade, responsáveis definidos, previsão de recursos e registro de tudo o que foi feito.'),
@@ -601,7 +597,7 @@ g=f'''<div class="max-w-4xl mb-14 rv">{pill('book-open','Guia para síndicos')}<
 </section>
 <p class="mt-8 text-xs text-gray-500 max-w-3xl rv">Este guia é informativo e não substitui a orientação de um profissional habilitado nem de um advogado.</p>
 '''
-page('manutencao-predial-normativa.html','Manutenção predial normativa | CondoFluxo','',g,True,
+page('manutencao-predial-normativa.html','Manutenção predial normativa | Convivus','',g,True,
      desc='O que a NBR 5674 e a NBR 15575 exigem do condomínio: como montar o plano de manutenção, controlar vencimentos e registrar a prova.',
      ld=[faq_ld(GFAQ)])
 
@@ -646,7 +642,7 @@ p=f'''<div class="max-w-4xl mb-14 rv">{pill('flame','Guia para síndicos')}<h1 c
 </section>
 <p class="mt-8 text-xs text-gray-500 max-w-3xl rv">Este guia é informativo e não substitui a orientação do Corpo de Bombeiros, de um profissional habilitado nem de um advogado.</p>
 '''
-page('ppci-avcb-guia.html','PPCI e AVCB: guia para síndicos | CondoFluxo','',p,True,
+page('ppci-avcb-guia.html','PPCI e AVCB: guia para síndicos | Convivus','',p,True,
      desc='Guia para síndicos sobre PPCI, APPCI e AVCB: o que significa cada documento, o que acompanhar e como organizar a renovação da licença de incêndio.',
      ld=[faq_ld(PFAQ)])
 
@@ -668,9 +664,9 @@ if POSTS:
 else:
     lista='<p class="text-gray-600">Os primeiros artigos chegam em breve.</p>'
 bl=head('newspaper','Blog','Condomínio sem improviso:','guias e boas práticas','Artigos curtos para síndicos, conselheiros e administradoras sobre manutenção, normas, documentos e convivência.')+lista+cta('Quer o condomínio com prazo e prova?','O Convivus organiza manutenção, licenças e documentos num só lugar.','Falar conosco')
-page('blog.html','Blog | CondoFluxo','blog.html',bl,True,
+page('blog.html','Blog | Convivus','blog.html',bl,True,
      desc='Artigos para síndicos, conselheiros e administradoras: manutenção predial, normas ABNT, PPCI e AVCB, documentos e convivência em condomínios.',
-     ld=[{"@type":"Blog","name":"Blog CondoFluxo","url":SITE+"/blog","inLanguage":"pt-BR","publisher":{"@type":"Organization","name":"CondoFluxo","url":SITE}}])
+     ld=[{"@type":"Blog","name":"Blog Convivus","url":SITE+"/blog","inLanguage":"pt-BR","publisher":{"@type":"Organization","name":"Convivus","url":SITE}}])
 
 for po in POSTS:
     fq=po.get('faq') or []
@@ -679,7 +675,7 @@ for po in POSTS:
     outros=[x for x in POSTS if x['slug']!=po['slug']][:3]
     outros_html=('<section class="mt-20"><div class="max-w-3xl mb-6 rv"><h2 class="font-serif text-2xl lg:text-3xl font-medium">Continue <span class="italic font-light text-emerald-700">lendo</span></h2></div><div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">'+''.join(card_post(x) for x in outros)+'</div></section>') if outros else ''
     art=f"""<a href="blog.html" class="inline-flex items-center gap-2 text-sm font-semibold text-emerald-700 hover:gap-3 transition-all mb-8 rv"><i data-lucide="arrow-left" class="w-4 h-4"></i>Todos os artigos</a>
-<header class="max-w-3xl mb-10 rv">{pill(po['icon'],po['cat'])}<h1 class="text-3xl sm:text-4xl lg:text-5xl leading-[1.1] font-medium tracking-tight font-serif">{po['title']}</h1><p class="text-lg text-gray-600 mt-5 leading-relaxed">{po['desc']}</p><p class="mt-5 text-sm text-gray-500 flex flex-wrap items-center gap-x-4 gap-y-1"><span class="inline-flex items-center gap-1.5"><i data-lucide="calendar" class="w-4 h-4 text-emerald-600"></i><time datetime="{po['date']}">{data_br(po['date'])}</time></span><span class="inline-flex items-center gap-1.5"><i data-lucide="clock" class="w-4 h-4 text-emerald-600"></i>{po['read']} min de leitura</span><span class="inline-flex items-center gap-1.5"><i data-lucide="user" class="w-4 h-4 text-emerald-600"></i>Equipe CondoFluxo</span></p></header>
+<header class="max-w-3xl mb-10 rv">{pill(po['icon'],po['cat'])}<h1 class="text-3xl sm:text-4xl lg:text-5xl leading-[1.1] font-medium tracking-tight font-serif">{po['title']}</h1><p class="text-lg text-gray-600 mt-5 leading-relaxed">{po['desc']}</p><p class="mt-5 text-sm text-gray-500 flex flex-wrap items-center gap-x-4 gap-y-1"><span class="inline-flex items-center gap-1.5"><i data-lucide="calendar" class="w-4 h-4 text-emerald-600"></i><time datetime="{po['date']}">{data_br(po['date'])}</time></span><span class="inline-flex items-center gap-1.5"><i data-lucide="clock" class="w-4 h-4 text-emerald-600"></i>{po['read']} min de leitura</span><span class="inline-flex items-center gap-1.5"><i data-lucide="user" class="w-4 h-4 text-emerald-600"></i>Equipe Convivus</span></p></header>
 {cover_html}<article class="post max-w-3xl rv">{po['body']}</article>
 {fq_html}
 <section class="mt-20 rounded-3xl bg-gradient-to-br from-emerald-900 to-teal-800 text-white p-8 lg:p-12 shadow-2xl rv grid gap-6 lg:grid-cols-2 items-center">
@@ -688,9 +684,9 @@ for po in POSTS:
 </section>
 {outros_html}
 <p class="mt-8 text-xs text-gray-500 max-w-3xl rv">Este artigo é informativo e não substitui a orientação de um profissional habilitado nem de um advogado.</p>"""
-    ld=[{"@type":"BlogPosting","headline":po['title'],"description":po['desc'],"datePublished":po['date'],"dateModified":po.get('updated',po['date']),"inLanguage":"pt-BR","mainEntityOfPage":SITE+"/"+cp(purl(po)),"author":{"@type":"Organization","name":"CondoFluxo"},"publisher":{"@type":"Organization","name":"CondoFluxo","url":SITE,"logo":{"@type":"ImageObject","url":SITE+"/assets/logo-condofluxo.png"}},"image":SITE+"/assets/"+po.get("image_og",po.get("image",""))  if po.get("image") else SITE+"/assets/fachada-verde.jpg"}]
+    ld=[{"@type":"BlogPosting","headline":po['title'],"description":po['desc'],"datePublished":po['date'],"dateModified":po.get('updated',po['date']),"inLanguage":"pt-BR","mainEntityOfPage":SITE+"/"+cp(purl(po)),"author":{"@type":"Organization","name":"Convivus"},"publisher":{"@type":"Organization","name":"Convivus","url":SITE,"logo":{"@type":"ImageObject","url":SITE+"/assets/logo-convivus.png"}},"image":SITE+"/assets/"+po.get("image_og",po.get("image",""))  if po.get("image") else SITE+"/assets/fachada-verde.jpg"}]
     if fq: ld.append(faq_ld(fq))
-    page(purl(po),po['title']+' | CondoFluxo','blog.html',art,True,desc=po['desc'],ld=ld,img=('assets/'+po.get('image_og',po['image'])) if po.get('image') else None)
+    page(purl(po),po['title']+' | Convivus','blog.html',art,True,desc=po['desc'],ld=ld,img=('assets/'+po.get('image_og',po['image'])) if po.get('image') else None)
 
 # ================= PÁGINA 404 =================
 # Cloudflare Pages, Netlify e GitHub Pages usam o 404.html da raiz quando o endereço não existe.
@@ -701,14 +697,14 @@ NF=f"""<section class="grid gap-10 lg:grid-cols-2 lg:gap-14 items-center">
 <p class="mt-6 text-sm text-gray-500">Ou vá direto para <a href="comunicacao.html" class="text-emerald-700 font-medium hover:underline">Comunicação</a>, <a href="blog.html" class="text-emerald-700 font-medium hover:underline">Blog</a> ou <a href="contato.html" class="text-emerald-700 font-medium hover:underline">Falar conosco</a>.</p></div>
 <figure class="rv"><img src="assets/condominio-desorganizado.svg" alt="Ilustração de um condomínio desorganizado: lixeiras transbordando, correspondência espalhada, avisos tortos no mural, extintor vencido, vazamento na parede e fios soltos." width="960" height="640" class="w-full h-auto rounded-3xl shadow-xl border border-gray-100 bg-white"></figure>
 </section>"""
-page('404.html','Página não encontrada | CondoFluxo','',NF,True,extra_head='<base href="/"><meta name="robots" content="noindex">')
+page('404.html','Página não encontrada | Convivus','',NF,True,extra_head='<base href="/"><meta name="robots" content="noindex">')
 
 # ================= POLÍTICA DE PRIVACIDADE =================
 GA_COOKIE_ID=os.environ.get('CF_GA_ID','G-N91QJF2G98').strip() or 'G-N91QJF2G98'
-pv=head('shield-check','Privacidade','Política de','Privacidade','Como a CondoFluxo trata os seus dados neste site, em linguagem simples. Atualizada em 10 de novembro de 2026.')
+pv=head('shield-check','Privacidade','Política de','Privacidade','Como o Convivus trata os seus dados neste site, em linguagem simples. Atualizada em 25 de novembro de 2026.')
 pv+=f"""<article class="post max-w-3xl rv">
 <h2>1. Quem é o responsável</h2>
-<p>Este site (www.condofluxo.com.br) é mantido pela CondoFluxo, de Porto Alegre (RS), que também desenvolve o Convivus, portal de gestão para condomínios. Para qualquer assunto de privacidade e proteção de dados, com base na Lei Geral de Proteção de Dados (LGPD, Lei 13.709/2018), escreva para <strong>condofluxo@condofluxo.com.br</strong>.</p>
+<p>Este site (www.condofluxo.com.br) é mantido pelo Convivus, portal de gestão para condomínios de Porto Alegre (RS). Para qualquer assunto de privacidade e proteção de dados, com base na Lei Geral de Proteção de Dados (LGPD, Lei 13.709/2018), escreva para <strong>condofluxo@condofluxo.com.br</strong>.</p>
 <p>Esta política vale para este site. O portal Convivus, que exige cadastro e login, pode ter regras próprias de tratamento de dados, informadas no momento do cadastro.</p>
 
 <h2>2. Quais dados coletamos e para quê</h2>
@@ -736,7 +732,7 @@ pv+=f"""<article class="post max-w-3xl rv">
 <p>Não vendemos dados pessoais. Para o site funcionar, usamos estes serviços de terceiros:</p>
 <ul>
 <li><strong>Google.</strong> O Google Analytics só roda com o seu aceite. As fontes de texto (Google Fonts) são entregues pelos servidores do Google, que recebem o endereço IP de quem visita o site.</li>
-<li><strong>Web3Forms.</strong> Serviço que entrega por e-mail as mensagens do formulário de contato; os dados do formulário passam por ele antes de chegar à CondoFluxo.</li>
+<li><strong>Web3Forms.</strong> Serviço que entrega por e-mail as mensagens do formulário de contato; os dados do formulário passam por ele antes de chegar ao Convivus.</li>
 <li><strong>Cloudflare.</strong> Hospedagem e proteção do site; recebe dados técnicos de acesso para entregar as páginas.</li>
 <li><strong>Bibliotecas de código (CDN).</strong> Estilos e ícones do site são carregados de servidores públicos (cdn.tailwindcss.com e unpkg.com), que recebem dados técnicos do acesso, como o endereço IP.</li>
 <li><strong>WhatsApp e Instagram (Meta).</strong> Ao clicar nesses botões, ou ao enviar o formulário (que abre o WhatsApp com a mensagem pronta), você passa a usar serviços da Meta, regidos pelas políticas dela.</li>
@@ -764,8 +760,8 @@ pv+=f"""<article class="post max-w-3xl rv">
 <h2>8. Mudanças nesta política</h2>
 <p>Podemos atualizar esta política quando o site mudar ou a lei exigir. A data da última atualização fica no topo da página.</p>
 </article>"""
-page('politica-de-privacidade.html','Política de Privacidade | CondoFluxo','',pv,True,
-     desc='Como a CondoFluxo trata dados pessoais neste site: formulário de contato, Google Analytics, cookies e seus direitos pela LGPD.')
+page('politica-de-privacidade.html','Política de Privacidade | Convivus','',pv,True,
+     desc='Como o Convivus trata dados pessoais neste site: formulário de contato, Google Analytics, cookies e seus direitos pela LGPD.')
 
 CONFIG_JS='''// Configuração do envio de e-mail do formulário de contato.
 // Enquanto estiver em branco, o botão Enviar abre o WhatsApp e o programa de e-mail do visitante.
@@ -808,15 +804,15 @@ if os.environ.get('CF_FULL')=='1':
     open(os.path.join(OUT,'sitemap.xml'),'w').write(sm)
     open(os.path.join(OUT,'robots.txt'),'w').write(f'User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n')
     BLOG_LLMS=''.join(f"- [{po['title']}]({SITE}/{cp(purl(po))}): {po['desc']}\n" for po in POSTS).rstrip('\n')
-    open(os.path.join(OUT,'llms.txt'),'w').write(f"""# CondoFluxo
+    open(os.path.join(OUT,'llms.txt'),'w').write(f"""# Convivus
 
-> A CondoFluxo reúne duas frentes: o Convivus, portal web de gestão e conformidade para condomínios, e materiais de comunicação para os moradores. Site em português do Brasil.
+> O Convivus é um portal web de gestão e conformidade para condomínios, para síndicos e moradores. Site em português do Brasil. O site também foi conhecido como CondoFluxo.
 
 ## Convivus (portal de gestão)
 - [Convivus]({SITE}/gestao): manutenção preventiva ligada às normas ABNT (NBR 5674, 15575, 17170, 16747), controle de PPCI/APPCI e AVCB com aviso de renovação, documentos com auditoria, mural com confirmação de leitura, chamados, perfis de acesso por papel. Não é um sistema financeiro.
 - Valores públicos, por condomínio ao mês, para até 150 unidades: R$ 119 (até 3 condomínios), R$ 109 (4 a 7), R$ 99 (8 ou mais). Plano anual: pague 11 mensalidades e use 12. Sem fidelidade e sem taxa de saída. Acima de 150 unidades, somam-se R$ 25 por mês a cada bloco de 50, até 400 unidades.
 
-## Comunicação
+## Comunicação (serviço complementar)
 - [Comunicação]({SITE}/comunicacao): Manual de Convivência, comunicados visuais e sites informativos para condomínios, sob demanda.
 
 ## Guias

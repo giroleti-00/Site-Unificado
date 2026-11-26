@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Artigos do blog CondoFluxo.
+# Artigos do blog Convivus.
 #
 # Para publicar um artigo novo: copie um bloco de POSTS, troque os campos e rode
 #   CF_FULL=1 CF_OUT=_build python3 src/build2.py

@@ -1,4 +1,4 @@
-Site CondoFluxo - versao local
+Site Convivus - versao local
 
 COMO ABRIR
 De dois cliques em index.html (abre no navegador).

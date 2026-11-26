@@ -1,9 +1,9 @@
 # Site-Unificado
 
-Site do Condofluxo e Convivus
+Site do Convivus
 
 Site institucional em português (Porto Alegre) — www.condofluxo.com.br.
-Marca CondoFluxo (site) + Convivus (portal de gestão condominial).
+Marca Convivus (portal de gestão condominial). A página Comunicação (materiais para moradores) fica só como link no rodapé; o endereço e os contatos ainda usam o nome condofluxo.
 
 ## Estrutura
 
