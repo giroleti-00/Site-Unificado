@@ -3,7 +3,7 @@
 Site do Convivus
 
 Site institucional em português (Porto Alegre) — www.convivus.com.br.
-Marca Convivus (portal de gestão condominial). A página Comunicação (materiais para moradores) fica só como link no rodapé; o e-mail de contato ainda usa o nome condofluxo e o portal fica em portalconvivus.condofluxo.com.br.
+Marca Convivus (portal de gestão condominial). A página Comunicação (materiais para moradores) fica só como link no rodapé; o e-mail de contato é convivus@convivus.com.br e o portal fica em portal.convivus.com.br.
 
 ## Estrutura
 

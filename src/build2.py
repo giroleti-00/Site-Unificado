@@ -276,7 +276,7 @@ WORD=''
 
 LINKS=[('gestao.html','O portal'),('blog.html','Blog'),('sobre.html','Sobre')]
 
-PORTAL_URL='https://portalconvivus.condofluxo.com.br'
+PORTAL_URL='https://portal.convivus.com.br'
 
 def nav(cur):
     a=''.join(f'<a href="{h}" class="{"text-emerald-700" if h==cur else "text-gray-600"} hover:text-emerald-600 transition-colors">{t}</a>' for h,t in LINKS)
