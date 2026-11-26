@@ -26,7 +26,7 @@ CF_FULL=1 CF_OUT=_build python3 src/build2.py
 O resultado fica em `_build/` (não versionado). Copie para a raiz para atualizar o site publicado.
 Na primeira execução o gerador roda `npm ci` em `src/tailwind` (precisa de Node 18 ou mais novo e acesso ao registro npm). O CSS compilado (`assets/tailwind.css`), o Lucide (`assets/lucide.min.js`) e os scripts do site (`assets/site.js`, `consent.js`, `js-flag.js`) saem em `assets/`; nenhum script de terceiros é carregado, exceto o Google Tag, que só roda depois do aceite de cookies. Só o Google Fonts continua externo.
 
-Política de segurança de conteúdo (CSP): por padrão sai em modo Report-Only; com `CF_CSP=enforce` o `_headers` passa a aplicá-la.
+Política de segurança de conteúdo (CSP): o `_headers` sai com ela aplicada; com `CF_CSP=report-only` ela só registra violações no console (útil para testar mudanças).
 
 ## Formulário de contato
 

@@ -824,14 +824,14 @@ if os.environ.get('CF_FULL')=='1':
     open(os.path.join(OUT,'robots.txt'),'w').write(f'User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n')
     # Cabeçalhos de segurança (Cloudflare Pages lê o arquivo _headers).
     # Política estrita: scripts só do próprio site e do Google Tag (carregado após o consentimento de cookies).
-    # CF_CSP=enforce aplica a política; qualquer outro valor deixa em Report-Only (só registra no console).
+    # Por padrão a política é aplicada (enforce). Com CF_CSP=report-only ela só registra violações (útil para testar mudanças).
     CSP_BASE=("default-src 'self'; "
         "script-src 'self' https://www.googletagmanager.com; "
         "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; "
         "img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; "
         "connect-src 'self' https://api.web3forms.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; "
         "object-src 'none'; base-uri 'self'; form-action 'self'")
-    if os.environ.get('CF_CSP')=='enforce':
+    if os.environ.get('CF_CSP','enforce')!='report-only':
         CSP_LINES=f"  Content-Security-Policy: {CSP_BASE}; frame-ancestors 'none'\n"
     else:
         CSP_LINES=("  Content-Security-Policy: frame-ancestors 'none'; base-uri 'self'; object-src 'none'\n"
