@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.condofluxo.com.br/sitemap.xml
+Sitemap: https://www.convivus.com.br/sitemap.xml
