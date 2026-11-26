@@ -802,6 +802,24 @@ if os.environ.get('CF_FULL')=='1':
     sm='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'  <url><loc>{SITE}/{cp(f)}</loc></url>\n' for f in pages)+'</urlset>\n'
     open(os.path.join(OUT,'sitemap.xml'),'w').write(sm)
     open(os.path.join(OUT,'robots.txt'),'w').write(f'User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n')
+    # Cabeçalhos de segurança (Cloudflare Pages lê o arquivo _headers).
+    # 1) Content-Security-Policy aplicada: só diretivas que não quebram nada (antiframe, <base>, plugins).
+    # 2) Content-Security-Policy-Report-Only: política de scripts/estilos/conexões; só registra violações no console.
+    CSP_ENFORCED="frame-ancestors 'none'; base-uri 'self'; object-src 'none'"
+    CSP_REPORT=("default-src 'self'; "
+        "script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://unpkg.com https://www.googletagmanager.com; "
+        "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; "
+        "img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; "
+        "connect-src 'self' https://api.web3forms.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; "
+        "object-src 'none'; base-uri 'self'; form-action 'self'")
+    open(os.path.join(OUT,'_headers'),'w').write(
+        "/*\n"
+        "  X-Content-Type-Options: nosniff\n"
+        "  X-Frame-Options: DENY\n"
+        "  Referrer-Policy: strict-origin-when-cross-origin\n"
+        "  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()\n"
+        f"  Content-Security-Policy: {CSP_ENFORCED}\n"
+        f"  Content-Security-Policy-Report-Only: {CSP_REPORT}\n")
     BLOG_LLMS=''.join(f"- [{po['title']}]({SITE}/{cp(purl(po))}): {po['desc']}\n" for po in POSTS).rstrip('\n')
     open(os.path.join(OUT,'llms.txt'),'w').write(f"""# Convivus
 
