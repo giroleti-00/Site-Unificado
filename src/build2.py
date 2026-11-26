@@ -296,9 +296,9 @@ IG_SVG='<svg viewBox="0 0 24 24" class="{c}" fill="none" stroke="currentColor" s
 def wa(c): return WA_SVG.replace('{c}',c)
 def ig(c): return IG_SVG.replace('{c}',c)
 WA_LINK='https://wa.me/5551996117922'
-IG_LINK='https://www.instagram.com/condofluxo'
+IG_LINK='https://www.instagram.com/convivusbr'
 def walink(msg): return WA_LINK+'?text='+quote(msg)
-SITE='https://www.condofluxo.com.br'
+SITE='https://www.convivus.com.br'
 
 FOOT=f'''<footer class="border-t border-stone-200 bg-white/60"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid gap-8 md:grid-cols-3">
  <div><a href="index.html" class="flex items-center gap-2">{LOGO}{WORD}</a><p class="mt-4 text-sm text-gray-600 max-w-xs">Portal para síndicos e moradores: manutenção, licenças, documentos e avisos do condomínio num só lugar.</p></div>
@@ -306,8 +306,8 @@ FOOT=f'''<footer class="border-t border-stone-200 bg-white/60"><div class="max-w
  <div class="text-sm"><p class="font-semibold mb-3">Contato</p><div class="flex flex-col gap-2 text-gray-600">
   <a href="{WA_LINK}" target="_blank" rel="noopener" class="flex items-center gap-2 hover:text-emerald-700">{wa('w-4 h-4 shrink-0 text-emerald-600')}+55 51 99611-7922</a>
   <span class="flex items-center gap-2 break-all"><i data-lucide="mail" class="w-4 h-4 shrink-0 text-emerald-600"></i>condofluxo@condofluxo.com.br</span>
-  <a href="{IG_LINK}" target="_blank" rel="noopener" class="flex items-center gap-2 hover:text-emerald-700">{ig('w-4 h-4 shrink-0 text-emerald-600')}@condofluxo</a>
-  <a href="https://www.condofluxo.com.br/gestao" target="_blank" rel="noopener" class="flex items-center gap-2 hover:text-emerald-700 break-all"><i data-lucide="globe" class="w-4 h-4 shrink-0 text-emerald-600"></i>www.condofluxo.com.br/gestao</a></div></div>
+  <a href="{IG_LINK}" target="_blank" rel="noopener" class="flex items-center gap-2 hover:text-emerald-700">{ig('w-4 h-4 shrink-0 text-emerald-600')}@convivusbr</a>
+  <a href="https://www.convivus.com.br/gestao" target="_blank" rel="noopener" class="flex items-center gap-2 hover:text-emerald-700 break-all"><i data-lucide="globe" class="w-4 h-4 shrink-0 text-emerald-600"></i>www.convivus.com.br/gestao</a></div></div>
  </div><div class="border-t border-stone-200 py-5 text-center text-xs text-gray-500">© 2026 Convivus. Todos os direitos reservados.<span class="mx-2" aria-hidden="true">·</span><a href="politica-de-privacidade.html" class="underline underline-offset-2 hover:text-emerald-700">Política de Privacidade</a><span data-cc-wrap><span class="mx-2" aria-hidden="true">·</span><button type="button" class="lnk-btn" data-cookie-pref>Preferências de cookies</button></span></div></footer>'''
 
 import shutil
@@ -532,8 +532,8 @@ ct+='''<section class="grid gap-4 lg:grid-cols-5">
  <div class="lg:col-span-2 rounded-3xl bg-gradient-to-br from-emerald-800 to-emerald-900 text-white p-8 shadow-2xl flex flex-col gap-5 rv">
   <div class="flex gap-4 items-start"><span class="w-10 h-10 rounded-full bg-white/15 flex items-center justify-center shrink-0">@@WA@@</span><div class="min-w-0"><p class="text-xs uppercase tracking-widest text-emerald-200 mb-1">WhatsApp</p><p class="font-medium">+55 51 99611-7922</p><div class="mt-2 flex flex-wrap gap-2"><a href="@@WALINK@@" target="_blank" rel="noopener" class="text-xs font-semibold bg-white text-emerald-800 rounded-full px-3 py-1 hover:bg-emerald-50">Abrir conversa</a><button type="button" data-copy="+55 51 99611-7922" class="text-xs font-semibold border border-white/40 rounded-full px-3 py-1 hover:bg-white/10">Copiar</button></div></div></div>
   <div class="flex gap-4 items-start"><span class="w-10 h-10 rounded-full bg-white/15 flex items-center justify-center shrink-0"><i data-lucide="mail" class="w-5 h-5 text-white"></i></span><div class="min-w-0"><p class="text-xs uppercase tracking-widest text-emerald-200 mb-1">E-mail</p><p class="font-medium break-all">condofluxo@condofluxo.com.br</p><button type="button" data-copy="condofluxo@condofluxo.com.br" class="mt-2 text-xs font-semibold border border-white/40 rounded-full px-3 py-1 hover:bg-white/10">Copiar</button></div></div>
-  <div class="flex gap-4 items-start"><span class="w-10 h-10 rounded-full bg-white/15 flex items-center justify-center shrink-0">@@IG@@</span><div class="min-w-0"><p class="text-xs uppercase tracking-widest text-emerald-200 mb-1">Instagram</p><a href="@@IGLINK@@" target="_blank" rel="noopener" class="font-medium underline">@condofluxo</a></div></div>
-  <div class="flex gap-4 items-start"><span class="w-10 h-10 rounded-full bg-white/15 flex items-center justify-center shrink-0"><i data-lucide="globe" class="w-5 h-5 text-white"></i></span><div class="min-w-0"><p class="text-xs uppercase tracking-widest text-emerald-200 mb-1">Site do portal</p><a href="https://www.condofluxo.com.br/gestao" target="_blank" rel="noopener" class="font-medium underline break-all">www.condofluxo.com.br/gestao</a></div></div></div>
+  <div class="flex gap-4 items-start"><span class="w-10 h-10 rounded-full bg-white/15 flex items-center justify-center shrink-0">@@IG@@</span><div class="min-w-0"><p class="text-xs uppercase tracking-widest text-emerald-200 mb-1">Instagram</p><a href="@@IGLINK@@" target="_blank" rel="noopener" class="font-medium underline">@convivusbr</a></div></div>
+  <div class="flex gap-4 items-start"><span class="w-10 h-10 rounded-full bg-white/15 flex items-center justify-center shrink-0"><i data-lucide="globe" class="w-5 h-5 text-white"></i></span><div class="min-w-0"><p class="text-xs uppercase tracking-widest text-emerald-200 mb-1">Site do portal</p><a href="https://www.convivus.com.br/gestao" target="_blank" rel="noopener" class="font-medium underline break-all">www.convivus.com.br/gestao</a></div></div></div>
  <div class="lg:col-span-3 rounded-3xl bg-white border border-gray-100 shadow-lg p-8 rv d2">
   <form id="msg-form" class="grid gap-4 sm:grid-cols-2" novalidate>
    <div><label class="lbl" for="f-nome">Seu nome</label><input class="fld" id="f-nome" type="text" autocomplete="name"></div>
@@ -704,7 +704,7 @@ GA_COOKIE_ID=os.environ.get('CF_GA_ID','G-N91QJF2G98').strip() or 'G-N91QJF2G98'
 pv=head('shield-check','Privacidade','Política de','Privacidade','Como o Convivus trata os seus dados neste site, em linguagem simples. Atualizada em 25 de novembro de 2026.')
 pv+=f"""<article class="post max-w-3xl rv">
 <h2>1. Quem é o responsável</h2>
-<p>Este site (www.condofluxo.com.br) é mantido pelo Convivus, portal de gestão para condomínios de Porto Alegre (RS). Para qualquer assunto de privacidade e proteção de dados, com base na Lei Geral de Proteção de Dados (LGPD, Lei 13.709/2018), escreva para <strong>condofluxo@condofluxo.com.br</strong>.</p>
+<p>Este site (www.convivus.com.br) é mantido pelo Convivus, portal de gestão para condomínios de Porto Alegre (RS). Para qualquer assunto de privacidade e proteção de dados, com base na Lei Geral de Proteção de Dados (LGPD, Lei 13.709/2018), escreva para <strong>condofluxo@condofluxo.com.br</strong>.</p>
 <p>Esta política vale para este site. O portal Convivus, que exige cadastro e login, pode ter regras próprias de tratamento de dados, informadas no momento do cadastro.</p>
 
 <h2>2. Quais dados coletamos e para quê</h2>
