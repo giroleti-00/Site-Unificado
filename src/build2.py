@@ -344,7 +344,9 @@ def pill(icon,text):
     return f'<div class="inline-flex items-center gap-2 bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full text-sm font-medium mb-6"><i data-lucide="{icon}" class="w-4 h-4"></i>{text}</div>'
 
 def head(icon,pilltxt,h1a,h1b,p):
-    return f'''<div class="max-w-3xl mb-14 rv">{pill(icon,pilltxt)}<h1 class="text-4xl sm:text-5xl lg:text-6xl leading-[1] font-medium tracking-tight font-serif">{h1a}<br><span class="font-light italic text-emerald-700">{h1b}</span></h1><p class="text-lg text-gray-600 mt-6 leading-relaxed">{p}</p></div>'''
+    # Parágrafos separados por linha em branco ("\n\n") viram um <p> cada; um só parágrafo sai idêntico ao anterior.
+    ps=''.join(f'<p class="text-lg text-gray-600 {"mt-6" if i==0 else "mt-4"} leading-relaxed">{t}</p>' for i,t in enumerate(p.split('\n\n')))
+    return f'''<div class="max-w-3xl mb-14 rv">{pill(icon,pilltxt)}<h1 class="text-4xl sm:text-5xl lg:text-6xl leading-[1] font-medium tracking-tight font-serif">{h1a}<br><span class="font-light italic text-emerald-700">{h1b}</span></h1>{ps}</div>'''
 
 def cta(t1,t2,btn,href='contato.html'):
     ext=' target="_blank" rel="noopener"' if href.startswith('http') else ''
@@ -460,7 +462,7 @@ mods=[('wrench','bg-emerald-100','text-emerald-600','Manutenção','normativa','
 ('message-square-warning','bg-violet-100','text-violet-600','Chamados e','ocorrências','Problemas registrados e acompanhados. O Livro de Ocorrências só recebe novos registros.'),
 ('building-2','bg-teal-100','text-teal-600','Vários','condomínios','Uma conta para quem administra mais de um condomínio, com perfis de acesso por função.')]
 cards=''.join(small(i,b,t,a,c,d) for i,b,t,a,c,d in mods)
-ges='<div class="mb-8 rv"><img src="assets/logo-convivus.png" alt="Convivus" class="h-14 w-auto"></div>'+head('layout-dashboard','Portal Convivus','Conformidade não é um extra.','É o coração do portal.','A maioria dos apps de condomínio cuida do financeiro. O Convivus se ancora onde está a responsabilidade legal do síndico, sem deixar de lado a conversa entre vizinhos.')
+ges='<div class="mb-8 rv"><img src="assets/logo-convivus.png" alt="Convivus" class="h-14 w-auto"></div>'+head('layout-dashboard','Portal Convivus','Conformidade não é um extra.','É o coração do portal.','Enquanto muitos aplicativos de condomínio concentram seus esforços na gestão financeira, o Convivus olha para um ponto essencial da administração condominial: a organização, o acompanhamento e o registro das responsabilidades do síndico.\n\nManutenções, documentos, prazos, ocorrências e comunicação entre moradores, tudo conectado em um só lugar.\n\nPorque administrar um condomínio vai muito além de números. É cuidar, prevenir, organizar e manter tudo em dia.')
 ges+='''<section class="grid gap-4 lg:grid-cols-5 mb-16">
  <div class="lg:col-span-3 relative rounded-3xl overflow-hidden shadow-2xl min-h-[280px] lg:min-h-[420px] rv"><img src="assets/portal-notebook.jpg" alt="Portal Convivus aberto em um tablet com teclado, sobre uma mesa" loading="lazy" class="absolute inset-0 w-full h-full object-cover"><div class="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/70 to-transparent text-white"><p class="font-serif text-xl">Sem aplicativo para instalar</p><p class="text-sm text-white/85">Abre no navegador do computador, do tablet e do celular.</p></div></div>
  <div class="lg:col-span-2 relative rounded-3xl overflow-hidden shadow-xl min-h-[320px] rv d2"><img src="assets/portal-celular.jpg" alt="Mão segurando um celular com o portal do condomínio aberto, no hall do prédio" loading="lazy" class="absolute inset-0 w-full h-full object-cover"><div class="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/70 to-transparent text-white"><p class="font-serif text-xl">Avisos na mão do morador</p><p class="text-sm text-white/85">Mural, chamados e documentos no celular.</p></div></div>
